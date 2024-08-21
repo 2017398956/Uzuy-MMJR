@@ -1,97 +1,74 @@
-| Pull Request | Commit | Title | Author | Merged? |
-|----|----|----|----|----|
-| [12461](https://github.com/uzuy-emu/uzuy//pull/12461) | [`7464cae24`](https://github.com/uzuy-emu/uzuy//pull/12461/files) | Rework Nvdec and VIC to fix out-of-order videos, and speed up decoding. | [Kelebek1](https://github.com/Kelebek1/) | Yes |
-| [13018](https://github.com/uzuy-emu/uzuy//pull/13018) | [`01cbc638a`](https://github.com/uzuy-emu/uzuy//pull/13018/files) | am: rewrite part 2 | [liamwhite](https://github.com/liamwhite/) | Yes |
-| [13174](https://github.com/uzuy-emu/uzuy//pull/13174) | [`7d1284826`](https://github.com/uzuy-emu/uzuy//pull/13174/files) | glue/time: Remove global variables | [FearlessTobi](https://github.com/FearlessTobi/) | Yes |
-| [13177](https://github.com/uzuy-emu/uzuy//pull/13177) | [`f5cc94f05`](https://github.com/uzuy-emu/uzuy//pull/13177/files) | vfs: misc performance improvements | [liamwhite](https://github.com/liamwhite/) | Yes |
+<div align="center">
 
+![ARCHIVED_MHTML](https://i.imgur.com/sQKV1vV.png)
 
-End of merge log. You can find the original README.md below the break.
+I'm doing the best I can to push commits as they appeared on GitHub, some may be out of order, some may not work at all until another fixes it. I have several backups to go through and relying on my Github page where I saved many commits as .mhtml files, thank you for your patience.
 
------
+# Uzuy MMJR
 
-<!--
-SPDX-FileCopyrightText: 2018 uzuy Emulator Project
-SPDX-License-Identifier: GPL-2.0-or-later
--->
+![Uzuy MMJR Logo](https://i.imgur.com/bBSxhSV.png)
 
-<h1 align="center">
-  <br>
-  <a href="https://uzuy-emu.org/"><img src="https://raw.githubusercontent.com/uzuy-emu/uzuy-assets/master/icons/icon.png" alt="uzuy" width="200"></a>
-  <br>
-  <b>uzuy</b>
-  <br>
-</h1>
+**Uzuy MMJR** is a Nintendo Switch emulator designed for Android devices, focusing on high performance and optimal gaming experience. Play your favorite Nintendo Switch games on your Android device with enhanced performance.
 
-<h4 align="center"><b>uzuy</b> is the world's most popular, open-source, Nintendo Switch emulator — started by the creators of <a href="https://citra-emu.org" target="_blank">Citra</a>.
-<br>
-It is written in C++ with portability in mind, and we actively maintain builds for Windows, Linux and Android.
-</h4>
+</div>
 
-<p align="center">
-    <a href="https://dev.azure.com/uzuy-emu/uzuy/">
-        <img src="https://dev.azure.com/uzuy-emu/uzuy/_apis/build/status/uzuy%20mainline?branchName=master"
-            alt="Azure Mainline CI Build Status">
-    </a>
-    <a href="https://discord.com/invite/u77vRWY">
-        <img src="https://img.shields.io/discord/398318088170242053?color=5865F2&label=uzuy&logo=discord&logoColor=white"
-            alt="Discord">
-    </a>
-</p>
+## Features
 
-<p align="center">
-  <a href="#compatibility">Compatibility</a> |
-  <a href="#development">Development</a> |
-  <a href="#building">Building</a> |
-  <a href="#download">Download</a> |
-  <a href="#support">Support</a> |
-  <a href="#license">License</a>
-</p>
+- **High Performance:** Optimized for smooth gameplay and minimal lag.
+- **Compatibility:** Supports a wide range of Nintendo Switch games.
+- **Customizable Settings:** Fine-tune performance to fit your device specifications.
+- **User-Friendly Interface:** Easy-to-navigate interface for a seamless experience.
 
-## Compatibility
+## Installation
 
-The emulator is capable of running most commercial games at full speed, provided you meet the [necessary hardware requirements](https://uzuy-emu.org/help/quickstart/#hardware-requirements).
+### Prerequisites
 
-For a full list of games uzuy supports, please visit our [Compatibility page](https://uzuy-emu.org/game/).
+- Android device running Android 11.0 or higher.
+- At least 4 GB of RAM recommended.
 
-Check out our [website](https://uzuy-emu.org/) for the latest news on exciting features, monthly progress reports, and more!
+### Steps
 
-## Development
+1. **Download the APK:**
+   - [Download Link](https://git.uzuy-edge.org/Uzuy/Uzuy-MMJR/releases)
 
-Most of the development happens on GitHub. It's also where [our central repository](https://github.com/uzuy-emu/uzuy) is hosted. For development discussion, please join us on [Discord](https://discord.com/invite/u77vRWY).
+2. **Install the APK:**
+   - Enable installation from unknown sources in your device settings.
+   - Open the APK file and follow the installation instructions.
 
-If you want to contribute, please take a look at the [Contributor's Guide](https://github.com/uzuy-emu/uzuy/wiki/Contributing) and [Developer Information](https://github.com/uzuy-emu/uzuy/wiki/Developer-Information).
-You can also contact any of the developers on Discord in order to know about the current state of the emulator.
+3. **Setup:**
+   - Launch Uzuy MMJR and configure settings according to your preferences.
 
-If you want to contribute to the user interface translation project, please check out the [uzuy project on transifex](https://www.transifex.com/uzuy-emulator/uzuy). We centralize translation work there, and periodically upstream translations.
+## Usage
 
-## Building
-
-* __Windows__: [Windows Build](https://github.com/uzuy-emu/uzuy/wiki/Building-For-Windows)
-* __Linux__: [Linux Build](https://github.com/uzuy-emu/uzuy/wiki/Building-For-Linux)
-
-## Download
-
-You can download the latest releases automatically via the installer on our [downloads](https://uzuy-emu.org/downloads/) page.
-
-
-## Support
-
-If you enjoy the project and want to support us financially, check out our Patreon!
-
-<a href="https://www.patreon.com/uzuyteam">
-    <img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
-</a>
-
-Any donations received will go towards things like:
-* Switch consoles to explore and reverse-engineer the hardware
-* Switch games for testing, reverse-engineering, and implementing new features
-* Web hosting and infrastructure setup
-* Software licenses (e.g. Visual Studio, IDA Pro, etc.)
-* Additional hardware (e.g. GPUs as-needed to improve rendering support, other peripherals to add support for, etc.)
-
-If you wish to support us a different way, please join our [Discord](https://discord.gg/u77vRWY) and talk to bunnei. You may also contact: donations@uzuy-emu.org.
+1. **Launch the App:** Open Uzuy MMJR from your app drawer.
+2. **Load Games:** Import your Nintendo Switch game files.
+3. **Configure Settings:** Adjust performance settings to optimize gameplay.
+4. **Play:** Enjoy your games with enhanced performance.
 
 ## License
 
-uzuy is licensed under the GPLv3 (or any later version). Refer to the [LICENSE.txt](https://github.com/uzuy-emu/uzuy/blob/master/LICENSE.txt) file.
+Uzuy MMJR is licensed under the [GPLv3 License](https://git.uzuy-edge.org/Uzuy/Uzuy-MMJR/src/branch/master/LICENSE.txt).
+
+## Contributing
+
+I welcome contributions to Uzuy MMJR! If you'd like to contribute, please follow these steps:
+
+1. **Fork the Repository:** Click on "Fork" at the top right of the repository page.
+2. **Clone Your Fork:** `git clone https://codeberg.org/uzuy-mmjr/Uzuy.git`
+3. **Create a Branch:** `git checkout -b your-branch-name`
+4. **Make Changes:** Edit files and add features.
+5. **Commit Your Changes:** `git commit -am 'Add new feature'`
+6. **Push to Your Fork:** `git push origin your-branch-name`
+7. **Submit a Pull Request:** Go to the original repository and click "New Pull Request."
+
+## Issues
+
+If you encounter any issues, please report them on my [Issues Page](https://git.uzuy-edge.org/Uzuy/Uzuy-MMJR/issues).
+
+## Contact
+
+For any inquiries or support, contact me at [phoenix@uzuy-edge.org](mailto:phoenix@uzuy-edge.org).
+
+---
+
+*Uzuy MMJR is an open-source project, and I appreciate the support and contributions from the community.*
