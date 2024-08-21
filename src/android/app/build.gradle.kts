@@ -103,7 +103,7 @@ android {
                 signingConfigs.getByName("default")
             }
 
-            resValue("string", "app_name_suffixed", "uzuy")
+            resValue("string", "app_name_suffixed", "Uzuy MMJR")
             isMinifyEnabled = true
             isDebuggable = false
             proguardFiles(
@@ -116,7 +116,7 @@ android {
         // Attaches 'debug' suffix to version and package name, allowing installation alongside the release build.
         register("relWithDebInfo") {
             isDefault = true
-            resValue("string", "app_name_suffixed", "uzuy Debug Release")
+            resValue("string", "app_name_suffixed", "Uzuy MMJR")
             signingConfig = signingConfigs.getByName("default")
             isMinifyEnabled = true
             isDebuggable = true
@@ -133,7 +133,7 @@ android {
         // Attaches 'debug' suffix to version and package name, allowing installation alongside the release build.
         debug {
             signingConfig = signingConfigs.getByName("default")
-            resValue("string", "app_name_suffixed", "uzuy Debug")
+            resValue("string", "app_name_suffixed", "Uzuy MMJR")
             isDebuggable = true
             isJniDebuggable = true
             versionNameSuffix = "-debug"
@@ -146,7 +146,7 @@ android {
         create("mainline") {
             isDefault = true
             dimension = "version"
-            buildConfigField("Boolean", "PREMIUM", "false")
+            buildConfigField("Boolean", "PREMIUM", "true")
         }
 
         create("ea") {
