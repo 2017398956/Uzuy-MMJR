@@ -19,13 +19,13 @@
 #include "core/core.h"
 #include "core/file_sys/patch_manager.h"
 #include "core/file_sys/registered_cache.h"
-#include "yuzu/compatibility_list.h"
-#include "yuzu/game_list.h"
-#include "yuzu/game_list_p.h"
-#include "yuzu/game_list_worker.h"
-#include "yuzu/main.h"
-#include "yuzu/uisettings.h"
-#include "yuzu/util/controller_navigation.h"
+#include "uzuy/compatibility_list.h"
+#include "uzuy/game_list.h"
+#include "uzuy/game_list_p.h"
+#include "uzuy/game_list_worker.h"
+#include "uzuy/main.h"
+#include "uzuy/uisettings.h"
+#include "uzuy/util/controller_navigation.h"
 
 GameListSearchField::KeyReleaseEater::KeyReleaseEater(GameList* gamelist_, QObject* parent)
     : QObject(parent), gamelist{gamelist_} {}

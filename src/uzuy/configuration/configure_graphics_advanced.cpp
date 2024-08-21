@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2020 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2020 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <vector>
@@ -7,10 +7,10 @@
 #include "common/settings.h"
 #include "core/core.h"
 #include "ui_configure_graphics_advanced.h"
-#include "yuzu/configuration/configuration_shared.h"
-#include "yuzu/configuration/configure_graphics_advanced.h"
-#include "yuzu/configuration/shared_translation.h"
-#include "yuzu/configuration/shared_widget.h"
+#include "uzuy/configuration/configuration_shared.h"
+#include "uzuy/configuration/configure_graphics_advanced.h"
+#include "uzuy/configuration/shared_translation.h"
+#include "uzuy/configuration/shared_widget.h"
 
 ConfigureGraphicsAdvanced::ConfigureGraphicsAdvanced(
     const Core::System& system_, std::shared_ptr<std::vector<ConfigurationShared::Tab*>> group_,

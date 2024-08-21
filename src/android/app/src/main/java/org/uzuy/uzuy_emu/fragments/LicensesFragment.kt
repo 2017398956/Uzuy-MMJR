@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.fragments
+package org.uzuy.uzuy_emu.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -16,12 +16,12 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.android.material.transition.MaterialSharedAxis
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.adapters.LicenseAdapter
-import org.yuzu.yuzu_emu.databinding.FragmentLicensesBinding
-import org.yuzu.yuzu_emu.model.HomeViewModel
-import org.yuzu.yuzu_emu.model.License
-import org.yuzu.yuzu_emu.utils.ViewUtils.updateMargins
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.adapters.LicenseAdapter
+import org.uzuy.uzuy_emu.databinding.FragmentLicensesBinding
+import org.uzuy.uzuy_emu.model.HomeViewModel
+import org.uzuy.uzuy_emu.model.License
+import org.uzuy.uzuy_emu.utils.ViewUtils.updateMargins
 
 class LicensesFragment : Fragment() {
     private var _binding: FragmentLicensesBinding? = null

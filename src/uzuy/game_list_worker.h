@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2018 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2018 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
@@ -14,8 +14,8 @@
 #include <QString>
 
 #include "common/thread.h"
-#include "yuzu/compatibility_list.h"
-#include "yuzu/play_time_manager.h"
+#include "uzuy/compatibility_list.h"
+#include "uzuy/play_time_manager.h"
 
 namespace Core {
 class System;

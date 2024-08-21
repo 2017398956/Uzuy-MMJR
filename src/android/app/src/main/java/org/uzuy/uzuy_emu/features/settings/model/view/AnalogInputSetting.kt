@@ -1,14 +1,14 @@
-// SPDX-FileCopyrightText: 2024 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2024 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.features.settings.model.view
+package org.uzuy.uzuy_emu.features.settings.model.view
 
 import androidx.annotation.StringRes
-import org.yuzu.yuzu_emu.features.input.NativeInput
-import org.yuzu.yuzu_emu.features.input.model.AnalogDirection
-import org.yuzu.yuzu_emu.features.input.model.InputType
-import org.yuzu.yuzu_emu.features.input.model.NativeAnalog
-import org.yuzu.yuzu_emu.utils.ParamPackage
+import org.uzuy.uzuy_emu.features.input.NativeInput
+import org.uzuy.uzuy_emu.features.input.model.AnalogDirection
+import org.uzuy.uzuy_emu.features.input.model.InputType
+import org.uzuy.uzuy_emu.features.input.model.NativeAnalog
+import org.uzuy.uzuy_emu.utils.ParamPackage
 
 class AnalogInputSetting(
     override val playerIndex: Int,

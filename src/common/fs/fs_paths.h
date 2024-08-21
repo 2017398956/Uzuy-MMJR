@@ -1,14 +1,14 @@
-// SPDX-FileCopyrightText: Copyright 2021 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2021 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
 
-// yuzu data directories
+// uzuy data directories
 
-#define YUZU_DIR "yuzu"
+#define UZUY_DIR "uzuy"
 #define PORTABLE_DIR "user"
 
-// Sub-directories contained within a yuzu data directory
+// Sub-directories contained within a uzuy data directory
 
 #define AMIIBO_DIR "amiibo"
 #define CACHE_DIR "cache"
@@ -26,6 +26,6 @@
 #define TAS_DIR "tas"
 #define ICONS_DIR "icons"
 
-// yuzu-specific files
+// uzuy-specific files
 
-#define LOG_FILE "yuzu_log.txt"
+#define LOG_FILE "uzuy_log.txt"

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2018 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2018 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
@@ -18,7 +18,7 @@ class System;
 namespace FileSys {
 
 constexpr const char* GetSaveDataSizeFileName() {
-    return ".yuzu_save_size";
+    return ".uzuy_save_size";
 }
 
 using ProgramId = u64;

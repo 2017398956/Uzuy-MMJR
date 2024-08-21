@@ -7,8 +7,8 @@
 #include "common/settings.h"
 #include "core/telemetry_session.h"
 #include "ui_configure_web.h"
-#include "yuzu/configuration/configure_web.h"
-#include "yuzu/uisettings.h"
+#include "uzuy/configuration/configure_web.h"
+#include "uzuy/uisettings.h"
 
 static constexpr char token_delimiter{':'};
 
@@ -65,15 +65,15 @@ void ConfigureWeb::RetranslateUI() {
     ui->retranslateUi(this);
 
     ui->telemetry_learn_more->setText(
-        tr("<a href='https://yuzu-emu.org/help/feature/telemetry/'><span style=\"text-decoration: "
+        tr("<a href='https://uzuy-emu.org/help/feature/telemetry/'><span style=\"text-decoration: "
            "underline; color:#039be5;\">Learn more</span></a>"));
 
     ui->web_signup_link->setText(
-        tr("<a href='https://profile.yuzu-emu.org/'><span style=\"text-decoration: underline; "
+        tr("<a href='https://profile.uzuy-emu.org/'><span style=\"text-decoration: underline; "
            "color:#039be5;\">Sign up</span></a>"));
 
     ui->web_token_info_link->setText(
-        tr("<a href='https://yuzu-emu.org/wiki/yuzu-web-service/'><span style=\"text-decoration: "
+        tr("<a href='https://uzuy-emu.org/wiki/uzuy-web-service/'><span style=\"text-decoration: "
            "underline; color:#039be5;\">What is my token?</span></a>"));
 
     ui->label_telemetry_id->setText(
@@ -87,15 +87,15 @@ void ConfigureWeb::SetConfiguration() {
     ui->web_signup_link->setOpenExternalLinks(true);
     ui->web_token_info_link->setOpenExternalLinks(true);
 
-    if (Settings::values.yuzu_username.GetValue().empty()) {
+    if (Settings::values.uzuy_username.GetValue().empty()) {
         ui->username->setText(tr("Unspecified"));
     } else {
-        ui->username->setText(QString::fromStdString(Settings::values.yuzu_username.GetValue()));
+        ui->username->setText(QString::fromStdString(Settings::values.uzuy_username.GetValue()));
     }
 
     ui->toggle_telemetry->setChecked(Settings::values.enable_telemetry.GetValue());
     ui->edit_token->setText(QString::fromStdString(GenerateDisplayToken(
-        Settings::values.yuzu_username.GetValue(), Settings::values.yuzu_token.GetValue())));
+        Settings::values.uzuy_username.GetValue(), Settings::values.uzuy_token.GetValue())));
 
     // Connect after setting the values, to avoid calling OnLoginChanged now
     connect(ui->edit_token, &QLineEdit::textChanged, this, &ConfigureWeb::OnLoginChanged);
@@ -109,9 +109,9 @@ void ConfigureWeb::ApplyConfiguration() {
     Settings::values.enable_telemetry = ui->toggle_telemetry->isChecked();
     UISettings::values.enable_discord_presence = ui->toggle_discordrpc->isChecked();
     if (user_verified) {
-        Settings::values.yuzu_username =
+        Settings::values.uzuy_username =
             UsernameFromDisplayToken(ui->edit_token->text().toStdString());
-        Settings::values.yuzu_token = TokenFromDisplayToken(ui->edit_token->text().toStdString());
+        Settings::values.uzuy_token = TokenFromDisplayToken(ui->edit_token->text().toStdString());
     } else {
         QMessageBox::warning(
             this, tr("Token not verified"),

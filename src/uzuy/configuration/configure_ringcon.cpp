@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2022 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2022 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <memory>
@@ -15,8 +15,8 @@
 #include "input_common/drivers/mouse.h"
 #include "input_common/main.h"
 #include "ui_configure_ringcon.h"
-#include "yuzu/bootmanager.h"
-#include "yuzu/configuration/configure_ringcon.h"
+#include "uzuy/bootmanager.h"
+#include "uzuy/configuration/configure_ringcon.h"
 
 const std::array<std::string, ConfigureRingController::ANALOG_SUB_BUTTONS_NUM>
     ConfigureRingController::analog_sub_buttons{{

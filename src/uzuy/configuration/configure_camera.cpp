@@ -1,9 +1,9 @@
-// Text : Copyright 2022 yuzu Emulator Project
+// Text : Copyright 2022 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include <memory>
 #include <QtCore>
-#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0)) && YUZU_USE_QT_MULTIMEDIA
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0)) && UZUY_USE_QT_MULTIMEDIA
 #include <QCameraImageCapture>
 #include <QCameraInfo>
 #endif
@@ -14,7 +14,7 @@
 #include "input_common/drivers/camera.h"
 #include "input_common/main.h"
 #include "ui_configure_camera.h"
-#include "yuzu/configuration/configure_camera.h"
+#include "uzuy/configuration/configure_camera.h"
 
 ConfigureCamera::ConfigureCamera(QWidget* parent, InputCommon::InputSubsystem* input_subsystem_)
     : QDialog(parent), input_subsystem{input_subsystem_},
@@ -36,7 +36,7 @@ ConfigureCamera::ConfigureCamera(QWidget* parent, InputCommon::InputSubsystem* i
 ConfigureCamera::~ConfigureCamera() = default;
 
 void ConfigureCamera::PreviewCamera() {
-#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0)) && YUZU_USE_QT_MULTIMEDIA
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0)) && UZUY_USE_QT_MULTIMEDIA
     const auto index = ui->ir_sensor_combo_box->currentIndex();
     bool camera_found = false;
     const QList<QCameraInfo> cameras = QCameraInfo::availableCameras();
@@ -138,7 +138,7 @@ void ConfigureCamera::LoadConfiguration() {
     ui->ir_sensor_combo_box->clear();
     input_devices.push_back("Auto");
     ui->ir_sensor_combo_box->addItem(tr("Auto"));
-#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0)) && YUZU_USE_QT_MULTIMEDIA
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0)) && UZUY_USE_QT_MULTIMEDIA
     const auto cameras = QCameraInfo::availableCameras();
     for (const QCameraInfo& cameraInfo : cameras) {
         input_devices.push_back(cameraInfo.deviceName().toStdString());

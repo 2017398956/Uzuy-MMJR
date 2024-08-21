@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2018 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2018 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <cinttypes>
@@ -49,7 +49,7 @@ std::vector<u8> DecompressSegment(const std::vector<u8>& compressed_data,
 }
 
 constexpr u32 PageAlignSize(u32 size) {
-    return static_cast<u32>((size + Core::Memory::YUZU_PAGEMASK) & ~Core::Memory::YUZU_PAGEMASK);
+    return static_cast<u32>((size + Core::Memory::UZUY_PAGEMASK) & ~Core::Memory::UZUY_PAGEMASK);
 }
 } // Anonymous namespace
 

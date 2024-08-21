@@ -18,9 +18,9 @@
 #include "common/logging/log.h"
 #include "network/announce_multiplayer_session.h"
 #include "ui_chat_room.h"
-#include "yuzu/game_list_p.h"
-#include "yuzu/multiplayer/chat_room.h"
-#include "yuzu/multiplayer/message.h"
+#include "uzuy/game_list_p.h"
+#include "uzuy/multiplayer/chat_room.h"
+#include "uzuy/multiplayer/message.h"
 #ifdef ENABLE_WEB_SERVICE
 #include "web_service/web_backend.h"
 #endif

@@ -1,9 +1,9 @@
-// SPDX-FileCopyrightText: Copyright 2020 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2020 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifdef YUZU_USE_QT_WEB_ENGINE
+#ifdef UZUY_USE_QT_WEB_ENGINE
 
-#include "yuzu/util/url_request_interceptor.h"
+#include "uzuy/util/url_request_interceptor.h"
 
 UrlRequestInterceptor::UrlRequestInterceptor(QObject* p) : QWebEngineUrlRequestInterceptor(p) {}
 

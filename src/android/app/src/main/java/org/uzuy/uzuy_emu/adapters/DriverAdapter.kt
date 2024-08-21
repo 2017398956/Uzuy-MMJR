@@ -1,18 +1,18 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.adapters
+package org.uzuy.uzuy_emu.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.databinding.CardDriverOptionBinding
-import org.yuzu.yuzu_emu.features.settings.model.StringSetting
-import org.yuzu.yuzu_emu.model.Driver
-import org.yuzu.yuzu_emu.model.DriverViewModel
-import org.yuzu.yuzu_emu.utils.ViewUtils.marquee
-import org.yuzu.yuzu_emu.utils.ViewUtils.setVisible
-import org.yuzu.yuzu_emu.viewholder.AbstractViewHolder
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.databinding.CardDriverOptionBinding
+import org.uzuy.uzuy_emu.features.settings.model.StringSetting
+import org.uzuy.uzuy_emu.model.Driver
+import org.uzuy.uzuy_emu.model.DriverViewModel
+import org.uzuy.uzuy_emu.utils.ViewUtils.marquee
+import org.uzuy.uzuy_emu.utils.ViewUtils.setVisible
+import org.uzuy.uzuy_emu.viewholder.AbstractViewHolder
 
 class DriverAdapter(private val driverViewModel: DriverViewModel) :
     AbstractSingleSelectionList<Driver, DriverAdapter.DriverViewHolder>(

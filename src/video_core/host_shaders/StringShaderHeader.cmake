@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2020 yuzu Emulator Project
+# SPDX-FileCopyrightText: 2020 uzuy Emulator Project
 # SPDX-License-Identifier: GPL-2.0-or-later
 
 set(SOURCE_FILE ${CMAKE_ARGV3})

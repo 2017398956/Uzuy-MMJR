@@ -1,12 +1,12 @@
-// SPDX-FileCopyrightText: 2024 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2024 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "common/settings.h"
 #include "core/core.h"
 #include "ui_configure_applets.h"
-#include "yuzu/configuration/configuration_shared.h"
-#include "yuzu/configuration/configure_applets.h"
-#include "yuzu/configuration/shared_widget.h"
+#include "uzuy/configuration/configuration_shared.h"
+#include "uzuy/configuration/configure_applets.h"
+#include "uzuy/configuration/shared_widget.h"
 
 ConfigureApplets::ConfigureApplets(Core::System& system_,
                                    std::shared_ptr<std::vector<ConfigurationShared::Tab*>> group_,

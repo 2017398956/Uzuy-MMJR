@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "common/alignment.h"
@@ -9,7 +9,7 @@
 #include "common/settings.h"
 #include "common/thread.h"
 #include "core/hle/service/acc/profile_manager.h"
-#include "yuzu/play_time_manager.h"
+#include "uzuy/play_time_manager.h"
 
 namespace PlayTime {
 
@@ -26,7 +26,7 @@ std::optional<std::filesystem::path> GetCurrentUserPlayTimePath(
     if (!uuid.has_value()) {
         return std::nullopt;
     }
-    return Common::FS::GetYuzuPath(Common::FS::YuzuPath::PlayTimeDir) /
+    return Common::FS::GetUzuyPath(Common::FS::UzuyPath::PlayTimeDir) /
            uuid->RawString().append(".bin");
 }
 

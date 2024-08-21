@@ -1,11 +1,11 @@
-// SPDX-FileCopyrightText: Copyright 2018 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2018 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <algorithm>
 
 #include <fmt/format.h>
 
-#include "yuzu/compatibility_list.h"
+#include "uzuy/compatibility_list.h"
 
 CompatibilityList::const_iterator FindMatchingCompatibilityEntry(
     const CompatibilityList& compatibility_list, u64 program_id) {

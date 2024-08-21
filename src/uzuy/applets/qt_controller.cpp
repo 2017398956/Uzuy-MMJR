@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2020 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2020 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <algorithm>
@@ -15,14 +15,14 @@
 #include "hid_core/hid_types.h"
 #include "hid_core/resources/npad/npad.h"
 #include "ui_qt_controller.h"
-#include "yuzu/applets/qt_controller.h"
-#include "yuzu/configuration/configure_input.h"
-#include "yuzu/configuration/configure_input_profile_dialog.h"
-#include "yuzu/configuration/configure_motion_touch.h"
-#include "yuzu/configuration/configure_vibration.h"
-#include "yuzu/configuration/input_profiles.h"
-#include "yuzu/main.h"
-#include "yuzu/util/controller_navigation.h"
+#include "uzuy/applets/qt_controller.h"
+#include "uzuy/configuration/configure_input.h"
+#include "uzuy/configuration/configure_input_profile_dialog.h"
+#include "uzuy/configuration/configure_motion_touch.h"
+#include "uzuy/configuration/configure_vibration.h"
+#include "uzuy/configuration/input_profiles.h"
+#include "uzuy/main.h"
+#include "uzuy/util/controller_navigation.h"
 
 namespace {
 

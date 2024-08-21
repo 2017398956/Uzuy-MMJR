@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <QCloseEvent>
@@ -6,7 +6,7 @@
 
 #include "common/settings.h"
 #include "ui_configure_mouse_panning.h"
-#include "yuzu/configuration/configure_mouse_panning.h"
+#include "uzuy/configuration/configure_mouse_panning.h"
 
 ConfigureMousePanning::ConfigureMousePanning(QWidget* parent,
                                              InputCommon::InputSubsystem* input_subsystem_,

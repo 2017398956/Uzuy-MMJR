@@ -1,10 +1,10 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.features.settings.model
+package org.uzuy.uzuy_emu.features.settings.model
 
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.YuzuApplication
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.UzuyApplication
 
 object Settings {
     enum class MenuTag(val titleId: Int = 0) {
@@ -26,7 +26,7 @@ object Settings {
     }
 
     fun getPlayerString(player: Int): String =
-        YuzuApplication.appContext.getString(R.string.preferences_player, player)
+        UzuyApplication.appContext.getString(R.string.preferences_player, player)
 
     const val PREF_FIRST_APP_LAUNCH = "FirstApplicationLaunch"
     const val PREF_MEMORY_WARNING_SHOWN = "MemoryWarningShown"

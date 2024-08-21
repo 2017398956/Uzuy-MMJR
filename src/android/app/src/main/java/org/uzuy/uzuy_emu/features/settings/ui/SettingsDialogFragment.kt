@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.features.settings.ui
+package org.uzuy.uzuy_emu.features.settings.ui
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -13,21 +13,21 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.slider.Slider
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.databinding.DialogEditTextBinding
-import org.yuzu.yuzu_emu.databinding.DialogSliderBinding
-import org.yuzu.yuzu_emu.features.input.NativeInput
-import org.yuzu.yuzu_emu.features.input.model.AnalogDirection
-import org.yuzu.yuzu_emu.features.settings.model.view.AnalogInputSetting
-import org.yuzu.yuzu_emu.features.settings.model.view.ButtonInputSetting
-import org.yuzu.yuzu_emu.features.settings.model.view.IntSingleChoiceSetting
-import org.yuzu.yuzu_emu.features.settings.model.view.SettingsItem
-import org.yuzu.yuzu_emu.features.settings.model.view.SingleChoiceSetting
-import org.yuzu.yuzu_emu.features.settings.model.view.SliderSetting
-import org.yuzu.yuzu_emu.features.settings.model.view.StringInputSetting
-import org.yuzu.yuzu_emu.features.settings.model.view.StringSingleChoiceSetting
-import org.yuzu.yuzu_emu.utils.ParamPackage
-import org.yuzu.yuzu_emu.utils.collect
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.databinding.DialogEditTextBinding
+import org.uzuy.uzuy_emu.databinding.DialogSliderBinding
+import org.uzuy.uzuy_emu.features.input.NativeInput
+import org.uzuy.uzuy_emu.features.input.model.AnalogDirection
+import org.uzuy.uzuy_emu.features.settings.model.view.AnalogInputSetting
+import org.uzuy.uzuy_emu.features.settings.model.view.ButtonInputSetting
+import org.uzuy.uzuy_emu.features.settings.model.view.IntSingleChoiceSetting
+import org.uzuy.uzuy_emu.features.settings.model.view.SettingsItem
+import org.uzuy.uzuy_emu.features.settings.model.view.SingleChoiceSetting
+import org.uzuy.uzuy_emu.features.settings.model.view.SliderSetting
+import org.uzuy.uzuy_emu.features.settings.model.view.StringInputSetting
+import org.uzuy.uzuy_emu.features.settings.model.view.StringSingleChoiceSetting
+import org.uzuy.uzuy_emu.utils.ParamPackage
+import org.uzuy.uzuy_emu.utils.collect
 
 class SettingsDialogFragment : DialogFragment(), DialogInterface.OnClickListener {
     private var type = 0

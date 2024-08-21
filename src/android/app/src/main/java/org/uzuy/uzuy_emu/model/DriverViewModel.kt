@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.model
+package org.uzuy.uzuy_emu.model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,14 +14,14 @@ import kotlinx.coroutines.flow.combine
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.YuzuApplication
-import org.yuzu.yuzu_emu.features.settings.model.StringSetting
-import org.yuzu.yuzu_emu.features.settings.utils.SettingsFile
-import org.yuzu.yuzu_emu.model.Driver.Companion.toDriver
-import org.yuzu.yuzu_emu.utils.GpuDriverHelper
-import org.yuzu.yuzu_emu.utils.GpuDriverMetadata
-import org.yuzu.yuzu_emu.utils.NativeConfig
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.UzuyApplication
+import org.uzuy.uzuy_emu.features.settings.model.StringSetting
+import org.uzuy.uzuy_emu.features.settings.utils.SettingsFile
+import org.uzuy.uzuy_emu.model.Driver.Companion.toDriver
+import org.uzuy.uzuy_emu.utils.GpuDriverHelper
+import org.uzuy.uzuy_emu.utils.GpuDriverMetadata
+import org.uzuy.uzuy_emu.utils.NativeConfig
 import java.io.File
 
 class DriverViewModel : ViewModel() {
@@ -70,7 +70,7 @@ class DriverViewModel : ViewModel() {
         val newDriverList = mutableListOf(
             Driver(
                 selectedDriver == GpuDriverMetadata(),
-                YuzuApplication.appContext.getString(R.string.system_gpu_driver),
+                UzuyApplication.appContext.getString(R.string.system_gpu_driver),
                 systemDriverData?.get(0) ?: "",
                 systemDriverData?.get(1) ?: ""
             )
@@ -186,7 +186,7 @@ class DriverViewModel : ViewModel() {
 
     private fun updateName() {
         _selectedDriverTitle.value = GpuDriverHelper.customDriverSettingData.name
-            ?: YuzuApplication.appContext.getString(R.string.system_gpu_driver)
+            ?: UzuyApplication.appContext.getString(R.string.system_gpu_driver)
     }
 
     private fun setDriverReady() {

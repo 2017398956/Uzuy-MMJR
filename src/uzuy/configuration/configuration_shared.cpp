@@ -4,7 +4,7 @@
 #include <memory>
 #include <type_traits>
 #include <vector>
-#include "yuzu/configuration/configuration_shared.h"
+#include "uzuy/configuration/configuration_shared.h"
 
 namespace ConfigurationShared {
 

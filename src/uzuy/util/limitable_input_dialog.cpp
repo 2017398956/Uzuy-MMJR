@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2018 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2018 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <QDialogButtonBox>
@@ -6,7 +6,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include <QVBoxLayout>
-#include "yuzu/util/limitable_input_dialog.h"
+#include "uzuy/util/limitable_input_dialog.h"
 
 LimitableInputDialog::LimitableInputDialog(QWidget* parent) : QDialog{parent} {
     CreateUI();

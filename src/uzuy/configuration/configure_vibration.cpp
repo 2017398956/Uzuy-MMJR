@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2020 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2020 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "common/settings.h"
@@ -6,7 +6,7 @@
 #include "hid_core/hid_core.h"
 #include "hid_core/hid_types.h"
 #include "ui_configure_vibration.h"
-#include "yuzu/configuration/configure_vibration.h"
+#include "uzuy/configuration/configure_vibration.h"
 
 ConfigureVibration::ConfigureVibration(QWidget* parent, Core::HID::HIDCore& hid_core_)
     : QDialog(parent), ui(std::make_unique<Ui::ConfigureVibration>()), hid_core{hid_core_} {

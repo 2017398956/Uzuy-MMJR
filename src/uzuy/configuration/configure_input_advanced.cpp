@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2020 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2020 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <QColorDialog>
@@ -7,7 +7,7 @@
 #include "hid_core/frontend/emulated_controller.h"
 #include "hid_core/hid_core.h"
 #include "ui_configure_input_advanced.h"
-#include "yuzu/configuration/configure_input_advanced.h"
+#include "uzuy/configuration/configure_input_advanced.h"
 
 ConfigureInputAdvanced::ConfigureInputAdvanced(Core::HID::HIDCore& hid_core_, QWidget* parent)
     : QWidget(parent), ui(std::make_unique<Ui::ConfigureInputAdvanced>()), hid_core{hid_core_} {
@@ -197,7 +197,7 @@ void ConfigureInputAdvanced::UpdateUIEnabled() {
     ui->debug_configure->setEnabled(ui->debug_enabled->isChecked());
     ui->touchscreen_advanced->setEnabled(ui->touchscreen_enabled->isChecked());
     ui->ring_controller_configure->setEnabled(ui->enable_ring_controller->isChecked());
-#if QT_VERSION > QT_VERSION_CHECK(6, 0, 0) || !defined(YUZU_USE_QT_MULTIMEDIA)
+#if QT_VERSION > QT_VERSION_CHECK(6, 0, 0) || !defined(UZUY_USE_QT_MULTIMEDIA)
     ui->enable_ir_sensor->setEnabled(false);
     ui->camera_configure->setEnabled(false);
 #endif

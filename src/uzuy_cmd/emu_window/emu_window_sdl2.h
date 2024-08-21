@@ -33,7 +33,7 @@ public:
     /// Wait for the next event on the main thread.
     void WaitEvent();
 
-    // Sets the window icon from yuzu.bmp
+    // Sets the window icon from uzuy.bmp
     void SetWindowIcon();
 
 protected:
@@ -88,7 +88,7 @@ protected:
     /// Input subsystem to use with this window.
     InputCommon::InputSubsystem* input_subsystem;
 
-    /// yuzu core instance
+    /// uzuy core instance
     Core::System& system;
 };
 

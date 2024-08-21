@@ -1,10 +1,10 @@
-// SPDX-FileCopyrightText: Copyright 2020 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2020 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "common/settings.h"
 #include "core/core.h"
 #include "ui_configure_cpu_debug.h"
-#include "yuzu/configuration/configure_cpu_debug.h"
+#include "uzuy/configuration/configure_cpu_debug.h"
 
 ConfigureCpuDebug::ConfigureCpuDebug(const Core::System& system_, QWidget* parent)
     : QWidget(parent), ui{std::make_unique<Ui::ConfigureCpuDebug>()}, system{system_} {

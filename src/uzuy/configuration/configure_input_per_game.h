@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2022 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
@@ -8,8 +8,8 @@
 #include <QWidget>
 
 #include "ui_configure_input_per_game.h"
-#include "yuzu/configuration/input_profiles.h"
-#include "yuzu/configuration/qt_config.h"
+#include "uzuy/configuration/input_profiles.h"
+#include "uzuy/configuration/qt_config.h"
 
 class QComboBox;
 

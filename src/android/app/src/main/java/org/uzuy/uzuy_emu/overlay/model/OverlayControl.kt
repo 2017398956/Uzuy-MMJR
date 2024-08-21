@@ -1,11 +1,11 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.overlay.model
+package org.uzuy.uzuy_emu.overlay.model
 
 import androidx.annotation.IntegerRes
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.YuzuApplication
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.UzuyApplication
 
 enum class OverlayControl(
     val id: String,
@@ -136,7 +136,7 @@ enum class OverlayControl(
 
     fun getDefaultPositionForLayout(layout: OverlayLayout): Pair<Double, Double> {
         val rawResourcePair: Pair<Int, Int>
-        YuzuApplication.appContext.resources.apply {
+        UzuyApplication.appContext.resources.apply {
             rawResourcePair = when (layout) {
                 OverlayLayout.Landscape -> {
                     Pair(

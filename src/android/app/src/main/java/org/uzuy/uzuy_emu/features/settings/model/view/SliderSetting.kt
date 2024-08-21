@@ -1,14 +1,14 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.features.settings.model.view
+package org.uzuy.uzuy_emu.features.settings.model.view
 
 import androidx.annotation.StringRes
-import org.yuzu.yuzu_emu.features.settings.model.AbstractByteSetting
-import org.yuzu.yuzu_emu.features.settings.model.AbstractFloatSetting
-import org.yuzu.yuzu_emu.features.settings.model.AbstractIntSetting
-import org.yuzu.yuzu_emu.features.settings.model.AbstractSetting
-import org.yuzu.yuzu_emu.features.settings.model.AbstractShortSetting
+import org.uzuy.uzuy_emu.features.settings.model.AbstractByteSetting
+import org.uzuy.uzuy_emu.features.settings.model.AbstractFloatSetting
+import org.uzuy.uzuy_emu.features.settings.model.AbstractIntSetting
+import org.uzuy.uzuy_emu.features.settings.model.AbstractSetting
+import org.uzuy.uzuy_emu.features.settings.model.AbstractShortSetting
 import kotlin.math.roundToInt
 
 class SliderSetting(

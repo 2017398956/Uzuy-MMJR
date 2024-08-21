@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.activities
+package org.uzuy.uzuy_emu.activities
 
 import android.annotation.SuppressLint
 import android.app.PendingIntent
@@ -35,23 +35,23 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.WindowInsetsControllerCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.preference.PreferenceManager
-import org.yuzu.yuzu_emu.NativeLibrary
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.YuzuApplication
-import org.yuzu.yuzu_emu.databinding.ActivityEmulationBinding
-import org.yuzu.yuzu_emu.features.input.NativeInput
-import org.yuzu.yuzu_emu.features.settings.model.BooleanSetting
-import org.yuzu.yuzu_emu.features.settings.model.IntSetting
-import org.yuzu.yuzu_emu.features.settings.model.Settings
-import org.yuzu.yuzu_emu.model.EmulationViewModel
-import org.yuzu.yuzu_emu.model.Game
-import org.yuzu.yuzu_emu.utils.InputHandler
-import org.yuzu.yuzu_emu.utils.Log
-import org.yuzu.yuzu_emu.utils.MemoryUtil
-import org.yuzu.yuzu_emu.utils.NativeConfig
-import org.yuzu.yuzu_emu.utils.NfcReader
-import org.yuzu.yuzu_emu.utils.ParamPackage
-import org.yuzu.yuzu_emu.utils.ThemeHelper
+import org.uzuy.uzuy_emu.NativeLibrary
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.UzuyApplication
+import org.uzuy.uzuy_emu.databinding.ActivityEmulationBinding
+import org.uzuy.uzuy_emu.features.input.NativeInput
+import org.uzuy.uzuy_emu.features.settings.model.BooleanSetting
+import org.uzuy.uzuy_emu.features.settings.model.IntSetting
+import org.uzuy.uzuy_emu.features.settings.model.Settings
+import org.uzuy.uzuy_emu.model.EmulationViewModel
+import org.uzuy.uzuy_emu.model.Game
+import org.uzuy.uzuy_emu.utils.InputHandler
+import org.uzuy.uzuy_emu.utils.Log
+import org.uzuy.uzuy_emu.utils.MemoryUtil
+import org.uzuy.uzuy_emu.utils.NativeConfig
+import org.uzuy.uzuy_emu.utils.NfcReader
+import org.uzuy.uzuy_emu.utils.ParamPackage
+import org.uzuy.uzuy_emu.utils.ThemeHelper
 import java.text.NumberFormat
 import kotlin.math.roundToInt
 
@@ -123,7 +123,7 @@ class EmulationActivity : AppCompatActivity(), SensorEventListener {
         nfcReader = NfcReader(this)
         nfcReader.initialize()
 
-        val preferences = PreferenceManager.getDefaultSharedPreferences(YuzuApplication.appContext)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(UzuyApplication.appContext)
         if (!preferences.getBoolean(Settings.PREF_MEMORY_WARNING_SHOWN, false)) {
             if (MemoryUtil.isLessThan(MemoryUtil.REQUIRED_MEMORY, MemoryUtil.totalMemory)) {
                 Toast.makeText(

@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.fragments
+package org.uzuy.uzuy_emu.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -20,19 +20,19 @@ import com.google.android.material.transition.MaterialSharedAxis
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
-import org.yuzu.yuzu_emu.NativeLibrary
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.YuzuApplication
-import org.yuzu.yuzu_emu.adapters.InstallableAdapter
-import org.yuzu.yuzu_emu.databinding.FragmentInstallablesBinding
-import org.yuzu.yuzu_emu.model.HomeViewModel
-import org.yuzu.yuzu_emu.model.Installable
-import org.yuzu.yuzu_emu.model.TaskState
-import org.yuzu.yuzu_emu.ui.main.MainActivity
-import org.yuzu.yuzu_emu.utils.DirectoryInitialization
-import org.yuzu.yuzu_emu.utils.FileUtil
-import org.yuzu.yuzu_emu.utils.ViewUtils.updateMargins
-import org.yuzu.yuzu_emu.utils.collect
+import org.uzuy.uzuy_emu.NativeLibrary
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.UzuyApplication
+import org.uzuy.uzuy_emu.adapters.InstallableAdapter
+import org.uzuy.uzuy_emu.databinding.FragmentInstallablesBinding
+import org.uzuy.uzuy_emu.model.HomeViewModel
+import org.uzuy.uzuy_emu.model.Installable
+import org.uzuy.uzuy_emu.model.TaskState
+import org.uzuy.uzuy_emu.ui.main.MainActivity
+import org.uzuy.uzuy_emu.utils.DirectoryInitialization
+import org.uzuy.uzuy_emu.utils.FileUtil
+import org.uzuy.uzuy_emu.utils.ViewUtils.updateMargins
+import org.uzuy.uzuy_emu.utils.collect
 import java.io.BufferedOutputStream
 import java.io.File
 import java.math.BigInteger
@@ -109,7 +109,7 @@ class InstallableFragment : Fragment() {
                     )
                     if (!oldSaveDataFolder.exists() && !futureSaveDataFolder.exists()) {
                         Toast.makeText(
-                            YuzuApplication.appContext,
+                            UzuyApplication.appContext,
                             R.string.no_save_data_found,
                             Toast.LENGTH_SHORT
                         ).show()
@@ -262,7 +262,7 @@ class InstallableFragment : Fragment() {
                     cacheSaveDir.deleteRecursively()
                 } catch (e: Exception) {
                     Toast.makeText(
-                        YuzuApplication.appContext,
+                        UzuyApplication.appContext,
                         getString(R.string.fatal_error),
                         Toast.LENGTH_LONG
                     ).show()

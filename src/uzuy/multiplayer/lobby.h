@@ -11,7 +11,7 @@
 #include "common/announce_multiplayer_room.h"
 #include "network/announce_multiplayer_session.h"
 #include "network/network.h"
-#include "yuzu/multiplayer/validation.h"
+#include "uzuy/multiplayer/validation.h"
 
 namespace Ui {
 class Lobby;

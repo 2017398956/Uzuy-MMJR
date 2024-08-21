@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.fragments
+package org.uzuy.uzuy_emu.fragments
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -10,16 +10,16 @@ import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import androidx.preference.PreferenceManager
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.YuzuApplication
-import org.yuzu.yuzu_emu.model.AddonViewModel
-import org.yuzu.yuzu_emu.ui.main.MainActivity
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.UzuyApplication
+import org.uzuy.uzuy_emu.model.AddonViewModel
+import org.uzuy.uzuy_emu.ui.main.MainActivity
 
 class ContentTypeSelectionDialogFragment : DialogFragment() {
     private val addonViewModel: AddonViewModel by activityViewModels()
 
     private val preferences get() =
-        PreferenceManager.getDefaultSharedPreferences(YuzuApplication.appContext)
+        PreferenceManager.getDefaultSharedPreferences(UzuyApplication.appContext)
 
     private var selectedItem = 0
 

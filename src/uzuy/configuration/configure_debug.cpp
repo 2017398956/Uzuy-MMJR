@@ -10,9 +10,9 @@
 #include "common/settings.h"
 #include "core/core.h"
 #include "ui_configure_debug.h"
-#include "yuzu/configuration/configure_debug.h"
-#include "yuzu/debugger/console.h"
-#include "yuzu/uisettings.h"
+#include "uzuy/configuration/configure_debug.h"
+#include "uzuy/debugger/console.h"
+#include "uzuy/uisettings.h"
 
 ConfigureDebug::ConfigureDebug(const Core::System& system_, QWidget* parent)
     : QScrollArea(parent), ui{std::make_unique<Ui::ConfigureDebug>()}, system{system_} {
@@ -21,7 +21,7 @@ ConfigureDebug::ConfigureDebug(const Core::System& system_, QWidget* parent)
 
     connect(ui->open_log_button, &QPushButton::clicked, []() {
         const auto path =
-            QString::fromStdString(Common::FS::GetYuzuPathString(Common::FS::YuzuPath::LogDir));
+            QString::fromStdString(Common::FS::GetUzuyPathString(Common::FS::UzuyPath::LogDir));
         QDesktopServices::openUrl(QUrl::fromLocalFile(path));
     });
 
@@ -75,7 +75,7 @@ void ConfigureDebug::SetConfiguration() {
     ui->extended_logging->setChecked(Settings::values.extended_logging.GetValue());
     ui->perform_vulkan_check->setChecked(Settings::values.perform_vulkan_check.GetValue());
 
-#ifdef YUZU_USE_QT_WEB_ENGINE
+#ifdef UZUY_USE_QT_WEB_ENGINE
     ui->disable_web_applet->setChecked(UISettings::values.disable_web_applet.GetValue());
 #else
     ui->disable_web_applet->setEnabled(false);

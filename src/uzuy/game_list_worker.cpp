@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2018 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2018 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <memory>
@@ -23,11 +23,11 @@
 #include "core/file_sys/registered_cache.h"
 #include "core/file_sys/submission_package.h"
 #include "core/loader/loader.h"
-#include "yuzu/compatibility_list.h"
-#include "yuzu/game_list.h"
-#include "yuzu/game_list_p.h"
-#include "yuzu/game_list_worker.h"
-#include "yuzu/uisettings.h"
+#include "uzuy/compatibility_list.h"
+#include "uzuy/game_list.h"
+#include "uzuy/game_list_p.h"
+#include "uzuy/game_list_worker.h"
+#include "uzuy/uisettings.h"
 
 namespace {
 
@@ -38,7 +38,7 @@ QString GetGameListCachedObject(const std::string& filename, const std::string& 
     }
 
     const auto path =
-        Common::FS::PathToUTF8String(Common::FS::GetYuzuPath(Common::FS::YuzuPath::CacheDir) /
+        Common::FS::PathToUTF8String(Common::FS::GetUzuyPath(Common::FS::UzuyPath::CacheDir) /
                                      "game_list" / fmt::format("{}.{}", filename, ext));
 
     void(Common::FS::CreateParentDirs(path));
@@ -70,7 +70,7 @@ std::pair<std::vector<u8>, std::string> GetGameListCachedObject(
     }
 
     const auto game_list_dir =
-        Common::FS::GetYuzuPath(Common::FS::YuzuPath::CacheDir) / "game_list";
+        Common::FS::GetUzuyPath(Common::FS::UzuyPath::CacheDir) / "game_list";
     const auto jpeg_name = fmt::format("{}.jpeg", filename);
     const auto app_name = fmt::format("{}.appname.txt", filename);
 

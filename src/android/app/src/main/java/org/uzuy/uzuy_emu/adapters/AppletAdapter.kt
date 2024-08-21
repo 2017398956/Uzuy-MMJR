@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.adapters
+package org.uzuy.uzuy_emu.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -9,15 +9,15 @@ import android.widget.Toast
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.navigation.findNavController
-import org.yuzu.yuzu_emu.HomeNavigationDirections
-import org.yuzu.yuzu_emu.NativeLibrary
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.YuzuApplication
-import org.yuzu.yuzu_emu.databinding.CardSimpleOutlinedBinding
-import org.yuzu.yuzu_emu.model.Applet
-import org.yuzu.yuzu_emu.model.AppletInfo
-import org.yuzu.yuzu_emu.model.Game
-import org.yuzu.yuzu_emu.viewholder.AbstractViewHolder
+import org.uzuy.uzuy_emu.HomeNavigationDirections
+import org.uzuy.uzuy_emu.NativeLibrary
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.UzuyApplication
+import org.uzuy.uzuy_emu.databinding.CardSimpleOutlinedBinding
+import org.uzuy.uzuy_emu.model.Applet
+import org.uzuy.uzuy_emu.model.AppletInfo
+import org.uzuy.uzuy_emu.model.Game
+import org.uzuy.uzuy_emu.viewholder.AbstractViewHolder
 
 class AppletAdapter(val activity: FragmentActivity, applets: List<Applet>) :
     AbstractListAdapter<Applet, AppletAdapter.AppletViewHolder>(applets) {
@@ -64,7 +64,7 @@ class AppletAdapter(val activity: FragmentActivity, applets: List<Applet>) :
 
             NativeLibrary.setCurrentAppletId(applet.appletInfo.appletId)
             val appletGame = Game(
-                title = YuzuApplication.appContext.getString(applet.titleId),
+                title = UzuyApplication.appContext.getString(applet.titleId),
                 path = appletPath
             )
             val action = HomeNavigationDirections.actionGlobalEmulationActivity(appletGame)

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <QGuiApplication>
@@ -6,7 +6,7 @@
 #include <QWindow>
 #include "common/logging/log.h"
 #include "core/frontend/emu_window.h"
-#include "yuzu/qt_common.h"
+#include "uzuy/qt_common.h"
 
 #if !defined(WIN32) && !defined(__APPLE__)
 #include <qpa/qplatformnativeinterface.h>

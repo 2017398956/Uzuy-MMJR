@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2021 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2021 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <QCursor>
@@ -14,9 +14,9 @@
 #include "hid_core/hid_core.h"
 #include "hid_core/hid_types.h"
 #include "ui_qt_software_keyboard.h"
-#include "yuzu/applets/qt_software_keyboard.h"
-#include "yuzu/main.h"
-#include "yuzu/util/overlay_dialog.h"
+#include "uzuy/applets/qt_software_keyboard.h"
+#include "uzuy/main.h"
+#include "uzuy/util/overlay_dialog.h"
 
 namespace {
 

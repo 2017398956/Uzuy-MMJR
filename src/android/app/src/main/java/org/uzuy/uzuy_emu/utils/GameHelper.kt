@@ -1,18 +1,18 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.utils
+package org.uzuy.uzuy_emu.utils
 
 import android.content.SharedPreferences
 import android.net.Uri
 import androidx.preference.PreferenceManager
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
-import org.yuzu.yuzu_emu.NativeLibrary
-import org.yuzu.yuzu_emu.YuzuApplication
-import org.yuzu.yuzu_emu.model.Game
-import org.yuzu.yuzu_emu.model.GameDir
-import org.yuzu.yuzu_emu.model.MinimalDocumentFile
+import org.uzuy.uzuy_emu.NativeLibrary
+import org.uzuy.uzuy_emu.UzuyApplication
+import org.uzuy.uzuy_emu.model.Game
+import org.uzuy.uzuy_emu.model.GameDir
+import org.uzuy.uzuy_emu.model.MinimalDocumentFile
 
 object GameHelper {
     private const val KEY_OLD_GAME_PATH = "game_path"
@@ -22,7 +22,7 @@ object GameHelper {
 
     fun getGames(): List<Game> {
         val games = mutableListOf<Game>()
-        val context = YuzuApplication.appContext
+        val context = UzuyApplication.appContext
         preferences = PreferenceManager.getDefaultSharedPreferences(context)
 
         val gameDirs = mutableListOf<GameDir>()

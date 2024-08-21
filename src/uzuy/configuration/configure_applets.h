@@ -1,10 +1,10 @@
-// SPDX-FileCopyrightText: 2024 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2024 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
 
 #include <QWidget>
-#include "yuzu/configuration/configuration_shared.h"
+#include "uzuy/configuration/configuration_shared.h"
 
 class QCheckBox;
 class QLineEdit;

@@ -8,10 +8,10 @@
 #include "common/settings.h"
 #include "core/core.h"
 #include "ui_configure_general.h"
-#include "yuzu/configuration/configuration_shared.h"
-#include "yuzu/configuration/configure_general.h"
-#include "yuzu/configuration/shared_widget.h"
-#include "yuzu/uisettings.h"
+#include "uzuy/configuration/configuration_shared.h"
+#include "uzuy/configuration/configure_general.h"
+#include "uzuy/configuration/shared_widget.h"
+#include "uzuy/uisettings.h"
 
 ConfigureGeneral::ConfigureGeneral(const Core::System& system_,
                                    std::shared_ptr<std::vector<ConfigurationShared::Tab*>> group_,
@@ -96,7 +96,7 @@ void ConfigureGeneral::SetResetCallback(std::function<void()> callback) {
 
 void ConfigureGeneral::ResetDefaults() {
     QMessageBox::StandardButton answer = QMessageBox::question(
-        this, tr("yuzu"),
+        this, tr("uzuy"),
         tr("This reset all settings and remove all per-game configurations. This will not delete "
            "game directories, profiles, or input profiles. Proceed?"),
         QMessageBox::Yes | QMessageBox::No, QMessageBox::No);

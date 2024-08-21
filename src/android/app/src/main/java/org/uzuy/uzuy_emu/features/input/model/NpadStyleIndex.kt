@@ -1,10 +1,10 @@
-// SPDX-FileCopyrightText: 2024 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2024 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.features.input.model
+package org.uzuy.uzuy_emu.features.input.model
 
 import androidx.annotation.StringRes
-import org.yuzu.yuzu_emu.R
+import org.uzuy.uzuy_emu.R
 
 // Must match enum in src/core/hid/hid_types.h
 enum class NpadStyleIndex(val int: Int, @StringRes val nameId: Int = 0) {

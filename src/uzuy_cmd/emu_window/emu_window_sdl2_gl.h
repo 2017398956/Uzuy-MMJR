@@ -1,11 +1,11 @@
-// SPDX-FileCopyrightText: Copyright 2019 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2019 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
 
 #include <memory>
 #include "core/frontend/emu_window.h"
-#include "yuzu_cmd/emu_window/emu_window_sdl2.h"
+#include "uzuy_cmd/emu_window/emu_window_sdl2.h"
 
 namespace Core {
 class System;

@@ -1,22 +1,22 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu
+package org.uzuy.uzuy_emu
 
 import android.app.Application
 import android.app.NotificationChannel
 import android.app.NotificationManager
 import android.content.Context
-import org.yuzu.yuzu_emu.features.input.NativeInput
+import org.uzuy.uzuy_emu.features.input.NativeInput
 import java.io.File
-import org.yuzu.yuzu_emu.utils.DirectoryInitialization
-import org.yuzu.yuzu_emu.utils.DocumentsTree
-import org.yuzu.yuzu_emu.utils.GpuDriverHelper
-import org.yuzu.yuzu_emu.utils.Log
+import org.uzuy.uzuy_emu.utils.DirectoryInitialization
+import org.uzuy.uzuy_emu.utils.DocumentsTree
+import org.uzuy.uzuy_emu.utils.GpuDriverHelper
+import org.uzuy.uzuy_emu.utils.Log
 
 fun Context.getPublicFilesDir(): File = getExternalFilesDir(null) ?: filesDir
 
-class YuzuApplication : Application() {
+class UzuyApplication : Application() {
     private fun createNotificationChannels() {
         val noticeChannel = NotificationChannel(
             getString(R.string.notice_notification_channel_id),
@@ -47,7 +47,7 @@ class YuzuApplication : Application() {
 
     companion object {
         var documentsTree: DocumentsTree? = null
-        lateinit var application: YuzuApplication
+        lateinit var application: UzuyApplication
 
         val appContext: Context
             get() = application.applicationContext

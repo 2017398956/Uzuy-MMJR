@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.fragments
+package org.uzuy.uzuy_emu.fragments
 
 import android.content.Intent
 import android.net.Uri
@@ -16,10 +16,10 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.google.android.material.transition.MaterialSharedAxis
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.databinding.FragmentEarlyAccessBinding
-import org.yuzu.yuzu_emu.model.HomeViewModel
-import org.yuzu.yuzu_emu.utils.ViewUtils.updateMargins
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.databinding.FragmentEarlyAccessBinding
+import org.uzuy.uzuy_emu.model.HomeViewModel
+import org.uzuy.uzuy_emu.utils.ViewUtils.updateMargins
 
 class EarlyAccessFragment : Fragment() {
     private var _binding: FragmentEarlyAccessBinding? = null

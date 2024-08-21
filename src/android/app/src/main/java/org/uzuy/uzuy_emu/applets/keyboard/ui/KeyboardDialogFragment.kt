@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: Copyright 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.applets.keyboard.ui
+package org.uzuy.uzuy_emu.applets.keyboard.ui
 
 import android.app.Dialog
 import android.content.DialogInterface
@@ -10,11 +10,11 @@ import android.text.InputFilter
 import android.text.InputType
 import androidx.fragment.app.DialogFragment
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.applets.keyboard.SoftwareKeyboard
-import org.yuzu.yuzu_emu.applets.keyboard.SoftwareKeyboard.KeyboardConfig
-import org.yuzu.yuzu_emu.databinding.DialogEditTextBinding
-import org.yuzu.yuzu_emu.utils.SerializableHelper.serializable
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.applets.keyboard.SoftwareKeyboard
+import org.uzuy.uzuy_emu.applets.keyboard.SoftwareKeyboard.KeyboardConfig
+import org.uzuy.uzuy_emu.databinding.DialogEditTextBinding
+import org.uzuy.uzuy_emu.utils.SerializableHelper.serializable
 
 class KeyboardDialogFragment : DialogFragment() {
     private lateinit var binding: DialogEditTextBinding

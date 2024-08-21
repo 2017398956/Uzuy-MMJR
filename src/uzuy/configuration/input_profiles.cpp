@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2020 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2020 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <fmt/format.h>
@@ -7,14 +7,14 @@
 #include "common/fs/path_util.h"
 #include "common/logging/log.h"
 #include "frontend_common/config.h"
-#include "yuzu/configuration/input_profiles.h"
+#include "uzuy/configuration/input_profiles.h"
 
 namespace FS = Common::FS;
 
 namespace {
 
 bool ProfileExistsInFilesystem(std::string_view profile_name) {
-    return FS::Exists(FS::GetYuzuPath(FS::YuzuPath::ConfigDir) / "input" /
+    return FS::Exists(FS::GetUzuyPath(FS::UzuyPath::ConfigDir) / "input" /
                       fmt::format("{}.ini", profile_name));
 }
 
@@ -29,7 +29,7 @@ std::filesystem::path GetNameWithoutExtension(std::filesystem::path filename) {
 } // namespace
 
 InputProfiles::InputProfiles() {
-    const auto input_profile_loc = FS::GetYuzuPath(FS::YuzuPath::ConfigDir) / "input";
+    const auto input_profile_loc = FS::GetUzuyPath(FS::UzuyPath::ConfigDir) / "input";
 
     if (!FS::IsDir(input_profile_loc)) {
         return;

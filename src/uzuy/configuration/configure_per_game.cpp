@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2020 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2020 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <algorithm>
@@ -27,19 +27,19 @@
 #include "core/loader/loader.h"
 #include "frontend_common/config.h"
 #include "ui_configure_per_game.h"
-#include "yuzu/configuration/configuration_shared.h"
-#include "yuzu/configuration/configure_audio.h"
-#include "yuzu/configuration/configure_cpu.h"
-#include "yuzu/configuration/configure_graphics.h"
-#include "yuzu/configuration/configure_graphics_advanced.h"
-#include "yuzu/configuration/configure_input_per_game.h"
-#include "yuzu/configuration/configure_linux_tab.h"
-#include "yuzu/configuration/configure_per_game.h"
-#include "yuzu/configuration/configure_per_game_addons.h"
-#include "yuzu/configuration/configure_system.h"
-#include "yuzu/uisettings.h"
-#include "yuzu/util/util.h"
-#include "yuzu/vk_device_info.h"
+#include "uzuy/configuration/configuration_shared.h"
+#include "uzuy/configuration/configure_audio.h"
+#include "uzuy/configuration/configure_cpu.h"
+#include "uzuy/configuration/configure_graphics.h"
+#include "uzuy/configuration/configure_graphics_advanced.h"
+#include "uzuy/configuration/configure_input_per_game.h"
+#include "uzuy/configuration/configure_linux_tab.h"
+#include "uzuy/configuration/configure_per_game.h"
+#include "uzuy/configuration/configure_per_game_addons.h"
+#include "uzuy/configuration/configure_system.h"
+#include "uzuy/uisettings.h"
+#include "uzuy/util/util.h"
+#include "uzuy/vk_device_info.h"
 
 ConfigurePerGame::ConfigurePerGame(QWidget* parent, u64 title_id_, const std::string& file_name,
                                    std::vector<VkDeviceInfo::Record>& vk_device_records,

@@ -1,10 +1,10 @@
-// SPDX-FileCopyrightText: Copyright 2020 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2020 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "hid_core/hid_core.h"
 #include "ui_configure_debug_controller.h"
-#include "yuzu/configuration/configure_debug_controller.h"
-#include "yuzu/configuration/configure_input_player.h"
+#include "uzuy/configuration/configure_debug_controller.h"
+#include "uzuy/configuration/configure_input_player.h"
 
 ConfigureDebugController::ConfigureDebugController(QWidget* parent,
                                                    InputCommon::InputSubsystem* input_subsystem,

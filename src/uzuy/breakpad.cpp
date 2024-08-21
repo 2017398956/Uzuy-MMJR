@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <algorithm>
@@ -14,7 +14,7 @@
 
 #include "common/fs/fs_paths.h"
 #include "common/fs/path_util.h"
-#include "yuzu/breakpad.h"
+#include "uzuy/breakpad.h"
 
 namespace Breakpad {
 
@@ -60,7 +60,7 @@ static void PruneDumpDirectory(const std::filesystem::path& dump_path) {
 
 void InstallCrashHandler() {
     // Write crash dumps to profile directory.
-    const auto dump_path = GetYuzuPath(Common::FS::YuzuPath::CrashDumpsDir);
+    const auto dump_path = GetUzuyPath(Common::FS::UzuyPath::CrashDumpsDir);
     PruneDumpDirectory(dump_path);
 
 #if defined(_WIN32)

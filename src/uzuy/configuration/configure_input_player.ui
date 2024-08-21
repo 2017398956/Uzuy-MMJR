@@ -3312,7 +3312,7 @@
     <customwidget>
       <class>PlayerControlPreview</class>
       <extends>QFrame</extends>
-      <header>yuzu/configuration/configure_input_player_widget.h</header>
+      <header>uzuy/configuration/configure_input_player_widget.h</header>
       <container>1</container>
     </customwidget>
   </customwidgets>

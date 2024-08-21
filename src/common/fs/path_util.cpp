@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2021 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2021 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <algorithm>
@@ -56,10 +56,10 @@ namespace fs = std::filesystem;
 
 /**
  * The PathManagerImpl is a singleton allowing to manage the mapping of
- * YuzuPath enums to real filesystem paths.
- * This class provides 2 functions: GetYuzuPathImpl and SetYuzuPathImpl.
- * These are used by GetYuzuPath and SetYuzuPath respectively to get or modify
- * the path mapped by the YuzuPath enum.
+ * UzuyPath enums to real filesystem paths.
+ * This class provides 2 functions: GetUzuyPathImpl and SetUzuyPathImpl.
+ * These are used by GetUzuyPath and SetUzuyPath respectively to get or modify
+ * the path mapped by the UzuyPath enum.
  */
 class PathManagerImpl {
 public:
@@ -75,62 +75,62 @@ public:
     PathManagerImpl(PathManagerImpl&&) = delete;
     PathManagerImpl& operator=(PathManagerImpl&&) = delete;
 
-    [[nodiscard]] const fs::path& GetYuzuPathImpl(YuzuPath yuzu_path) {
-        return yuzu_paths.at(yuzu_path);
+    [[nodiscard]] const fs::path& GetUzuyPathImpl(UzuyPath uzuy_path) {
+        return uzuy_paths.at(uzuy_path);
     }
 
-    void SetYuzuPathImpl(YuzuPath yuzu_path, const fs::path& new_path) {
-        yuzu_paths.insert_or_assign(yuzu_path, new_path);
+    void SetUzuyPathImpl(UzuyPath uzuy_path, const fs::path& new_path) {
+        uzuy_paths.insert_or_assign(uzuy_path, new_path);
     }
 
-    void Reinitialize(fs::path yuzu_path = {}) {
-        fs::path yuzu_path_cache;
-        fs::path yuzu_path_config;
+    void Reinitialize(fs::path uzuy_path = {}) {
+        fs::path uzuy_path_cache;
+        fs::path uzuy_path_config;
 
 #ifdef _WIN32
-#ifdef YUZU_ENABLE_PORTABLE
-        yuzu_path = GetExeDirectory() / PORTABLE_DIR;
+#ifdef UZUY_ENABLE_PORTABLE
+        uzuy_path = GetExeDirectory() / PORTABLE_DIR;
 #endif
-        if (!IsDir(yuzu_path)) {
-            yuzu_path = GetAppDataRoamingDirectory() / YUZU_DIR;
+        if (!IsDir(uzuy_path)) {
+            uzuy_path = GetAppDataRoamingDirectory() / UZUY_DIR;
         }
 
-        yuzu_path_cache = yuzu_path / CACHE_DIR;
-        yuzu_path_config = yuzu_path / CONFIG_DIR;
+        uzuy_path_cache = uzuy_path / CACHE_DIR;
+        uzuy_path_config = uzuy_path / CONFIG_DIR;
 #elif ANDROID
-        ASSERT(!yuzu_path.empty());
-        yuzu_path_cache = yuzu_path / CACHE_DIR;
-        yuzu_path_config = yuzu_path / CONFIG_DIR;
+        ASSERT(!uzuy_path.empty());
+        uzuy_path_cache = uzuy_path / CACHE_DIR;
+        uzuy_path_config = uzuy_path / CONFIG_DIR;
 #else
-#ifdef YUZU_ENABLE_PORTABLE
-        yuzu_path = GetCurrentDir() / PORTABLE_DIR;
+#ifdef UZUY_ENABLE_PORTABLE
+        uzuy_path = GetCurrentDir() / PORTABLE_DIR;
 #endif
-        if (Exists(yuzu_path) && IsDir(yuzu_path)) {
-            yuzu_path_cache = yuzu_path / CACHE_DIR;
-            yuzu_path_config = yuzu_path / CONFIG_DIR;
+        if (Exists(uzuy_path) && IsDir(uzuy_path)) {
+            uzuy_path_cache = uzuy_path / CACHE_DIR;
+            uzuy_path_config = uzuy_path / CONFIG_DIR;
         } else {
-            yuzu_path = GetDataDirectory("XDG_DATA_HOME") / YUZU_DIR;
-            yuzu_path_cache = GetDataDirectory("XDG_CACHE_HOME") / YUZU_DIR;
-            yuzu_path_config = GetDataDirectory("XDG_CONFIG_HOME") / YUZU_DIR;
+            uzuy_path = GetDataDirectory("XDG_DATA_HOME") / UZUY_DIR;
+            uzuy_path_cache = GetDataDirectory("XDG_CACHE_HOME") / UZUY_DIR;
+            uzuy_path_config = GetDataDirectory("XDG_CONFIG_HOME") / UZUY_DIR;
         }
 #endif
 
-        GenerateYuzuPath(YuzuPath::YuzuDir, yuzu_path);
-        GenerateYuzuPath(YuzuPath::AmiiboDir, yuzu_path / AMIIBO_DIR);
-        GenerateYuzuPath(YuzuPath::CacheDir, yuzu_path_cache);
-        GenerateYuzuPath(YuzuPath::ConfigDir, yuzu_path_config);
-        GenerateYuzuPath(YuzuPath::CrashDumpsDir, yuzu_path / CRASH_DUMPS_DIR);
-        GenerateYuzuPath(YuzuPath::DumpDir, yuzu_path / DUMP_DIR);
-        GenerateYuzuPath(YuzuPath::KeysDir, yuzu_path / KEYS_DIR);
-        GenerateYuzuPath(YuzuPath::LoadDir, yuzu_path / LOAD_DIR);
-        GenerateYuzuPath(YuzuPath::LogDir, yuzu_path / LOG_DIR);
-        GenerateYuzuPath(YuzuPath::NANDDir, yuzu_path / NAND_DIR);
-        GenerateYuzuPath(YuzuPath::PlayTimeDir, yuzu_path / PLAY_TIME_DIR);
-        GenerateYuzuPath(YuzuPath::ScreenshotsDir, yuzu_path / SCREENSHOTS_DIR);
-        GenerateYuzuPath(YuzuPath::SDMCDir, yuzu_path / SDMC_DIR);
-        GenerateYuzuPath(YuzuPath::ShaderDir, yuzu_path / SHADER_DIR);
-        GenerateYuzuPath(YuzuPath::TASDir, yuzu_path / TAS_DIR);
-        GenerateYuzuPath(YuzuPath::IconsDir, yuzu_path / ICONS_DIR);
+        GenerateUzuyPath(UzuyPath::UzuyDir, uzuy_path);
+        GenerateUzuyPath(UzuyPath::AmiiboDir, uzuy_path / AMIIBO_DIR);
+        GenerateUzuyPath(UzuyPath::CacheDir, uzuy_path_cache);
+        GenerateUzuyPath(UzuyPath::ConfigDir, uzuy_path_config);
+        GenerateUzuyPath(UzuyPath::CrashDumpsDir, uzuy_path / CRASH_DUMPS_DIR);
+        GenerateUzuyPath(UzuyPath::DumpDir, uzuy_path / DUMP_DIR);
+        GenerateUzuyPath(UzuyPath::KeysDir, uzuy_path / KEYS_DIR);
+        GenerateUzuyPath(UzuyPath::LoadDir, uzuy_path / LOAD_DIR);
+        GenerateUzuyPath(UzuyPath::LogDir, uzuy_path / LOG_DIR);
+        GenerateUzuyPath(UzuyPath::NANDDir, uzuy_path / NAND_DIR);
+        GenerateUzuyPath(UzuyPath::PlayTimeDir, uzuy_path / PLAY_TIME_DIR);
+        GenerateUzuyPath(UzuyPath::ScreenshotsDir, uzuy_path / SCREENSHOTS_DIR);
+        GenerateUzuyPath(UzuyPath::SDMCDir, uzuy_path / SDMC_DIR);
+        GenerateUzuyPath(UzuyPath::ShaderDir, uzuy_path / SHADER_DIR);
+        GenerateUzuyPath(UzuyPath::TASDir, uzuy_path / TAS_DIR);
+        GenerateUzuyPath(UzuyPath::IconsDir, uzuy_path / ICONS_DIR);
     }
 
 private:
@@ -140,13 +140,13 @@ private:
 
     ~PathManagerImpl() = default;
 
-    void GenerateYuzuPath(YuzuPath yuzu_path, const fs::path& new_path) {
+    void GenerateUzuyPath(UzuyPath uzuy_path, const fs::path& new_path) {
         void(FS::CreateDir(new_path));
 
-        SetYuzuPathImpl(yuzu_path, new_path);
+        SetUzuyPathImpl(uzuy_path, new_path);
     }
 
-    std::unordered_map<YuzuPath, fs::path> yuzu_paths;
+    std::unordered_map<UzuyPath, fs::path> uzuy_paths;
 };
 
 bool ValidatePath(const fs::path& path) {
@@ -230,22 +230,22 @@ void SetAppDirectory(const std::string& app_directory) {
     PathManagerImpl::GetInstance().Reinitialize(app_directory);
 }
 
-const fs::path& GetYuzuPath(YuzuPath yuzu_path) {
-    return PathManagerImpl::GetInstance().GetYuzuPathImpl(yuzu_path);
+const fs::path& GetUzuyPath(UzuyPath uzuy_path) {
+    return PathManagerImpl::GetInstance().GetUzuyPathImpl(uzuy_path);
 }
 
-std::string GetYuzuPathString(YuzuPath yuzu_path) {
-    return PathToUTF8String(GetYuzuPath(yuzu_path));
+std::string GetUzuyPathString(UzuyPath uzuy_path) {
+    return PathToUTF8String(GetUzuyPath(uzuy_path));
 }
 
-void SetYuzuPath(YuzuPath yuzu_path, const fs::path& new_path) {
+void SetUzuyPath(UzuyPath uzuy_path, const fs::path& new_path) {
     if (!FS::IsDir(new_path)) {
         LOG_ERROR(Common_Filesystem, "Filesystem object at new_path={} is not a directory",
                   PathToUTF8String(new_path));
         return;
     }
 
-    PathManagerImpl::GetInstance().SetYuzuPathImpl(yuzu_path, new_path);
+    PathManagerImpl::GetInstance().SetUzuyPathImpl(uzuy_path, new_path);
 }
 
 #ifdef _WIN32

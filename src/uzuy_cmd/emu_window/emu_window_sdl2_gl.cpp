@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2019 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2019 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <algorithm>
@@ -17,7 +17,7 @@
 #include "core/core.h"
 #include "input_common/main.h"
 #include "video_core/renderer_base.h"
-#include "yuzu_cmd/emu_window/emu_window_sdl2_gl.h"
+#include "uzuy_cmd/emu_window/emu_window_sdl2_gl.h"
 
 class SDLGLContext : public Core::Frontend::GraphicsContext {
 public:
@@ -90,7 +90,7 @@ EmuWindow_SDL2_GL::EmuWindow_SDL2_GL(InputCommon::InputSubsystem* input_subsyste
     }
     SDL_GL_SetSwapInterval(0);
 
-    std::string window_title = fmt::format("yuzu {} | {}-{}", Common::g_build_fullname,
+    std::string window_title = fmt::format("uzuy {} | {}-{}", Common::g_build_fullname,
                                            Common::g_scm_branch, Common::g_scm_desc);
     render_window =
         SDL_CreateWindow(window_title.c_str(),
@@ -138,7 +138,7 @@ EmuWindow_SDL2_GL::EmuWindow_SDL2_GL(InputCommon::InputSubsystem* input_subsyste
     OnResize();
     OnMinimalClientAreaChangeRequest(GetActiveConfig().min_client_area_size);
     SDL_PumpEvents();
-    LOG_INFO(Frontend, "yuzu Version: {} | {}-{}", Common::g_build_fullname, Common::g_scm_branch,
+    LOG_INFO(Frontend, "uzuy Version: {} | {}-{}", Common::g_build_fullname, Common::g_scm_branch,
              Common::g_scm_desc);
     Settings::LogSettings();
 }

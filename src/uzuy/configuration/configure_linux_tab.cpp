@@ -1,12 +1,12 @@
-// SPDX-FileCopyrightText: Copyright 2019 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2019 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "common/settings.h"
 #include "core/core.h"
 #include "ui_configure_linux_tab.h"
-#include "yuzu/configuration/configuration_shared.h"
-#include "yuzu/configuration/configure_linux_tab.h"
-#include "yuzu/configuration/shared_widget.h"
+#include "uzuy/configuration/configuration_shared.h"
+#include "uzuy/configuration/configure_linux_tab.h"
+#include "uzuy/configuration/shared_widget.h"
 
 ConfigureLinuxTab::ConfigureLinuxTab(const Core::System& system_,
                                      std::shared_ptr<std::vector<ConfigurationShared::Tab*>> group_,

@@ -1,15 +1,15 @@
-// SPDX-FileCopyrightText: 2024 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2024 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.features.settings.model.view
+package org.uzuy.uzuy_emu.features.settings.model.view
 
 import androidx.annotation.StringRes
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.YuzuApplication
-import org.yuzu.yuzu_emu.features.input.NativeInput
-import org.yuzu.yuzu_emu.features.input.model.ButtonName
-import org.yuzu.yuzu_emu.features.input.model.InputType
-import org.yuzu.yuzu_emu.utils.ParamPackage
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.UzuyApplication
+import org.uzuy.uzuy_emu.features.input.NativeInput
+import org.uzuy.uzuy_emu.features.input.model.ButtonName
+import org.uzuy.uzuy_emu.features.input.model.InputType
+import org.uzuy.uzuy_emu.utils.ParamPackage
 
 sealed class InputSetting(
     @StringRes titleId: Int,
@@ -19,7 +19,7 @@ sealed class InputSetting(
     abstract val inputType: InputType
     abstract val playerIndex: Int
 
-    protected val context get() = YuzuApplication.appContext
+    protected val context get() = UzuyApplication.appContext
 
     abstract fun getSelectedValue(): String
 

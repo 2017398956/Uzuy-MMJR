@@ -49,8 +49,8 @@
 #include "frontend_common/content_manager.h"
 #include "hid_core/frontend/emulated_controller.h"
 #include "hid_core/hid_core.h"
-#include "yuzu/multiplayer/state.h"
-#include "yuzu/util/controller_navigation.h"
+#include "uzuy/multiplayer/state.h"
+#include "uzuy/util/controller_navigation.h"
 
 // These are wrappers to avoid the calls to CreateDirectory and CreateFile because of the Windows
 // defines.
@@ -139,38 +139,38 @@ static FileSys::VirtualFile VfsDirectoryCreateFileWrapper(const FileSys::Virtual
 #include "video_core/gpu.h"
 #include "video_core/renderer_base.h"
 #include "video_core/shader_notify.h"
-#include "yuzu/about_dialog.h"
-#include "yuzu/bootmanager.h"
-#include "yuzu/compatdb.h"
-#include "yuzu/compatibility_list.h"
-#include "yuzu/configuration/configure_dialog.h"
-#include "yuzu/configuration/configure_input_per_game.h"
-#include "yuzu/configuration/qt_config.h"
-#include "yuzu/debugger/console.h"
-#include "yuzu/debugger/controller.h"
-#include "yuzu/debugger/profiler.h"
-#include "yuzu/debugger/wait_tree.h"
-#include "yuzu/discord.h"
-#include "yuzu/game_list.h"
-#include "yuzu/game_list_p.h"
-#include "yuzu/hotkeys.h"
-#include "yuzu/install_dialog.h"
-#include "yuzu/loading_screen.h"
-#include "yuzu/main.h"
-#include "yuzu/play_time_manager.h"
-#include "yuzu/startup_checks.h"
-#include "yuzu/uisettings.h"
-#include "yuzu/util/clickable_label.h"
-#include "yuzu/vk_device_info.h"
+#include "uzuy/about_dialog.h"
+#include "uzuy/bootmanager.h"
+#include "uzuy/compatdb.h"
+#include "uzuy/compatibility_list.h"
+#include "uzuy/configuration/configure_dialog.h"
+#include "uzuy/configuration/configure_input_per_game.h"
+#include "uzuy/configuration/qt_config.h"
+#include "uzuy/debugger/console.h"
+#include "uzuy/debugger/controller.h"
+#include "uzuy/debugger/profiler.h"
+#include "uzuy/debugger/wait_tree.h"
+#include "uzuy/discord.h"
+#include "uzuy/game_list.h"
+#include "uzuy/game_list_p.h"
+#include "uzuy/hotkeys.h"
+#include "uzuy/install_dialog.h"
+#include "uzuy/loading_screen.h"
+#include "uzuy/main.h"
+#include "uzuy/play_time_manager.h"
+#include "uzuy/startup_checks.h"
+#include "uzuy/uisettings.h"
+#include "uzuy/util/clickable_label.h"
+#include "uzuy/vk_device_info.h"
 
-#ifdef YUZU_CRASH_DUMPS
-#include "yuzu/breakpad.h"
+#ifdef UZUY_CRASH_DUMPS
+#include "uzuy/breakpad.h"
 #endif
 
 using namespace Common::Literals;
 
 #ifdef USE_DISCORD_PRESENCE
-#include "yuzu/discord_impl.h"
+#include "uzuy/discord_impl.h"
 #endif
 
 #ifdef QT_STATICPLUGIN
@@ -211,8 +211,8 @@ void GMainWindow::ShowTelemetryCallout() {
     UISettings::values.callout_flags =
         UISettings::values.callout_flags.GetValue() | static_cast<uint32_t>(CalloutFlag::Telemetry);
     const QString telemetry_message =
-        tr("<a href='https://yuzu-emu.org/help/feature/telemetry/'>Anonymous "
-           "data is collected</a> to help improve yuzu. "
+        tr("<a href='https://uzuy-emu.org/help/feature/telemetry/'>Anonymous "
+           "data is collected</a> to help improve uzuy. "
            "<br/><br/>Would you like to share your usage data with us?");
     if (!question(this, tr("Telemetry"), telemetry_message)) {
         Settings::values.enable_telemetry = false;
@@ -223,7 +223,7 @@ void GMainWindow::ShowTelemetryCallout() {
 const int GMainWindow::max_recent_files_item;
 
 static void RemoveCachedContents() {
-    const auto cache_dir = Common::FS::GetYuzuPath(Common::FS::YuzuPath::CacheDir);
+    const auto cache_dir = Common::FS::GetUzuyPath(Common::FS::UzuyPath::CacheDir);
     const auto offline_fonts = cache_dir / "fonts";
     const auto offline_manual = cache_dir / "offline_web_applet_manual";
     const auto offline_legal_information = cache_dir / "offline_web_applet_legal_information";
@@ -370,13 +370,13 @@ GMainWindow::GMainWindow(std::unique_ptr<QtConfig> config_, bool has_broken_vulk
     const auto description = std::string(Common::g_scm_desc);
     const auto build_id = std::string(Common::g_build_id);
 
-    const auto yuzu_build = fmt::format("yuzu Development Build | {}-{}", branch_name, description);
+    const auto uzuy_build = fmt::format("uzuy Development Build | {}-{}", branch_name, description);
     const auto override_build =
         fmt::format(fmt::runtime(std::string(Common::g_title_bar_format_idle)), build_id);
-    const auto yuzu_build_version = override_build.empty() ? yuzu_build : override_build;
+    const auto uzuy_build_version = override_build.empty() ? uzuy_build : override_build;
     const auto processor_count = std::thread::hardware_concurrency();
 
-    LOG_INFO(Frontend, "yuzu Version: {}", yuzu_build_version);
+    LOG_INFO(Frontend, "uzuy Version: {}", uzuy_build_version);
     LogRuntimes();
 #ifdef ARCHITECTURE_x86_64
     const auto& caps = Common::GetCPUCaps();
@@ -449,8 +449,8 @@ GMainWindow::GMainWindow(std::unique_ptr<QtConfig> config_, bool has_broken_vulk
 
         QMessageBox::warning(this, tr("Broken Vulkan Installation Detected"),
                              tr("Vulkan initialization failed during boot.<br><br>Click <a "
-                                "href='https://yuzu-emu.org/wiki/faq/"
-                                "#yuzu-starts-with-the-error-broken-vulkan-installation-detected'>"
+                                "href='https://uzuy-emu.org/wiki/faq/"
+                                "#uzuy-starts-with-the-error-broken-vulkan-installation-detected'>"
                                 "here for instructions to fix the issue</a>."));
 
 #ifdef HAS_OPENGL
@@ -471,7 +471,7 @@ GMainWindow::GMainWindow(std::unique_ptr<QtConfig> config_, bool has_broken_vulk
 
     // Set a screensaver inhibition reason string. Currently passed to DBus by SDL and visible to
     // the user through their desktop environment.
-    //: TRANSLATORS: This string is shown to the user to explain why yuzu needs to prevent the
+    //: TRANSLATORS: This string is shown to the user to explain why uzuy needs to prevent the
     //: computer from sleeping
     QByteArray wakelock_reason = tr("Running a game").toUtf8();
     SDL_SetHint(SDL_HINT_SCREENSAVER_INHIBIT_ACTIVITY_NAME, wakelock_reason.data());
@@ -848,7 +848,7 @@ void GMainWindow::SoftwareKeyboardExit() {
 
 void GMainWindow::WebBrowserOpenWebPage(const std::string& main_url,
                                         const std::string& additional_args, bool is_local) {
-#ifdef YUZU_USE_QT_WEB_ENGINE
+#ifdef UZUY_USE_QT_WEB_ENGINE
 
     // Raw input breaks with the web applet, Disable web applets if enabled
     if (UISettings::values.disable_web_applet || Settings::values.enable_raw_input) {
@@ -989,7 +989,7 @@ void GMainWindow::WebBrowserOpenWebPage(const std::string& main_url,
 }
 
 void GMainWindow::WebBrowserRequestExit() {
-#ifdef YUZU_USE_QT_WEB_ENGINE
+#ifdef UZUY_USE_QT_WEB_ENGINE
     if (web_applet) {
         web_applet->SetExitReason(Service::AM::Frontend::WebExitReason::ExitRequested);
         web_applet->SetFinished(true);
@@ -998,7 +998,7 @@ void GMainWindow::WebBrowserRequestExit() {
 }
 
 void GMainWindow::InitializeWidgets() {
-#ifdef YUZU_ENABLE_COMPATIBILITY_REPORTING
+#ifdef UZUY_ENABLE_COMPATIBILITY_REPORTING
     ui->action_Report_Compatibility->setVisible(true);
 #endif
     render_window = new GRenderWindow(this, emu_thread.get(), input_subsystem, *system);
@@ -1339,7 +1339,7 @@ void GMainWindow::InitializeHotkeys() {
 
     LinkActionShortcut(ui->action_Load_File, QStringLiteral("Load File"));
     LinkActionShortcut(ui->action_Load_Amiibo, QStringLiteral("Load/Remove Amiibo"));
-    LinkActionShortcut(ui->action_Exit, QStringLiteral("Exit yuzu"));
+    LinkActionShortcut(ui->action_Exit, QStringLiteral("Exit uzuy"));
     LinkActionShortcut(ui->action_Restart, QStringLiteral("Restart Emulation"));
     LinkActionShortcut(ui->action_Pause, QStringLiteral("Continue/Pause Emulation"));
     LinkActionShortcut(ui->action_Stop, QStringLiteral("Stop Emulation"));
@@ -1600,7 +1600,7 @@ void GMainWindow::ConnectMenuEvents() {
     connect_menu(ui->action_Configure_Tas, &GMainWindow::OnConfigureTas);
 
     // Help
-    connect_menu(ui->action_Open_yuzu_Folder, &GMainWindow::OnOpenYuzuFolder);
+    connect_menu(ui->action_Open_uzuy_Folder, &GMainWindow::OnOpenUzuyFolder);
     connect_menu(ui->action_Verify_installed_contents, &GMainWindow::OnVerifyInstalledContents);
     connect_menu(ui->action_Install_Firmware, &GMainWindow::OnInstallFirmware);
     connect_menu(ui->action_Install_Keys, &GMainWindow::OnInstallDecryptionKeys);
@@ -1816,8 +1816,8 @@ bool GMainWindow::LoadROM(const QString& filename, Service::AM::FrontendAppletPa
             tr("You are using the deconstructed ROM directory format for this game, which is an "
                "outdated format that has been superseded by others such as NCA, NAX, XCI, or "
                "NSP. Deconstructed ROM directories lack icons, metadata, and update "
-               "support.<br><br>For an explanation of the various Switch formats yuzu supports, <a "
-               "href='https://yuzu-emu.org/wiki/overview-of-switch-game-formats'>check out our "
+               "support.<br><br>For an explanation of the various Switch formats uzuy supports, <a "
+               "href='https://uzuy-emu.org/wiki/overview-of-switch-game-formats'>check out our "
                "wiki</a>. This message will not be shown again."));
     }
 
@@ -1831,11 +1831,11 @@ bool GMainWindow::LoadROM(const QString& filename, Service::AM::FrontendAppletPa
         case Core::SystemResultStatus::ErrorVideoCore:
             QMessageBox::critical(
                 this, tr("An error occurred initializing the video core."),
-                tr("yuzu has encountered an error while running the video core. "
+                tr("uzuy has encountered an error while running the video core. "
                    "This is usually caused by outdated GPU drivers, including integrated ones. "
                    "Please see the log for more details. "
                    "For more information on accessing the log, please see the following page: "
-                   "<a href='https://yuzu-emu.org/help/reference/log-files/'>"
+                   "<a href='https://uzuy-emu.org/help/reference/log-files/'>"
                    "How to Upload the Log File</a>. "));
             break;
         default:
@@ -1849,9 +1849,9 @@ bool GMainWindow::LoadROM(const QString& filename, Service::AM::FrontendAppletPa
                     tr("Error while loading ROM! %1", "%1 signifies a numeric error code.")
                         .arg(QString::fromStdString(error_code));
                 const auto description =
-                    tr("%1<br>Please follow <a href='https://yuzu-emu.org/help/quickstart/'>the "
-                       "yuzu quickstart guide</a> to redump your files.<br>You can refer "
-                       "to the yuzu wiki</a> or the yuzu Discord</a> for help.",
+                    tr("%1<br>Please follow <a href='https://uzuy-emu.org/help/quickstart/'>the "
+                       "uzuy quickstart guide</a> to redump your files.<br>You can refer "
+                       "to the uzuy wiki</a> or the uzuy Discord</a> for help.",
                        "%1 signifies an error string.")
                         .arg(QString::fromStdString(
                             GetResultStatusString(static_cast<Loader::ResultStatus>(error_id))));
@@ -1926,7 +1926,7 @@ void GMainWindow::ConfigureFilesystemProvider(const std::string& filepath) {
 
 void GMainWindow::BootGame(const QString& filename, Service::AM::FrontendAppletParameters params,
                            StartGameType type) {
-    LOG_INFO(Frontend, "yuzu starting...");
+    LOG_INFO(Frontend, "uzuy starting...");
 
     if (params.program_id == 0 ||
         params.program_id > static_cast<u64>(Service::AM::AppletProgramId::MaxProgramId)) {
@@ -2288,7 +2288,7 @@ void GMainWindow::OnGameListOpenFolder(u64 program_id, GameListOpenTarget target
     switch (target) {
     case GameListOpenTarget::SaveData: {
         open_target = tr("Save Data");
-        const auto nand_dir = Common::FS::GetYuzuPath(Common::FS::YuzuPath::NANDDir);
+        const auto nand_dir = Common::FS::GetUzuyPath(Common::FS::UzuyPath::NANDDir);
         auto vfs_nand_dir =
             vfs->OpenDirectory(Common::FS::PathToUTF8String(nand_dir), FileSys::OpenMode::Read);
 
@@ -2344,7 +2344,7 @@ void GMainWindow::OnGameListOpenFolder(u64 program_id, GameListOpenTarget target
     }
     case GameListOpenTarget::ModData: {
         open_target = tr("Mod Data");
-        path = Common::FS::GetYuzuPath(Common::FS::YuzuPath::LoadDir) /
+        path = Common::FS::GetUzuyPath(Common::FS::UzuyPath::LoadDir) /
                fmt::format("{:016X}", program_id);
         break;
     }
@@ -2366,7 +2366,7 @@ void GMainWindow::OnGameListOpenFolder(u64 program_id, GameListOpenTarget target
 }
 
 void GMainWindow::OnTransferableShaderCacheOpenFile(u64 program_id) {
-    const auto shader_cache_dir = Common::FS::GetYuzuPath(Common::FS::YuzuPath::ShaderDir);
+    const auto shader_cache_dir = Common::FS::GetUzuyPath(Common::FS::UzuyPath::ShaderDir);
     const auto shader_cache_folder_path{shader_cache_dir / fmt::format("{:016x}", program_id)};
     if (!Common::FS::CreateDirs(shader_cache_folder_path)) {
         QMessageBox::warning(this, tr("Error Opening Transferable Shader Cache"),
@@ -2485,7 +2485,7 @@ void GMainWindow::OnGameListRemoveInstalledEntry(u64 program_id, InstalledEntryT
         RemoveAddOnContent(program_id, type);
         break;
     }
-    Common::FS::RemoveDirRecursively(Common::FS::GetYuzuPath(Common::FS::YuzuPath::CacheDir) /
+    Common::FS::RemoveDirRecursively(Common::FS::GetUzuyPath(Common::FS::UzuyPath::CacheDir) /
                                      "game_list");
     game_list->PopulateAsync(UISettings::values.game_dirs);
 }
@@ -2591,7 +2591,7 @@ void GMainWindow::RemoveTransferableShaderCache(u64 program_id, GameListRemoveTa
             return "";
         }
     }();
-    const auto shader_cache_dir = Common::FS::GetYuzuPath(Common::FS::YuzuPath::ShaderDir);
+    const auto shader_cache_dir = Common::FS::GetUzuyPath(Common::FS::UzuyPath::ShaderDir);
     const auto shader_cache_folder_path = shader_cache_dir / fmt::format("{:016x}", program_id);
     const auto target_file = shader_cache_folder_path / target_file_name;
 
@@ -2612,7 +2612,7 @@ void GMainWindow::RemoveTransferableShaderCache(u64 program_id, GameListRemoveTa
 void GMainWindow::RemoveVulkanDriverPipelineCache(u64 program_id) {
     static constexpr std::string_view target_file_name = "vulkan_pipelines.bin";
 
-    const auto shader_cache_dir = Common::FS::GetYuzuPath(Common::FS::YuzuPath::ShaderDir);
+    const auto shader_cache_dir = Common::FS::GetUzuyPath(Common::FS::UzuyPath::ShaderDir);
     const auto shader_cache_folder_path = shader_cache_dir / fmt::format("{:016x}", program_id);
     const auto target_file = shader_cache_folder_path / target_file_name;
 
@@ -2626,7 +2626,7 @@ void GMainWindow::RemoveVulkanDriverPipelineCache(u64 program_id) {
 }
 
 void GMainWindow::RemoveAllTransferableShaderCaches(u64 program_id) {
-    const auto shader_cache_dir = Common::FS::GetYuzuPath(Common::FS::YuzuPath::ShaderDir);
+    const auto shader_cache_dir = Common::FS::GetUzuyPath(Common::FS::UzuyPath::ShaderDir);
     const auto program_shader_cache_dir = shader_cache_dir / fmt::format("{:016x}", program_id);
 
     if (!Common::FS::Exists(program_shader_cache_dir)) {
@@ -2649,7 +2649,7 @@ void GMainWindow::RemoveCustomConfiguration(u64 program_id, const std::string& g
         program_id == 0 ? Common::FS::PathToUTF8String(file_path.filename()).append(".ini")
                         : fmt::format("{:016X}.ini", program_id);
     const auto custom_config_file_path =
-        Common::FS::GetYuzuPath(Common::FS::YuzuPath::ConfigDir) / "custom" / config_file_name;
+        Common::FS::GetUzuyPath(Common::FS::UzuyPath::ConfigDir) / "custom" / config_file_name;
 
     if (!Common::FS::Exists(custom_config_file_path)) {
         QMessageBox::warning(this, tr("Error Removing Custom Configuration"),
@@ -2667,7 +2667,7 @@ void GMainWindow::RemoveCustomConfiguration(u64 program_id, const std::string& g
 }
 
 void GMainWindow::RemoveCacheStorage(u64 program_id) {
-    const auto nand_dir = Common::FS::GetYuzuPath(Common::FS::YuzuPath::NANDDir);
+    const auto nand_dir = Common::FS::GetUzuyPath(Common::FS::UzuyPath::NANDDir);
     auto vfs_nand_dir =
         vfs->OpenDirectory(Common::FS::PathToUTF8String(nand_dir), FileSys::OpenMode::Read);
 
@@ -2725,8 +2725,8 @@ void GMainWindow::OnGameListDumpRomFS(u64 program_id, const std::string& game_pa
     const auto base_romfs = base_nca->GetRomFS();
     const auto dump_dir =
         target == DumpRomFSTarget::Normal
-            ? Common::FS::GetYuzuPath(Common::FS::YuzuPath::DumpDir)
-            : Common::FS::GetYuzuPath(Common::FS::YuzuPath::SDMCDir) / "atmosphere" / "contents";
+            ? Common::FS::GetUzuyPath(Common::FS::UzuyPath::DumpDir)
+            : Common::FS::GetUzuyPath(Common::FS::UzuyPath::SDMCDir) / "atmosphere" / "contents";
     const auto romfs_dir = fmt::format("{:016X}/romfs", title_id);
 
     const auto path = Common::FS::PathToUTF8String(dump_dir / romfs_dir);
@@ -2843,7 +2843,7 @@ void GMainWindow::OnGameListNavigateToGamedbEntry(u64 program_id,
         directory = it->second.second;
     }
 
-    QDesktopServices::openUrl(QUrl(QStringLiteral("https://yuzu-emu.org/game/") + directory));
+    QDesktopServices::openUrl(QUrl(QStringLiteral("https://uzuy-emu.org/game/") + directory));
 }
 
 bool GMainWindow::CreateShortcutLink(const std::filesystem::path& shortcut_path,
@@ -2981,10 +2981,10 @@ bool GMainWindow::CreateShortcutMessagesGUI(QWidget* parent, int imsg, const QSt
 
 bool GMainWindow::MakeShortcutIcoPath(const u64 program_id, const std::string_view game_file_name,
                                       std::filesystem::path& out_icon_path) {
-    // Get path to Yuzu icons directory & icon extension
+    // Get path to Uzuy icons directory & icon extension
     std::string ico_extension = "png";
 #if defined(_WIN32)
-    out_icon_path = Common::FS::GetYuzuPath(Common::FS::YuzuPath::IconsDir);
+    out_icon_path = Common::FS::GetUzuyPath(Common::FS::UzuyPath::IconsDir);
     ico_extension = "ico";
 #elif defined(__linux__) || defined(__FreeBSD__)
     out_icon_path = Common::FS::GetDataDirectory("XDG_DATA_HOME") / "icons/hicolor/256x256";
@@ -3001,19 +3001,19 @@ bool GMainWindow::MakeShortcutIcoPath(const u64 program_id, const std::string_vi
     }
 
     // Create icon file path
-    out_icon_path /= (program_id == 0 ? fmt::format("yuzu-{}.{}", game_file_name, ico_extension)
-                                      : fmt::format("yuzu-{:016X}.{}", program_id, ico_extension));
+    out_icon_path /= (program_id == 0 ? fmt::format("uzuy-{}.{}", game_file_name, ico_extension)
+                                      : fmt::format("uzuy-{:016X}.{}", program_id, ico_extension));
     return true;
 }
 
 void GMainWindow::OnGameListCreateShortcut(u64 program_id, const std::string& game_path,
                                            GameListShortcutTarget target) {
-    // Get path to yuzu executable
+    // Get path to uzuy executable
     const QStringList args = QApplication::arguments();
-    std::filesystem::path yuzu_command = args[0].toStdString();
+    std::filesystem::path uzuy_command = args[0].toStdString();
     // If relative path, make it an absolute path
-    if (yuzu_command.c_str()[0] == '.') {
-        yuzu_command = Common::FS::GetCurrentDir() / yuzu_command;
+    if (uzuy_command.c_str()[0] == '.') {
+        uzuy_command = Common::FS::GetCurrentDir() / uzuy_command;
     }
     // Shortcut path
     std::filesystem::path shortcut_path{};
@@ -3074,7 +3074,7 @@ void GMainWindow::OnGameListCreateShortcut(u64 program_id, const std::string& ga
     // Warn once if we are making a shortcut to a volatile AppImage
     const std::string appimage_ending =
         std::string(Common::g_scm_rev).substr(0, 9).append(".AppImage");
-    if (yuzu_command.string().ends_with(appimage_ending) &&
+    if (uzuy_command.string().ends_with(appimage_ending) &&
         !UISettings::values.shortcut_already_warned) {
         if (GMainWindow::CreateShortcutMessagesGUI(
                 this, GMainWindow::CREATE_SHORTCUT_MSGBOX_APPVOLATILE_WARNING, qt_game_title)) {
@@ -3089,11 +3089,11 @@ void GMainWindow::OnGameListCreateShortcut(u64 program_id, const std::string& ga
             this, GMainWindow::CREATE_SHORTCUT_MSGBOX_FULLSCREEN_YES, qt_game_title)) {
         arguments = "-f " + arguments;
     }
-    const std::string comment = fmt::format("Start {:s} with the yuzu Emulator", game_title);
+    const std::string comment = fmt::format("Start {:s} with the uzuy Emulator", game_title);
     const std::string categories = "Game;Emulator;Qt;";
     const std::string keywords = "Switch;Nintendo;";
 
-    if (GMainWindow::CreateShortcutLink(shortcut_path, comment, out_icon_path, yuzu_command,
+    if (GMainWindow::CreateShortcutLink(shortcut_path, comment, out_icon_path, uzuy_command,
                                         arguments, categories, keywords, game_title)) {
         GMainWindow::CreateShortcutMessagesGUI(this, GMainWindow::CREATE_SHORTCUT_MSGBOX_SUCCESS,
                                                qt_game_title);
@@ -3107,13 +3107,13 @@ void GMainWindow::OnGameListOpenDirectory(const QString& directory) {
     std::filesystem::path fs_path;
     if (directory == QStringLiteral("SDMC")) {
         fs_path =
-            Common::FS::GetYuzuPath(Common::FS::YuzuPath::SDMCDir) / "Nintendo/Contents/registered";
+            Common::FS::GetUzuyPath(Common::FS::UzuyPath::SDMCDir) / "Nintendo/Contents/registered";
     } else if (directory == QStringLiteral("UserNAND")) {
         fs_path =
-            Common::FS::GetYuzuPath(Common::FS::YuzuPath::NANDDir) / "user/Contents/registered";
+            Common::FS::GetUzuyPath(Common::FS::UzuyPath::NANDDir) / "user/Contents/registered";
     } else if (directory == QStringLiteral("SysNAND")) {
         fs_path =
-            Common::FS::GetYuzuPath(Common::FS::YuzuPath::NANDDir) / "system/Contents/registered";
+            Common::FS::GetUzuyPath(Common::FS::UzuyPath::NANDDir) / "system/Contents/registered";
     } else {
         fs_path = directory.toStdString();
     }
@@ -3339,7 +3339,7 @@ void GMainWindow::OnMenuInstallToNAND() {
                                 : tr("%n file(s) failed to install\n", "", failed_files.size()));
 
     QMessageBox::information(this, tr("Install Results"), install_results);
-    Common::FS::RemoveDirRecursively(Common::FS::GetYuzuPath(Common::FS::YuzuPath::CacheDir) /
+    Common::FS::RemoveDirRecursively(Common::FS::GetUzuyPath(Common::FS::UzuyPath::CacheDir) /
                                      "game_list");
     game_list->PopulateAsync(UISettings::values.game_dirs);
     ui->action_Install_File_NAND->setEnabled(true);
@@ -3552,15 +3552,15 @@ void GMainWindow::OnMenuReportCompatibility() {
         return;
     }
 
-    if (!Settings::values.yuzu_token.GetValue().empty() &&
-        !Settings::values.yuzu_username.GetValue().empty()) {
+    if (!Settings::values.uzuy_token.GetValue().empty() &&
+        !Settings::values.uzuy_username.GetValue().empty()) {
         CompatDB compatdb{system->TelemetrySession(), this};
         compatdb.exec();
     } else {
         QMessageBox::critical(
-            this, tr("Missing yuzu Account"),
-            tr("In order to submit a game compatibility test case, you must link your yuzu "
-               "account.<br><br/>To link your yuzu account, go to Emulation &gt; Configuration "
+            this, tr("Missing uzuy Account"),
+            tr("In order to submit a game compatibility test case, you must link your uzuy "
+               "account.<br><br/>To link your uzuy account, go to Emulation &gt; Configuration "
                "&gt; "
                "Web."));
     }
@@ -3580,15 +3580,15 @@ void GMainWindow::OpenURL(const QUrl& url) {
 }
 
 void GMainWindow::OnOpenModsPage() {
-    OpenURL(QUrl(QStringLiteral("https://github.com/yuzu-emu/yuzu/wiki/Switch-Mods")));
+    OpenURL(QUrl(QStringLiteral("https://github.com/uzuy-emu/uzuy/wiki/Switch-Mods")));
 }
 
 void GMainWindow::OnOpenQuickstartGuide() {
-    OpenURL(QUrl(QStringLiteral("https://yuzu-emu.org/help/quickstart/")));
+    OpenURL(QUrl(QStringLiteral("https://uzuy-emu.org/help/quickstart/")));
 }
 
 void GMainWindow::OnOpenFAQ() {
-    OpenURL(QUrl(QStringLiteral("https://yuzu-emu.org/wiki/faq/")));
+    OpenURL(QUrl(QStringLiteral("https://uzuy-emu.org/wiki/faq/")));
 }
 
 void GMainWindow::ToggleFullscreen() {
@@ -3759,11 +3759,11 @@ void GMainWindow::OnConfigure() {
             LOG_WARNING(Frontend, "Failed to remove configuration file");
         }
         if (!Common::FS::RemoveDirContentsRecursively(
-                Common::FS::GetYuzuPath(Common::FS::YuzuPath::ConfigDir) / "custom")) {
+                Common::FS::GetUzuyPath(Common::FS::UzuyPath::ConfigDir) / "custom")) {
             LOG_WARNING(Frontend, "Failed to remove custom configuration files");
         }
         if (!Common::FS::RemoveDirRecursively(
-                Common::FS::GetYuzuPath(Common::FS::YuzuPath::CacheDir) / "game_list")) {
+                Common::FS::GetUzuyPath(Common::FS::UzuyPath::CacheDir) / "game_list")) {
             LOG_WARNING(Frontend, "Failed to remove game metadata cache files");
         }
 
@@ -4119,9 +4119,9 @@ void GMainWindow::LoadAmiibo(const QString& filename) {
     }
 }
 
-void GMainWindow::OnOpenYuzuFolder() {
+void GMainWindow::OnOpenUzuyFolder() {
     QDesktopServices::openUrl(QUrl::fromLocalFile(
-        QString::fromStdString(Common::FS::GetYuzuPathString(Common::FS::YuzuPath::YuzuDir))));
+        QString::fromStdString(Common::FS::GetUzuyPathString(Common::FS::UzuyPath::UzuyDir))));
 }
 
 void GMainWindow::OnVerifyInstalledContents() {
@@ -4164,7 +4164,7 @@ void GMainWindow::OnInstallFirmware() {
     if (!ContentManager::AreKeysPresent()) {
         QMessageBox::information(
             this, tr("Keys not installed"),
-            tr("Install decryption keys and restart yuzu before attempting to install firmware."));
+            tr("Install decryption keys and restart uzuy before attempting to install firmware."));
         return;
     }
 
@@ -4254,7 +4254,7 @@ void GMainWindow::OnInstallFirmware() {
             QMessageBox::warning(
                 this, tr("Firmware install failed"),
                 tr("Firmware installation cancelled, firmware may be in bad state, "
-                   "restart yuzu or re-install firmware."));
+                   "restart uzuy or re-install firmware."));
             return;
         }
     }
@@ -4336,9 +4336,9 @@ void GMainWindow::OnInstallDecryptionKeys() {
         return;
     }
 
-    const auto yuzu_keys_dir = Common::FS::GetYuzuPath(Common::FS::YuzuPath::KeysDir);
+    const auto uzuy_keys_dir = Common::FS::GetUzuyPath(Common::FS::UzuyPath::KeysDir);
     for (auto key_file : source_key_files) {
-        std::filesystem::path destination_key_file = yuzu_keys_dir / key_file.filename();
+        std::filesystem::path destination_key_file = uzuy_keys_dir / key_file.filename();
         if (!std::filesystem::copy_file(key_file, destination_key_file,
                                         std::filesystem::copy_options::overwrite_existing)) {
             LOG_ERROR(Frontend, "Failed to copy file {} to {}", key_file.string(),
@@ -4489,7 +4489,7 @@ void GMainWindow::OnCaptureScreenshot() {
 
     const u64 title_id = system->GetApplicationProcessProgramID();
     const auto screenshot_path =
-        QString::fromStdString(Common::FS::GetYuzuPathString(Common::FS::YuzuPath::ScreenshotsDir));
+        QString::fromStdString(Common::FS::GetUzuyPathString(Common::FS::UzuyPath::ScreenshotsDir));
     const auto date =
         QDateTime::currentDateTime().toString(QStringLiteral("yyyy-MM-dd_hh-mm-ss-zzz"));
     QString filename = QStringLiteral("%1/%2_%3.png")
@@ -4517,7 +4517,7 @@ void GMainWindow::OnCaptureScreenshot() {
 
 // TODO: Written 2020-10-01: Remove per-game config migration code when it is irrelevant
 void GMainWindow::MigrateConfigFiles() {
-    const auto config_dir_fs_path = Common::FS::GetYuzuPath(Common::FS::YuzuPath::ConfigDir);
+    const auto config_dir_fs_path = Common::FS::GetUzuyPath(Common::FS::UzuyPath::ConfigDir);
     const QDir config_dir =
         QDir(QString::fromStdString(Common::FS::PathToUTF8String(config_dir_fs_path)));
     const QStringList config_dir_list = config_dir.entryList(QStringList(QStringLiteral("*.ini")));
@@ -4548,10 +4548,10 @@ void GMainWindow::UpdateWindowTitle(std::string_view title_name, std::string_vie
     const auto description = std::string(Common::g_scm_desc);
     const auto build_id = std::string(Common::g_build_id);
 
-    const auto yuzu_title = fmt::format("yuzu | {}-{}", branch_name, description);
+    const auto uzuy_title = fmt::format("uzuy | {}-{}", branch_name, description);
     const auto override_title =
         fmt::format(fmt::runtime(std::string(Common::g_title_bar_format_idle)), build_id);
-    const auto window_title = override_title.empty() ? yuzu_title : override_title;
+    const auto window_title = override_title.empty() ? uzuy_title : override_title;
 
     if (title_name.empty()) {
         setWindowTitle(QString::fromStdString(window_title));
@@ -4790,7 +4790,7 @@ void GMainWindow::OnCheckFirmwareDecryption() {
         QMessageBox::warning(
             this, tr("Derivation Components Missing"),
             tr("Encryption keys are missing. "
-               "<br>Please follow <a href='https://yuzu-emu.org/help/quickstart/'>the yuzu "
+               "<br>Please follow <a href='https://uzuy-emu.org/help/quickstart/'>the uzuy "
                "quickstart guide</a> to get all your keys, firmware and "
                "games."));
     }
@@ -4905,8 +4905,8 @@ bool GMainWindow::ConfirmClose() {
         UISettings::values.confirm_before_stopping.GetValue() == ConfirmStop::Ask_Based_On_Game) {
         return true;
     }
-    const auto text = tr("Are you sure you want to close yuzu?");
-    return question(this, tr("yuzu"), text);
+    const auto text = tr("Are you sure you want to close uzuy?");
+    return question(this, tr("uzuy"), text);
 }
 
 void GMainWindow::closeEvent(QCloseEvent* event) {
@@ -4986,7 +4986,7 @@ bool GMainWindow::ConfirmChangeGame() {
 
     // Use custom question to link controller navigation
     return question(
-        this, tr("yuzu"),
+        this, tr("uzuy"),
         tr("Are you sure you want to stop the emulation? Any unsaved progress will be lost."),
         QMessageBox::Yes | QMessageBox::No, QMessageBox::Yes);
 }
@@ -4995,10 +4995,10 @@ bool GMainWindow::ConfirmForceLockedExit() {
     if (emu_thread == nullptr) {
         return true;
     }
-    const auto text = tr("The currently running application has requested yuzu to not exit.\n\n"
+    const auto text = tr("The currently running application has requested uzuy to not exit.\n\n"
                          "Would you like to bypass this and exit anyway?");
 
-    return question(this, tr("yuzu"), text);
+    return question(this, tr("uzuy"), text);
 }
 
 void GMainWindow::RequestGameExit() {
@@ -5258,7 +5258,7 @@ int main(int argc, char* argv[]) {
         return 0;
     }
 
-#ifdef YUZU_CRASH_DUMPS
+#ifdef UZUY_CRASH_DUMPS
     Breakpad::InstallCrashHandler();
 #endif
 
@@ -5271,8 +5271,8 @@ int main(int argc, char* argv[]) {
     Common::ConfigureNvidiaEnvironmentFlags();
 
     // Init settings params
-    QCoreApplication::setOrganizationName(QStringLiteral("yuzu team"));
-    QCoreApplication::setApplicationName(QStringLiteral("yuzu"));
+    QCoreApplication::setOrganizationName(QStringLiteral("uzuy team"));
+    QCoreApplication::setApplicationName(QStringLiteral("uzuy"));
 
 #ifdef _WIN32
     // Increases the maximum open file limit to 8192
@@ -5296,7 +5296,7 @@ int main(int argc, char* argv[]) {
 
     // Fix the Wayland appId. This needs to match the name of the .desktop file without the .desktop
     // suffix.
-    QGuiApplication::setDesktopFileName(QStringLiteral("org.yuzu_emu.yuzu"));
+    QGuiApplication::setDesktopFileName(QStringLiteral("org.uzuy_emu.uzuy"));
 #endif
 
     SetHighDPIAttributes();

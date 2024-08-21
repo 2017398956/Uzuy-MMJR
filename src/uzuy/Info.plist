@@ -15,15 +15,15 @@ SPDX-License-Identifier: GPL-2.0-or-later
     <key>CFBundleGetInfoString</key>
     <string></string>
     <key>CFBundleIconFile</key>
-    <string>yuzu.icns</string>
+    <string>uzuy.icns</string>
     <key>CFBundleIdentifier</key>
-    <string>com.yuzu-emu.yuzu</string>
+    <string>com.uzuy-emu.uzuy</string>
     <key>CFBundleInfoDictionaryVersion</key>
     <string>6.0</string>
     <key>CFBundleLongVersionString</key>
     <string></string>
     <key>CFBundleName</key>
-    <string>yuzu</string>
+    <string>uzuy</string>
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>

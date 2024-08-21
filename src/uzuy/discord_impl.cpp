@@ -15,14 +15,14 @@
 #include "common/string_util.h"
 #include "core/core.h"
 #include "core/loader/loader.h"
-#include "yuzu/discord_impl.h"
-#include "yuzu/uisettings.h"
+#include "uzuy/discord_impl.h"
+#include "uzuy/uisettings.h"
 
 namespace DiscordRPC {
 
 DiscordImpl::DiscordImpl(Core::System& system_) : system{system_} {
     DiscordEventHandlers handlers{};
-    // The number is the client ID for yuzu, it's used for images and the
+    // The number is the client ID for uzuy, it's used for images and the
     // application name
     Discord_Initialize("712465656758665259", &handlers, 1, nullptr);
 }
@@ -62,8 +62,8 @@ std::string DiscordImpl::GetGameString(const std::string& title) {
 }
 
 void DiscordImpl::UpdateGameStatus(bool use_default) {
-    const std::string default_text = "yuzu is an emulator for the Nintendo Switch";
-    const std::string default_image = "yuzu_logo";
+    const std::string default_text = "uzuy is an emulator for the Nintendo Switch";
+    const std::string default_image = "uzuy_logo";
     const std::string url = use_default ? default_image : game_url;
     s64 start_time = std::chrono::duration_cast<std::chrono::seconds>(
                          std::chrono::system_clock::now().time_since_epoch())
@@ -81,15 +81,15 @@ void DiscordImpl::UpdateGameStatus(bool use_default) {
 }
 
 void DiscordImpl::Update() {
-    const std::string default_text = "yuzu is an emulator for the Nintendo Switch";
-    const std::string default_image = "yuzu_logo";
+    const std::string default_text = "uzuy is an emulator for the Nintendo Switch";
+    const std::string default_image = "uzuy_logo";
 
     if (system.IsPoweredOn()) {
         system.GetAppLoader().ReadTitle(game_title);
 
-        // Used to format Icon URL for yuzu website game compatibility page
+        // Used to format Icon URL for uzuy website game compatibility page
         std::string icon_name = GetGameString(game_title);
-        game_url = fmt::format("https://yuzu-emu.org/images/game/boxart/{}.png", icon_name);
+        game_url = fmt::format("https://uzuy-emu.org/images/game/boxart/{}.png", icon_name);
 
         QNetworkAccessManager manager;
         QNetworkRequest request;

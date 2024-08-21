@@ -13,8 +13,8 @@
 #include "input_common/drivers/mouse.h"
 #include "input_common/drivers/touch_screen.h"
 #include "input_common/main.h"
-#include "yuzu_cmd/emu_window/emu_window_sdl2.h"
-#include "yuzu_cmd/yuzu_icon.h"
+#include "uzuy_cmd/emu_window/emu_window_sdl2.h"
+#include "uzuy_cmd/uzuy_icon.h"
 
 EmuWindow_SDL2::EmuWindow_SDL2(InputCommon::InputSubsystem* input_subsystem_, Core::System& system_)
     : input_subsystem{input_subsystem_}, system{system_} {
@@ -224,7 +224,7 @@ void EmuWindow_SDL2::WaitEvent() {
     if (current_time > last_time + 2000) {
         const auto results = system.GetAndResetPerfStats();
         const auto title =
-            fmt::format("yuzu {} | {}-{} | FPS: {:.0f} ({:.0f}%)", Common::g_build_fullname,
+            fmt::format("uzuy {} | {}-{} | FPS: {:.0f} ({:.0f}%)", Common::g_build_fullname,
                         Common::g_scm_branch, Common::g_scm_desc, results.average_game_fps,
                         results.emulation_speed * 100.0);
         SDL_SetWindowTitle(render_window, title.c_str());
@@ -234,12 +234,12 @@ void EmuWindow_SDL2::WaitEvent() {
 
 // Credits to Samantas5855 and others for this function.
 void EmuWindow_SDL2::SetWindowIcon() {
-    SDL_RWops* const yuzu_icon_stream = SDL_RWFromConstMem((void*)yuzu_icon, yuzu_icon_size);
-    if (yuzu_icon_stream == nullptr) {
-        LOG_WARNING(Frontend, "Failed to create yuzu icon stream.");
+    SDL_RWops* const uzuy_icon_stream = SDL_RWFromConstMem((void*)uzuy_icon, uzuy_icon_size);
+    if (uzuy_icon_stream == nullptr) {
+        LOG_WARNING(Frontend, "Failed to create uzuy icon stream.");
         return;
     }
-    SDL_Surface* const window_icon = SDL_LoadBMP_RW(yuzu_icon_stream, 1);
+    SDL_Surface* const window_icon = SDL_LoadBMP_RW(uzuy_icon_stream, 1);
     if (window_icon == nullptr) {
         LOG_WARNING(Frontend, "Failed to read BMP from stream.");
         return;

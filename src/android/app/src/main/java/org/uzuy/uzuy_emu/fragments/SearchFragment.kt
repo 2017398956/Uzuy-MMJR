@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.fragments
+package org.uzuy.uzuy_emu.fragments
 
 import android.content.Context
 import android.content.SharedPreferences
@@ -21,16 +21,16 @@ import androidx.preference.PreferenceManager
 import info.debatty.java.stringsimilarity.Jaccard
 import info.debatty.java.stringsimilarity.JaroWinkler
 import java.util.Locale
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.YuzuApplication
-import org.yuzu.yuzu_emu.adapters.GameAdapter
-import org.yuzu.yuzu_emu.databinding.FragmentSearchBinding
-import org.yuzu.yuzu_emu.layout.AutofitGridLayoutManager
-import org.yuzu.yuzu_emu.model.Game
-import org.yuzu.yuzu_emu.model.GamesViewModel
-import org.yuzu.yuzu_emu.model.HomeViewModel
-import org.yuzu.yuzu_emu.utils.ViewUtils.setVisible
-import org.yuzu.yuzu_emu.utils.collect
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.UzuyApplication
+import org.uzuy.uzuy_emu.adapters.GameAdapter
+import org.uzuy.uzuy_emu.databinding.FragmentSearchBinding
+import org.uzuy.uzuy_emu.layout.AutofitGridLayoutManager
+import org.uzuy.uzuy_emu.model.Game
+import org.uzuy.uzuy_emu.model.GamesViewModel
+import org.uzuy.uzuy_emu.model.HomeViewModel
+import org.uzuy.uzuy_emu.utils.ViewUtils.setVisible
+import org.uzuy.uzuy_emu.utils.collect
 
 class SearchFragment : Fragment() {
     private var _binding: FragmentSearchBinding? = null
@@ -58,7 +58,7 @@ class SearchFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         homeViewModel.setNavigationVisibility(visible = true, animated = true)
         homeViewModel.setStatusBarShadeVisibility(true)
-        preferences = PreferenceManager.getDefaultSharedPreferences(YuzuApplication.appContext)
+        preferences = PreferenceManager.getDefaultSharedPreferences(UzuyApplication.appContext)
 
         if (savedInstanceState != null) {
             binding.searchText.setText(savedInstanceState.getString(SEARCH_TEXT))

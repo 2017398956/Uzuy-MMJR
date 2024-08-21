@@ -3,7 +3,7 @@
 
 #pragma once
 
-#include "yuzu/multiplayer/chat_room.h"
+#include "uzuy/multiplayer/chat_room.h"
 
 namespace Ui {
 class ClientRoom;

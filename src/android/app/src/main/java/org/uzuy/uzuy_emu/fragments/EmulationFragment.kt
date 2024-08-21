@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.fragments
+package org.uzuy.uzuy_emu.fragments
 
 import android.annotation.SuppressLint
 import android.app.AlertDialog
@@ -39,25 +39,25 @@ import androidx.window.layout.WindowInfoTracker
 import androidx.window.layout.WindowLayoutInfo
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
 import com.google.android.material.slider.Slider
-import org.yuzu.yuzu_emu.HomeNavigationDirections
-import org.yuzu.yuzu_emu.NativeLibrary
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.activities.EmulationActivity
-import org.yuzu.yuzu_emu.databinding.DialogOverlayAdjustBinding
-import org.yuzu.yuzu_emu.databinding.FragmentEmulationBinding
-import org.yuzu.yuzu_emu.features.settings.model.BooleanSetting
-import org.yuzu.yuzu_emu.features.settings.model.IntSetting
-import org.yuzu.yuzu_emu.features.settings.model.Settings
-import org.yuzu.yuzu_emu.features.settings.model.Settings.EmulationOrientation
-import org.yuzu.yuzu_emu.features.settings.model.Settings.EmulationVerticalAlignment
-import org.yuzu.yuzu_emu.features.settings.utils.SettingsFile
-import org.yuzu.yuzu_emu.model.DriverViewModel
-import org.yuzu.yuzu_emu.model.Game
-import org.yuzu.yuzu_emu.model.EmulationViewModel
-import org.yuzu.yuzu_emu.overlay.model.OverlayControl
-import org.yuzu.yuzu_emu.overlay.model.OverlayLayout
-import org.yuzu.yuzu_emu.utils.*
-import org.yuzu.yuzu_emu.utils.ViewUtils.setVisible
+import org.uzuy.uzuy_emu.HomeNavigationDirections
+import org.uzuy.uzuy_emu.NativeLibrary
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.activities.EmulationActivity
+import org.uzuy.uzuy_emu.databinding.DialogOverlayAdjustBinding
+import org.uzuy.uzuy_emu.databinding.FragmentEmulationBinding
+import org.uzuy.uzuy_emu.features.settings.model.BooleanSetting
+import org.uzuy.uzuy_emu.features.settings.model.IntSetting
+import org.uzuy.uzuy_emu.features.settings.model.Settings
+import org.uzuy.uzuy_emu.features.settings.model.Settings.EmulationOrientation
+import org.uzuy.uzuy_emu.features.settings.model.Settings.EmulationVerticalAlignment
+import org.uzuy.uzuy_emu.features.settings.utils.SettingsFile
+import org.uzuy.uzuy_emu.model.DriverViewModel
+import org.uzuy.uzuy_emu.model.Game
+import org.uzuy.uzuy_emu.model.EmulationViewModel
+import org.uzuy.uzuy_emu.overlay.model.OverlayControl
+import org.uzuy.uzuy_emu.overlay.model.OverlayLayout
+import org.uzuy.uzuy_emu.utils.*
+import org.uzuy.uzuy_emu.utils.ViewUtils.setVisible
 import java.lang.NullPointerException
 
 class EmulationFragment : Fragment(), SurfaceHolder.Callback {

@@ -1,11 +1,11 @@
 #!/bin/bash -ex
 
-# SPDX-FileCopyrightText: 2021 yuzu Emulator Project
+# SPDX-FileCopyrightText: 2021 uzuy Emulator Project
 # SPDX-License-Identifier: GPL-2.0-or-later
 
 . .ci/scripts/common/pre-upload.sh
 
-REV_NAME="yuzu-linux-${GITDATE}-${GITREV}"
+REV_NAME="uzuy-linux-${GITDATE}-${GITREV}"
 ARCHIVE_NAME="${REV_NAME}.tar.xz"
 COMPRESSION_FLAGS="-cJvf"
 
@@ -17,7 +17,7 @@ fi
 
 mkdir "$DIR_NAME"
 
-cp build/bin/yuzu-cmd "$DIR_NAME"
-cp build/bin/yuzu "$DIR_NAME"
+cp build/bin/uzuy-cmd "$DIR_NAME"
+cp build/bin/uzuy "$DIR_NAME"
 
 . .ci/scripts/common/post-upload.sh

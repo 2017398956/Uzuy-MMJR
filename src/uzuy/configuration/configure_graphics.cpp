@@ -37,12 +37,12 @@
 #include "common/settings_enums.h"
 #include "core/core.h"
 #include "ui_configure_graphics.h"
-#include "yuzu/configuration/configuration_shared.h"
-#include "yuzu/configuration/configure_graphics.h"
-#include "yuzu/configuration/shared_widget.h"
-#include "yuzu/qt_common.h"
-#include "yuzu/uisettings.h"
-#include "yuzu/vk_device_info.h"
+#include "uzuy/configuration/configuration_shared.h"
+#include "uzuy/configuration/configure_graphics.h"
+#include "uzuy/configuration/shared_widget.h"
+#include "uzuy/qt_common.h"
+#include "uzuy/uisettings.h"
+#include "uzuy/vk_device_info.h"
 
 static const std::vector<VkPresentModeKHR> default_present_modes{VK_PRESENT_MODE_IMMEDIATE_KHR,
                                                                  VK_PRESENT_MODE_FIFO_KHR};

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2019 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2019 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <QtConcurrent/QtConcurrent>
@@ -6,7 +6,7 @@
 #include "core/core.h"
 #include "core/internal_network/network_interface.h"
 #include "ui_configure_network.h"
-#include "yuzu/configuration/configure_network.h"
+#include "uzuy/configuration/configure_network.h"
 
 ConfigureNetwork::ConfigureNetwork(const Core::System& system_, QWidget* parent)
     : QWidget(parent), ui(std::make_unique<Ui::ConfigureNetwork>()), system{system_} {

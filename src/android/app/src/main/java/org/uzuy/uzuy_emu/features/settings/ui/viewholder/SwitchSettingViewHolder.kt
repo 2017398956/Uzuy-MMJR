@@ -1,15 +1,15 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.features.settings.ui.viewholder
+package org.uzuy.uzuy_emu.features.settings.ui.viewholder
 
 import android.view.View
 import android.widget.CompoundButton
-import org.yuzu.yuzu_emu.databinding.ListItemSettingSwitchBinding
-import org.yuzu.yuzu_emu.features.settings.model.view.SettingsItem
-import org.yuzu.yuzu_emu.features.settings.model.view.SwitchSetting
-import org.yuzu.yuzu_emu.features.settings.ui.SettingsAdapter
-import org.yuzu.yuzu_emu.utils.ViewUtils.setVisible
+import org.uzuy.uzuy_emu.databinding.ListItemSettingSwitchBinding
+import org.uzuy.uzuy_emu.features.settings.model.view.SettingsItem
+import org.uzuy.uzuy_emu.features.settings.model.view.SwitchSetting
+import org.uzuy.uzuy_emu.features.settings.ui.SettingsAdapter
+import org.uzuy.uzuy_emu.utils.ViewUtils.setVisible
 
 class SwitchSettingViewHolder(val binding: ListItemSettingSwitchBinding, adapter: SettingsAdapter) :
     SettingViewHolder(binding.root, adapter) {

@@ -1,6 +1,6 @@
 <!--
-SPDX-FileCopyrightText: 2018 yuzu Emulator Project
+SPDX-FileCopyrightText: 2018 uzuy Emulator Project
 SPDX-License-Identifier: GPL-2.0-or-later
 -->
 
-**The Contributor's Guide has moved to [the yuzu wiki](https://github.com/yuzu-emu/yuzu/wiki/Contributing).**
+**The Contributor's Guide has moved to [the uzuy wiki](https://github.com/uzuy-emu/uzuy/wiki/Contributing).**

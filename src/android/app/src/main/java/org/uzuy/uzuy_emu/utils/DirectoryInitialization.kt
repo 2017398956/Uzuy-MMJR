@@ -1,19 +1,19 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.utils
+package org.uzuy.uzuy_emu.utils
 
 import androidx.preference.PreferenceManager
 import java.io.IOException
-import org.yuzu.yuzu_emu.NativeLibrary
-import org.yuzu.yuzu_emu.YuzuApplication
-import org.yuzu.yuzu_emu.features.settings.model.BooleanSetting
-import org.yuzu.yuzu_emu.features.settings.model.IntSetting
-import org.yuzu.yuzu_emu.features.settings.model.Settings
-import org.yuzu.yuzu_emu.overlay.model.OverlayControlData
-import org.yuzu.yuzu_emu.overlay.model.OverlayControl
-import org.yuzu.yuzu_emu.overlay.model.OverlayLayout
-import org.yuzu.yuzu_emu.utils.PreferenceUtil.migratePreference
+import org.uzuy.uzuy_emu.NativeLibrary
+import org.uzuy.uzuy_emu.UzuyApplication
+import org.uzuy.uzuy_emu.features.settings.model.BooleanSetting
+import org.uzuy.uzuy_emu.features.settings.model.IntSetting
+import org.uzuy.uzuy_emu.features.settings.model.Settings
+import org.uzuy.uzuy_emu.overlay.model.OverlayControlData
+import org.uzuy.uzuy_emu.overlay.model.OverlayControl
+import org.uzuy.uzuy_emu.overlay.model.OverlayLayout
+import org.uzuy.uzuy_emu.utils.PreferenceUtil.migratePreference
 
 object DirectoryInitialization {
     private var userPath: String? = null
@@ -38,7 +38,7 @@ object DirectoryInitialization {
 
     private fun initializeInternalStorage() {
         try {
-            userPath = YuzuApplication.appContext.getExternalFilesDir(null)!!.canonicalPath
+            userPath = UzuyApplication.appContext.getExternalFilesDir(null)!!.canonicalPath
             NativeLibrary.setAppDirectory(userPath!!)
         } catch (e: IOException) {
             e.printStackTrace()
@@ -46,7 +46,7 @@ object DirectoryInitialization {
     }
 
     private fun migrateSettings() {
-        val preferences = PreferenceManager.getDefaultSharedPreferences(YuzuApplication.appContext)
+        val preferences = PreferenceManager.getDefaultSharedPreferences(UzuyApplication.appContext)
         var saveConfig = false
         val theme = preferences.migratePreference<Int>(Settings.PREF_THEME)
         if (theme != null) {

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2021 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2021 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <QFileDialog>
@@ -7,8 +7,8 @@
 #include "common/fs/path_util.h"
 #include "common/settings.h"
 #include "ui_configure_tas.h"
-#include "yuzu/configuration/configure_tas.h"
-#include "yuzu/uisettings.h"
+#include "uzuy/configuration/configure_tas.h"
+#include "uzuy/uisettings.h"
 
 ConfigureTasDialog::ConfigureTasDialog(QWidget* parent)
     : QDialog(parent), ui(std::make_unique<Ui::ConfigureTas>()) {
@@ -28,14 +28,14 @@ ConfigureTasDialog::~ConfigureTasDialog() = default;
 
 void ConfigureTasDialog::LoadConfiguration() {
     ui->tas_path_edit->setText(
-        QString::fromStdString(Common::FS::GetYuzuPathString(Common::FS::YuzuPath::TASDir)));
+        QString::fromStdString(Common::FS::GetUzuyPathString(Common::FS::UzuyPath::TASDir)));
     ui->tas_enable->setChecked(Settings::values.tas_enable.GetValue());
     ui->tas_loop_script->setChecked(Settings::values.tas_loop.GetValue());
     ui->tas_pause_on_load->setChecked(Settings::values.pause_tas_on_load.GetValue());
 }
 
 void ConfigureTasDialog::ApplyConfiguration() {
-    Common::FS::SetYuzuPath(Common::FS::YuzuPath::TASDir, ui->tas_path_edit->text().toStdString());
+    Common::FS::SetUzuyPath(Common::FS::UzuyPath::TASDir, ui->tas_path_edit->text().toStdString());
     Settings::values.tas_enable.SetValue(ui->tas_enable->isChecked());
     Settings::values.tas_loop.SetValue(ui->tas_loop_script->isChecked());
     Settings::values.pause_tas_on_load.SetValue(ui->tas_pause_on_load->isChecked());

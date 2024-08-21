@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2021 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2021 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
@@ -471,7 +471,7 @@ struct Values {
         linkage, 0,    "rng_seed",       Category::System, Specialization::Hex,
         true,    true, &rng_seed_enabled};
     Setting<std::string> device_name{
-        linkage, "yuzu", "device_name", Category::System, Specialization::Default, true, true};
+        linkage, "uzuy", "device_name", Category::System, Specialization::Default, true, true};
 
     Setting<s32> current_user{linkage, 0, "current_user", Category::System};
 
@@ -610,11 +610,11 @@ struct Values {
 
     // WebService
     Setting<bool> enable_telemetry{linkage, true, "enable_telemetry", Category::WebService};
-    Setting<std::string> web_api_url{linkage, "https://api.yuzu-emu.org", "web_api_url",
+    Setting<std::string> web_api_url{linkage, "https://api.uzuy-emu.org", "web_api_url",
                                      Category::WebService};
-    Setting<std::string> yuzu_username{linkage, std::string(), "yuzu_username",
+    Setting<std::string> uzuy_username{linkage, std::string(), "uzuy_username",
                                        Category::WebService};
-    Setting<std::string> yuzu_token{linkage, std::string(), "yuzu_token", Category::WebService};
+    Setting<std::string> uzuy_token{linkage, std::string(), "uzuy_token", Category::WebService};
 
     // Add-Ons
     std::map<u64, std::vector<std::string>> disabled_addons;

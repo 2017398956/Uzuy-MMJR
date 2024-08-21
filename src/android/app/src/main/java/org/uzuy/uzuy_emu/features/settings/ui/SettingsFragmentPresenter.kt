@@ -1,32 +1,32 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.features.settings.ui
+package org.uzuy.uzuy_emu.features.settings.ui
 
 import android.annotation.SuppressLint
 import android.os.Build
 import android.widget.Toast
-import org.yuzu.yuzu_emu.NativeLibrary
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.YuzuApplication
-import org.yuzu.yuzu_emu.features.input.NativeInput
-import org.yuzu.yuzu_emu.features.input.model.AnalogDirection
-import org.yuzu.yuzu_emu.features.input.model.NativeAnalog
-import org.yuzu.yuzu_emu.features.input.model.NativeButton
-import org.yuzu.yuzu_emu.features.input.model.NpadStyleIndex
-import org.yuzu.yuzu_emu.features.settings.model.AbstractBooleanSetting
-import org.yuzu.yuzu_emu.features.settings.model.AbstractIntSetting
-import org.yuzu.yuzu_emu.features.settings.model.BooleanSetting
-import org.yuzu.yuzu_emu.features.settings.model.ByteSetting
-import org.yuzu.yuzu_emu.features.settings.model.IntSetting
-import org.yuzu.yuzu_emu.features.settings.model.LongSetting
-import org.yuzu.yuzu_emu.features.settings.model.Settings
-import org.yuzu.yuzu_emu.features.settings.model.Settings.MenuTag
-import org.yuzu.yuzu_emu.features.settings.model.ShortSetting
-import org.yuzu.yuzu_emu.features.settings.model.StringSetting
-import org.yuzu.yuzu_emu.features.settings.model.view.*
-import org.yuzu.yuzu_emu.utils.InputHandler
-import org.yuzu.yuzu_emu.utils.NativeConfig
+import org.uzuy.uzuy_emu.NativeLibrary
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.UzuyApplication
+import org.uzuy.uzuy_emu.features.input.NativeInput
+import org.uzuy.uzuy_emu.features.input.model.AnalogDirection
+import org.uzuy.uzuy_emu.features.input.model.NativeAnalog
+import org.uzuy.uzuy_emu.features.input.model.NativeButton
+import org.uzuy.uzuy_emu.features.input.model.NpadStyleIndex
+import org.uzuy.uzuy_emu.features.settings.model.AbstractBooleanSetting
+import org.uzuy.uzuy_emu.features.settings.model.AbstractIntSetting
+import org.uzuy.uzuy_emu.features.settings.model.BooleanSetting
+import org.uzuy.uzuy_emu.features.settings.model.ByteSetting
+import org.uzuy.uzuy_emu.features.settings.model.IntSetting
+import org.uzuy.uzuy_emu.features.settings.model.LongSetting
+import org.uzuy.uzuy_emu.features.settings.model.Settings
+import org.uzuy.uzuy_emu.features.settings.model.Settings.MenuTag
+import org.uzuy.uzuy_emu.features.settings.model.ShortSetting
+import org.uzuy.uzuy_emu.features.settings.model.StringSetting
+import org.uzuy.uzuy_emu.features.settings.model.view.*
+import org.uzuy.uzuy_emu.utils.InputHandler
+import org.uzuy.uzuy_emu.utils.NativeConfig
 
 class SettingsFragmentPresenter(
     private val settingsViewModel: SettingsViewModel,
@@ -35,7 +35,7 @@ class SettingsFragmentPresenter(
 ) {
     private var settingsList = ArrayList<SettingsItem>()
 
-    private val context get() = YuzuApplication.appContext
+    private val context get() = UzuyApplication.appContext
 
     // Extension for altering settings list based on each setting's properties
     fun ArrayList<SettingsItem>.add(key: String) {

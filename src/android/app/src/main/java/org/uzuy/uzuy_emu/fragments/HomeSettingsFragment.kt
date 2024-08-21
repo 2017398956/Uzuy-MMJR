@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.fragments
+package org.uzuy.uzuy_emu.fragments
 
 import android.Manifest
 import android.content.ActivityNotFoundException
@@ -27,23 +27,23 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.google.android.material.transition.MaterialSharedAxis
-import org.yuzu.yuzu_emu.BuildConfig
-import org.yuzu.yuzu_emu.HomeNavigationDirections
-import org.yuzu.yuzu_emu.NativeLibrary
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.YuzuApplication
-import org.yuzu.yuzu_emu.adapters.HomeSettingAdapter
-import org.yuzu.yuzu_emu.databinding.FragmentHomeSettingsBinding
-import org.yuzu.yuzu_emu.features.DocumentProvider
-import org.yuzu.yuzu_emu.features.settings.model.Settings
-import org.yuzu.yuzu_emu.model.DriverViewModel
-import org.yuzu.yuzu_emu.model.HomeSetting
-import org.yuzu.yuzu_emu.model.HomeViewModel
-import org.yuzu.yuzu_emu.ui.main.MainActivity
-import org.yuzu.yuzu_emu.utils.FileUtil
-import org.yuzu.yuzu_emu.utils.GpuDriverHelper
-import org.yuzu.yuzu_emu.utils.Log
-import org.yuzu.yuzu_emu.utils.ViewUtils.updateMargins
+import org.uzuy.uzuy_emu.BuildConfig
+import org.uzuy.uzuy_emu.HomeNavigationDirections
+import org.uzuy.uzuy_emu.NativeLibrary
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.UzuyApplication
+import org.uzuy.uzuy_emu.adapters.HomeSettingAdapter
+import org.uzuy.uzuy_emu.databinding.FragmentHomeSettingsBinding
+import org.uzuy.uzuy_emu.features.DocumentProvider
+import org.uzuy.uzuy_emu.features.settings.model.Settings
+import org.uzuy.uzuy_emu.model.DriverViewModel
+import org.uzuy.uzuy_emu.model.HomeSetting
+import org.uzuy.uzuy_emu.model.HomeViewModel
+import org.uzuy.uzuy_emu.ui.main.MainActivity
+import org.uzuy.uzuy_emu.utils.FileUtil
+import org.uzuy.uzuy_emu.utils.GpuDriverHelper
+import org.uzuy.uzuy_emu.utils.Log
+import org.uzuy.uzuy_emu.utils.ViewUtils.updateMargins
 
 class HomeSettingsFragment : Fragment() {
     private var _binding: FragmentHomeSettingsBinding? = null
@@ -135,8 +135,8 @@ class HomeSettingsFragment : Fragment() {
             )
             add(
                 HomeSetting(
-                    R.string.manage_yuzu_data,
-                    R.string.manage_yuzu_data_description,
+                    R.string.manage_uzuy_data,
+                    R.string.manage_uzuy_data_description,
                     R.drawable.ic_install,
                     {
                         binding.root.findNavController()
@@ -180,7 +180,7 @@ class HomeSettingsFragment : Fragment() {
                                 )
                             } else {
                                 val failedNames = result.joinToString("\n")
-                                val errorMessage = YuzuApplication.appContext.getString(
+                                val errorMessage = UzuyApplication.appContext.getString(
                                     R.string.verification_failed_for,
                                     failedNames
                                 )
@@ -375,14 +375,14 @@ class HomeSettingsFragment : Fragment() {
             mainActivity,
             DocumentsContract.buildDocumentUri(
                 DocumentProvider.AUTHORITY,
-                "${DocumentProvider.ROOT_ID}/log/yuzu_log.txt"
+                "${DocumentProvider.ROOT_ID}/log/uzuy_log.txt"
             )
         )!!
         val oldLog = DocumentFile.fromSingleUri(
             mainActivity,
             DocumentsContract.buildDocumentUri(
                 DocumentProvider.AUTHORITY,
-                "${DocumentProvider.ROOT_ID}/log/yuzu_log.txt.old.txt"
+                "${DocumentProvider.ROOT_ID}/log/uzuy_log.txt.old.txt"
             )
         )!!
 

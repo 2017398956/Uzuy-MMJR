@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2020 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2020 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <algorithm>
@@ -7,7 +7,7 @@
 #include <QTimer>
 
 #include "hid_core/frontend/emulated_controller.h"
-#include "yuzu/configuration/configure_input_player_widget.h"
+#include "uzuy/configuration/configure_input_player_widget.h"
 
 PlayerControlPreview::PlayerControlPreview(QWidget* parent) : QFrame(parent) {
     is_controller_set = false;

@@ -18,9 +18,9 @@
 #include "configuration/qt_config.h"
 #include "frontend_common/content_manager.h"
 #include "input_common/drivers/tas_input.h"
-#include "yuzu/compatibility_list.h"
-#include "yuzu/hotkeys.h"
-#include "yuzu/util/controller_navigation.h"
+#include "uzuy/compatibility_list.h"
+#include "uzuy/hotkeys.h"
+#include "uzuy/util/controller_navigation.h"
 
 #ifdef __unix__
 #include <QVariant>
@@ -377,7 +377,7 @@ private slots:
     void OnToggleAdaptingFilter();
     void OnConfigurePerGame();
     void OnLoadAmiibo();
-    void OnOpenYuzuFolder();
+    void OnOpenUzuyFolder();
     void OnVerifyInstalledContents();
     void OnInstallFirmware();
     void OnInstallDecryptionKeys();
@@ -510,7 +510,7 @@ private:
 
     std::unique_ptr<QtConfig> config;
 
-    // Whether emulation is currently running in yuzu.
+    // Whether emulation is currently running in uzuy.
     bool emulation_running = false;
     std::unique_ptr<EmuThread> emu_thread;
     // The path to the game currently running

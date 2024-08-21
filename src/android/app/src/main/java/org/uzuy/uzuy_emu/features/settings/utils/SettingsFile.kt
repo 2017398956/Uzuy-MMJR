@@ -1,14 +1,14 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.features.settings.utils
+package org.uzuy.uzuy_emu.features.settings.utils
 
 import android.net.Uri
-import org.yuzu.yuzu_emu.model.Game
+import org.uzuy.uzuy_emu.model.Game
 import java.io.*
-import org.yuzu.yuzu_emu.utils.DirectoryInitialization
-import org.yuzu.yuzu_emu.utils.FileUtil
-import org.yuzu.yuzu_emu.utils.NativeConfig
+import org.uzuy.uzuy_emu.utils.DirectoryInitialization
+import org.uzuy.uzuy_emu.utils.FileUtil
+import org.uzuy.uzuy_emu.utils.NativeConfig
 
 /**
  * Contains static methods for interacting with .ini files in which settings are stored.

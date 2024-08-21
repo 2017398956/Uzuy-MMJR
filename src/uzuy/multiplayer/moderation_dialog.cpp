@@ -6,7 +6,7 @@
 #include "network/network.h"
 #include "network/room_member.h"
 #include "ui_moderation_dialog.h"
-#include "yuzu/multiplayer/moderation_dialog.h"
+#include "uzuy/multiplayer/moderation_dialog.h"
 
 namespace Column {
 enum {

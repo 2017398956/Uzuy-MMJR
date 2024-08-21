@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2022 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2022 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 // SPDX-FileCopyrightText: Copyright 2017 socram8888/amiitool
@@ -271,9 +271,9 @@ void Cipher(const DerivedKeys& keys, const NTAG215File& in_data, NTAG215File& ou
 }
 
 bool LoadKeys(InternalKey& locked_secret, InternalKey& unfixed_info) {
-    const auto yuzu_keys_dir = Common::FS::GetYuzuPath(Common::FS::YuzuPath::KeysDir);
+    const auto uzuy_keys_dir = Common::FS::GetUzuyPath(Common::FS::UzuyPath::KeysDir);
 
-    const Common::FS::IOFile keys_file{yuzu_keys_dir / "key_retail.bin",
+    const Common::FS::IOFile keys_file{uzuy_keys_dir / "key_retail.bin",
                                        Common::FS::FileAccessMode::Read,
                                        Common::FS::FileType::BinaryFile};
 
@@ -295,8 +295,8 @@ bool LoadKeys(InternalKey& locked_secret, InternalKey& unfixed_info) {
 }
 
 bool IsKeyAvailable() {
-    const auto yuzu_keys_dir = Common::FS::GetYuzuPath(Common::FS::YuzuPath::KeysDir);
-    return Common::FS::Exists(yuzu_keys_dir / "key_retail.bin");
+    const auto uzuy_keys_dir = Common::FS::GetUzuyPath(Common::FS::UzuyPath::KeysDir);
+    return Common::FS::Exists(uzuy_keys_dir / "key_retail.bin");
 }
 
 bool DecodeAmiibo(const EncryptedNTAG215File& encrypted_tag_data, NTAG215File& tag_data) {

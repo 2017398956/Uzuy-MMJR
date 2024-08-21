@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2020 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2020 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
@@ -91,13 +91,13 @@ window.addEventListener("gamepaddisconnected", function(e) {
 
 constexpr char WINDOW_NX_SCRIPT[] = R"(
 var end_applet = false;
-var yuzu_key_callbacks = [];
+var uzuy_key_callbacks = [];
 
 (function() {
     class WindowNX {
         constructor() {
-            yuzu_key_callbacks[1] = function() { window.history.back(); };
-            yuzu_key_callbacks[2] = function() { window.nx.endApplet(); };
+            uzuy_key_callbacks[1] = function() { window.history.back(); };
+            uzuy_key_callbacks[2] = function() { window.nx.endApplet(); };
         }
 
         addEventListener(type, listener, options) {
@@ -131,22 +131,22 @@ var yuzu_key_callbacks = [];
 
             switch (key) {
                 case "A":
-                    yuzu_key_callbacks[0] = func;
+                    uzuy_key_callbacks[0] = func;
                     break;
                 case "B":
-                    yuzu_key_callbacks[1] = func;
+                    uzuy_key_callbacks[1] = func;
                     break;
                 case "X":
-                    yuzu_key_callbacks[2] = func;
+                    uzuy_key_callbacks[2] = func;
                     break;
                 case "Y":
-                    yuzu_key_callbacks[3] = func;
+                    uzuy_key_callbacks[3] = func;
                     break;
                 case "L":
-                    yuzu_key_callbacks[6] = func;
+                    uzuy_key_callbacks[6] = func;
                     break;
                 case "R":
-                    yuzu_key_callbacks[7] = func;
+                    uzuy_key_callbacks[7] = func;
                     break;
             }
         }
@@ -160,22 +160,22 @@ var yuzu_key_callbacks = [];
 
             switch (key) {
                 case "A":
-                    yuzu_key_callbacks[0] = function() {};
+                    uzuy_key_callbacks[0] = function() {};
                     break;
                 case "B":
-                    yuzu_key_callbacks[1] = function() {};
+                    uzuy_key_callbacks[1] = function() {};
                     break;
                 case "X":
-                    yuzu_key_callbacks[2] = function() {};
+                    uzuy_key_callbacks[2] = function() {};
                     break;
                 case "Y":
-                    yuzu_key_callbacks[3] = function() {};
+                    uzuy_key_callbacks[3] = function() {};
                     break;
                 case "L":
-                    yuzu_key_callbacks[6] = function() {};
+                    uzuy_key_callbacks[6] = function() {};
                     break;
                 case "R":
-                    yuzu_key_callbacks[7] = function() {};
+                    uzuy_key_callbacks[7] = function() {};
                     break;
             }
         }

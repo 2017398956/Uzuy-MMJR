@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2021 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2021 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <version>
@@ -114,10 +114,10 @@ void LogSettings() {
         LOG_INFO(Config, "{}: {}", name, Common::FS::PathToUTF8String(path));
     };
 
-    LOG_INFO(Config, "yuzu Configuration:");
+    LOG_INFO(Config, "uzuy Configuration:");
     for (auto& [category, settings] : values.linkage.by_category) {
         for (const auto& setting : settings) {
-            if (setting->Id() == values.yuzu_token.Id()) {
+            if (setting->Id() == values.uzuy_token.Id()) {
                 // Hide the token secret, for security reasons.
                 continue;
             }
@@ -130,11 +130,11 @@ void LogSettings() {
             log_setting(name, setting->Canonicalize());
         }
     }
-    log_path("DataStorage_CacheDir", Common::FS::GetYuzuPath(Common::FS::YuzuPath::CacheDir));
-    log_path("DataStorage_ConfigDir", Common::FS::GetYuzuPath(Common::FS::YuzuPath::ConfigDir));
-    log_path("DataStorage_LoadDir", Common::FS::GetYuzuPath(Common::FS::YuzuPath::LoadDir));
-    log_path("DataStorage_NANDDir", Common::FS::GetYuzuPath(Common::FS::YuzuPath::NANDDir));
-    log_path("DataStorage_SDMCDir", Common::FS::GetYuzuPath(Common::FS::YuzuPath::SDMCDir));
+    log_path("DataStorage_CacheDir", Common::FS::GetUzuyPath(Common::FS::UzuyPath::CacheDir));
+    log_path("DataStorage_ConfigDir", Common::FS::GetUzuyPath(Common::FS::UzuyPath::ConfigDir));
+    log_path("DataStorage_LoadDir", Common::FS::GetUzuyPath(Common::FS::UzuyPath::LoadDir));
+    log_path("DataStorage_NANDDir", Common::FS::GetUzuyPath(Common::FS::UzuyPath::NANDDir));
+    log_path("DataStorage_SDMCDir", Common::FS::GetUzuyPath(Common::FS::UzuyPath::SDMCDir));
 }
 
 void UpdateGPUAccuracy() {

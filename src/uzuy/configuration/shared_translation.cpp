@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: Copyright 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#include "yuzu/configuration/shared_translation.h"
+#include "uzuy/configuration/shared_translation.h"
 
 #include <map>
 #include <memory>
@@ -13,7 +13,7 @@
 #include "common/settings_enums.h"
 #include "common/settings_setting.h"
 #include "common/time_zone.h"
-#include "yuzu/uisettings.h"
+#include "uzuy/uisettings.h"
 
 namespace ConfigurationShared {
 
@@ -264,10 +264,10 @@ std::unique_ptr<TranslationMap> InitializeTranslations(QWidget* parent) {
 
     // Ui General
     INSERT(UISettings, select_user_on_boot, tr("Prompt for user on game boot"),
-           tr("Ask to select a user profile on each boot, useful if multiple people use yuzu on "
+           tr("Ask to select a user profile on each boot, useful if multiple people use uzuy on "
               "the same PC."));
     INSERT(UISettings, pause_when_in_background, tr("Pause emulation when in background"),
-           tr("This setting pauses yuzu when focusing other windows."));
+           tr("This setting pauses uzuy when focusing other windows."));
     INSERT(UISettings, confirm_before_stopping, tr("Confirm before stopping emulation"),
            tr("This setting overrides game prompts asking to confirm stopping the game.\nEnabling "
               "it bypasses such prompts and directly exits the emulation."));

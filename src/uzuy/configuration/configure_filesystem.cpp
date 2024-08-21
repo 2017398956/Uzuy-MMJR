@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2019 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2019 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <QFileDialog>
@@ -7,8 +7,8 @@
 #include "common/fs/path_util.h"
 #include "common/settings.h"
 #include "ui_configure_filesystem.h"
-#include "yuzu/configuration/configure_filesystem.h"
-#include "yuzu/uisettings.h"
+#include "uzuy/configuration/configure_filesystem.h"
+#include "uzuy/uisettings.h"
 
 ConfigureFilesystem::ConfigureFilesystem(QWidget* parent)
     : QWidget(parent), ui(std::make_unique<Ui::ConfigureFilesystem>()) {
@@ -47,15 +47,15 @@ void ConfigureFilesystem::changeEvent(QEvent* event) {
 
 void ConfigureFilesystem::SetConfiguration() {
     ui->nand_directory_edit->setText(
-        QString::fromStdString(Common::FS::GetYuzuPathString(Common::FS::YuzuPath::NANDDir)));
+        QString::fromStdString(Common::FS::GetUzuyPathString(Common::FS::UzuyPath::NANDDir)));
     ui->sdmc_directory_edit->setText(
-        QString::fromStdString(Common::FS::GetYuzuPathString(Common::FS::YuzuPath::SDMCDir)));
+        QString::fromStdString(Common::FS::GetUzuyPathString(Common::FS::UzuyPath::SDMCDir)));
     ui->gamecard_path_edit->setText(
         QString::fromStdString(Settings::values.gamecard_path.GetValue()));
     ui->dump_path_edit->setText(
-        QString::fromStdString(Common::FS::GetYuzuPathString(Common::FS::YuzuPath::DumpDir)));
+        QString::fromStdString(Common::FS::GetUzuyPathString(Common::FS::UzuyPath::DumpDir)));
     ui->load_path_edit->setText(
-        QString::fromStdString(Common::FS::GetYuzuPathString(Common::FS::YuzuPath::LoadDir)));
+        QString::fromStdString(Common::FS::GetUzuyPathString(Common::FS::UzuyPath::LoadDir)));
 
     ui->gamecard_inserted->setChecked(Settings::values.gamecard_inserted.GetValue());
     ui->gamecard_current_game->setChecked(Settings::values.gamecard_current_game.GetValue());
@@ -68,13 +68,13 @@ void ConfigureFilesystem::SetConfiguration() {
 }
 
 void ConfigureFilesystem::ApplyConfiguration() {
-    Common::FS::SetYuzuPath(Common::FS::YuzuPath::NANDDir,
+    Common::FS::SetUzuyPath(Common::FS::UzuyPath::NANDDir,
                             ui->nand_directory_edit->text().toStdString());
-    Common::FS::SetYuzuPath(Common::FS::YuzuPath::SDMCDir,
+    Common::FS::SetUzuyPath(Common::FS::UzuyPath::SDMCDir,
                             ui->sdmc_directory_edit->text().toStdString());
-    Common::FS::SetYuzuPath(Common::FS::YuzuPath::DumpDir,
+    Common::FS::SetUzuyPath(Common::FS::UzuyPath::DumpDir,
                             ui->dump_path_edit->text().toStdString());
-    Common::FS::SetYuzuPath(Common::FS::YuzuPath::LoadDir,
+    Common::FS::SetUzuyPath(Common::FS::UzuyPath::LoadDir,
                             ui->load_path_edit->text().toStdString());
 
     Settings::values.gamecard_inserted = ui->gamecard_inserted->isChecked();
@@ -126,12 +126,12 @@ void ConfigureFilesystem::SetDirectory(DirectoryTarget target, QLineEdit* edit) 
 }
 
 void ConfigureFilesystem::ResetMetadata() {
-    if (!Common::FS::Exists(Common::FS::GetYuzuPath(Common::FS::YuzuPath::CacheDir) /
+    if (!Common::FS::Exists(Common::FS::GetUzuyPath(Common::FS::UzuyPath::CacheDir) /
                             "game_list/")) {
         QMessageBox::information(this, tr("Reset Metadata Cache"),
                                  tr("The metadata cache is already empty."));
     } else if (Common::FS::RemoveDirRecursively(
-                   Common::FS::GetYuzuPath(Common::FS::YuzuPath::CacheDir) / "game_list")) {
+                   Common::FS::GetUzuyPath(Common::FS::UzuyPath::CacheDir) / "game_list")) {
         QMessageBox::information(this, tr("Reset Metadata Cache"),
                                  tr("The operation completed successfully."));
         UISettings::values.is_game_list_reload_pending.exchange(true);

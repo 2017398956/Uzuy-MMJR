@@ -1,12 +1,12 @@
-// SPDX-FileCopyrightText: 2024 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2024 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.viewholder
+package org.uzuy.uzuy_emu.viewholder
 
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewbinding.ViewBinding
-import org.yuzu.yuzu_emu.adapters.AbstractDiffAdapter
-import org.yuzu.yuzu_emu.adapters.AbstractListAdapter
+import org.uzuy.uzuy_emu.adapters.AbstractDiffAdapter
+import org.uzuy.uzuy_emu.adapters.AbstractListAdapter
 
 /**
  * [RecyclerView.ViewHolder] meant to work together with a [AbstractDiffAdapter] or a

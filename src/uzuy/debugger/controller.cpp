@@ -9,8 +9,8 @@
 #include "hid_core/hid_core.h"
 #include "input_common/drivers/tas_input.h"
 #include "input_common/main.h"
-#include "yuzu/configuration/configure_input_player_widget.h"
-#include "yuzu/debugger/controller.h"
+#include "uzuy/configuration/configure_input_player_widget.h"
+#include "uzuy/debugger/controller.h"
 
 ControllerDialog::ControllerDialog(Core::HID::HIDCore& hid_core_,
                                    std::shared_ptr<InputCommon::InputSubsystem> input_subsystem_,

@@ -11,11 +11,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>yuzu</string>
+   <string>uzuy</string>
   </property>
   <property name="windowIcon">
-   <iconset resource="yuzu.qrc">
-    <normaloff>:/img/yuzu.ico</normaloff>:/img/yuzu.ico</iconset>
+   <iconset resource="uzuy.qrc">
+    <normaloff>:/img/uzuy.ico</normaloff>:/img/uzuy.ico</iconset>
   </property>
   <property name="tabShape">
    <enum>QTabWidget::Rounded</enum>
@@ -66,7 +66,7 @@
     <addaction name="separator"/>
     <addaction name="action_Load_Amiibo"/>
     <addaction name="separator"/>
-    <addaction name="action_Open_yuzu_Folder"/>
+    <addaction name="action_Open_uzuy_Folder"/>
     <addaction name="separator"/>
     <addaction name="action_Exit"/>
    </widget>
@@ -241,7 +241,7 @@
   </action>
   <action name="action_About">
    <property name="text">
-    <string>&amp;About yuzu</string>
+    <string>&amp;About uzuy</string>
    </property>
   </action>
   <action name="action_Single_Window_Mode">
@@ -374,9 +374,9 @@
     <string>&amp;FAQ</string>
    </property>
   </action>
-  <action name="action_Open_yuzu_Folder">
+  <action name="action_Open_uzuy_Folder">
    <property name="text">
-    <string>Open &amp;yuzu Folder</string>
+    <string>Open &amp;uzuy Folder</string>
    </property>
   </action>
   <action name="action_Capture_Screenshot">
@@ -477,7 +477,7 @@
   </action>
  </widget>
  <resources>
-  <include location="yuzu.qrc"/>
+  <include location="uzuy.qrc"/>
  </resources>
  <connections/>
 </ui>

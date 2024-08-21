@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 
-# SPDX-FileCopyrightText: 2019 yuzu Emulator Project
+# SPDX-FileCopyrightText: 2019 uzuy Emulator Project
 # SPDX-License-Identifier: GPL-2.0-or-later
 
 # Exit on error, rather than continuing with the rest of the script.
@@ -20,10 +20,10 @@ cmake .. \
       -DENABLE_COMPATIBILITY_LIST_DOWNLOAD=ON \
       -DENABLE_QT_TRANSLATION=ON \
       -DUSE_DISCORD_PRESENCE=ON \
-      -DYUZU_ENABLE_COMPATIBILITY_REPORTING=${ENABLE_COMPATIBILITY_REPORTING:-"OFF"} \
-      -DYUZU_USE_BUNDLED_FFMPEG=ON \
-      -DYUZU_ENABLE_LTO=ON \
-      -DYUZU_CRASH_DUMPS=ON \
+      -DUZUY_ENABLE_COMPATIBILITY_REPORTING=${ENABLE_COMPATIBILITY_REPORTING:-"OFF"} \
+      -DUZUY_USE_BUNDLED_FFMPEG=ON \
+      -DUZUY_ENABLE_LTO=ON \
+      -DUZUY_CRASH_DUMPS=ON \
       -GNinja
 
 ninja
@@ -33,7 +33,7 @@ ccache -s
 ctest -VV -C Release
 
 # Separate debug symbols from specified executables
-for EXE in yuzu; do
+for EXE in uzuy; do
     EXE_PATH="bin/$EXE"
     # Copy debug symbols out
     objcopy --only-keep-debug $EXE_PATH $EXE_PATH.debug
@@ -46,12 +46,12 @@ done
 find bin/ -type f -not -regex '.*.debug' -exec strip -g {} ';'
 
 DESTDIR="$PWD/AppDir" ninja install
-rm -vf AppDir/usr/bin/yuzu-cmd AppDir/usr/bin/yuzu-tester
+rm -vf AppDir/usr/bin/uzuy-cmd AppDir/usr/bin/uzuy-tester
 
 # Download tools needed to build an AppImage
-wget -nc https://raw.githubusercontent.com/yuzu-emu/ext-linux-bin/main/appimage/deploy-linux.sh
-wget -nc https://raw.githubusercontent.com/yuzu-emu/AppImageKit-checkrt/old/AppRun.sh
-wget -nc https://github.com/yuzu-emu/ext-linux-bin/raw/main/appimage/exec-x86_64.so
+wget -nc https://raw.githubusercontent.com/uzuy-emu/ext-linux-bin/main/appimage/deploy-linux.sh
+wget -nc https://raw.githubusercontent.com/uzuy-emu/AppImageKit-checkrt/old/AppRun.sh
+wget -nc https://github.com/uzuy-emu/ext-linux-bin/raw/main/appimage/exec-x86_64.so
 # Set executable bit
 chmod 755 \
     deploy-linux.sh \
@@ -65,13 +65,13 @@ mkdir -p AppDir/usr/optional
 mkdir -p AppDir/usr/optional/libstdc++
 mkdir -p AppDir/usr/optional/libgcc_s
 
-# Deploy yuzu's needed dependencies
-DEPLOY_QT=1 ./deploy-linux.sh AppDir/usr/bin/yuzu AppDir
+# Deploy uzuy's needed dependencies
+DEPLOY_QT=1 ./deploy-linux.sh AppDir/usr/bin/uzuy AppDir
 
 # Workaround for libQt5MultimediaGstTools indirectly requiring libwayland-client and breaking Vulkan usage on end-user systems
 find AppDir -type f -regex '.*libwayland-client\.so.*' -delete -print
 
-# Workaround for building yuzu with GCC 10 but also trying to distribute it to Ubuntu 18.04 et al.
+# Workaround for building uzuy with GCC 10 but also trying to distribute it to Ubuntu 18.04 et al.
 # See https://github.com/darealshinji/AppImageKit-checkrt
 cp exec-x86_64.so AppDir/usr/optional/exec.so
 cp AppRun.sh AppDir/AppRun

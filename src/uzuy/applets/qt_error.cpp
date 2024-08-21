@@ -1,9 +1,9 @@
-// SPDX-FileCopyrightText: Copyright 2019 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2019 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <QDateTime>
-#include "yuzu/applets/qt_error.h"
-#include "yuzu/main.h"
+#include "uzuy/applets/qt_error.h"
+#include "uzuy/main.h"
 
 QtErrorDisplay::QtErrorDisplay(GMainWindow& parent) {
     connect(this, &QtErrorDisplay::MainWindowDisplayError, &parent,

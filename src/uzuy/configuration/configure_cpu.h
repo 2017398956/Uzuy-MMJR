@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2020 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2020 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
@@ -6,8 +6,8 @@
 #include <memory>
 #include <vector>
 #include <QWidget>
-#include "yuzu/configuration/configuration_shared.h"
-#include "yuzu/configuration/shared_translation.h"
+#include "uzuy/configuration/configuration_shared.h"
+#include "uzuy/configuration/shared_translation.h"
 
 class QComboBox;
 

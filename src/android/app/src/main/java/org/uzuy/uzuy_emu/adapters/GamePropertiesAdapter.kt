@@ -1,21 +1,21 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.adapters
+package org.uzuy.uzuy_emu.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.LifecycleOwner
-import org.yuzu.yuzu_emu.databinding.CardInstallableIconBinding
-import org.yuzu.yuzu_emu.databinding.CardSimpleOutlinedBinding
-import org.yuzu.yuzu_emu.model.GameProperty
-import org.yuzu.yuzu_emu.model.InstallableProperty
-import org.yuzu.yuzu_emu.model.SubmenuProperty
-import org.yuzu.yuzu_emu.utils.ViewUtils.marquee
-import org.yuzu.yuzu_emu.utils.ViewUtils.setVisible
-import org.yuzu.yuzu_emu.utils.collect
-import org.yuzu.yuzu_emu.viewholder.AbstractViewHolder
+import org.uzuy.uzuy_emu.databinding.CardInstallableIconBinding
+import org.uzuy.uzuy_emu.databinding.CardSimpleOutlinedBinding
+import org.uzuy.uzuy_emu.model.GameProperty
+import org.uzuy.uzuy_emu.model.InstallableProperty
+import org.uzuy.uzuy_emu.model.SubmenuProperty
+import org.uzuy.uzuy_emu.utils.ViewUtils.marquee
+import org.uzuy.uzuy_emu.utils.ViewUtils.setVisible
+import org.uzuy.uzuy_emu.utils.collect
+import org.uzuy.uzuy_emu.viewholder.AbstractViewHolder
 
 class GamePropertiesAdapter(
     private val viewLifecycle: LifecycleOwner,

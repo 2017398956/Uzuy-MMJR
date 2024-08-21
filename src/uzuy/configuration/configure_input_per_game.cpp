@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2022 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "common/settings.h"
@@ -7,8 +7,8 @@
 #include "hid_core/frontend/emulated_controller.h"
 #include "hid_core/hid_core.h"
 #include "ui_configure_input_per_game.h"
-#include "yuzu/configuration/configure_input_per_game.h"
-#include "yuzu/configuration/input_profiles.h"
+#include "uzuy/configuration/configure_input_per_game.h"
+#include "uzuy/configuration/input_profiles.h"
 
 ConfigureInputPerGame::ConfigureInputPerGame(Core::System& system_, QtConfig* config_,
                                              QWidget* parent)

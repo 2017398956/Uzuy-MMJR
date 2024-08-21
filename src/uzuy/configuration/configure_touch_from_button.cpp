@@ -12,8 +12,8 @@
 #include "core/frontend/framebuffer_layout.h"
 #include "input_common/main.h"
 #include "ui_configure_touch_from_button.h"
-#include "yuzu/configuration/configure_touch_from_button.h"
-#include "yuzu/configuration/configure_touch_widget.h"
+#include "uzuy/configuration/configure_touch_from_button.h"
+#include "uzuy/configuration/configure_touch_widget.h"
 
 static QString GetKeyName(int key_code) {
     switch (key_code) {

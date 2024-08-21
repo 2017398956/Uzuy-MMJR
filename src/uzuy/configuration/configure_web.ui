@@ -22,18 +22,18 @@
      <item>
       <widget class="QGroupBox" name="groupBoxWebConfig">
        <property name="title">
-        <string>yuzu Web Service</string>
+        <string>uzuy Web Service</string>
        </property>
-       <layout class="QVBoxLayout" name="verticalLayoutYuzuWebService">
+       <layout class="QVBoxLayout" name="verticalLayoutUzuyWebService">
         <item>
          <widget class="QLabel" name="web_credentials_disclaimer">
           <property name="text">
-           <string>By providing your username and token, you agree to allow yuzu to collect additional usage data, which may include user identifying information.</string>
+           <string>By providing your username and token, you agree to allow uzuy to collect additional usage data, which may include user identifying information.</string>
           </property>
          </widget>
         </item>
         <item>
-         <layout class="QGridLayout" name="gridLayoutYuzuUsername">
+         <layout class="QGridLayout" name="gridLayoutUzuyUsername">
           <item row="2" column="3">
            <widget class="QPushButton" name="button_verify_login">
             <property name="sizePolicy">
@@ -131,7 +131,7 @@
         <item>
          <widget class="QCheckBox" name="toggle_telemetry">
           <property name="text">
-           <string>Share anonymous usage data with the yuzu team</string>
+           <string>Share anonymous usage data with the uzuy team</string>
           </property>
          </widget>
         </item>

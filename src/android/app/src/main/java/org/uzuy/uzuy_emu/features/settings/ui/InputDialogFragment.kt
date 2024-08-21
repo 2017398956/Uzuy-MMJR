@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2024 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2024 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.features.settings.ui
+package org.uzuy.uzuy_emu.features.settings.ui
 
 import android.app.Dialog
 import android.graphics.drawable.Animatable2
@@ -17,17 +17,17 @@ import android.view.ViewGroup
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.activityViewModels
 import com.google.android.material.dialog.MaterialAlertDialogBuilder
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.databinding.DialogMappingBinding
-import org.yuzu.yuzu_emu.features.input.NativeInput
-import org.yuzu.yuzu_emu.features.input.model.NativeAnalog
-import org.yuzu.yuzu_emu.features.input.model.NativeButton
-import org.yuzu.yuzu_emu.features.settings.model.view.AnalogInputSetting
-import org.yuzu.yuzu_emu.features.settings.model.view.ButtonInputSetting
-import org.yuzu.yuzu_emu.features.settings.model.view.InputSetting
-import org.yuzu.yuzu_emu.features.settings.model.view.ModifierInputSetting
-import org.yuzu.yuzu_emu.utils.InputHandler
-import org.yuzu.yuzu_emu.utils.ParamPackage
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.databinding.DialogMappingBinding
+import org.uzuy.uzuy_emu.features.input.NativeInput
+import org.uzuy.uzuy_emu.features.input.model.NativeAnalog
+import org.uzuy.uzuy_emu.features.input.model.NativeButton
+import org.uzuy.uzuy_emu.features.settings.model.view.AnalogInputSetting
+import org.uzuy.uzuy_emu.features.settings.model.view.ButtonInputSetting
+import org.uzuy.uzuy_emu.features.settings.model.view.InputSetting
+import org.uzuy.uzuy_emu.features.settings.model.view.ModifierInputSetting
+import org.uzuy.uzuy_emu.utils.InputHandler
+import org.uzuy.uzuy_emu.utils.ParamPackage
 
 class InputDialogFragment : DialogFragment() {
     private var inputAccepted = false

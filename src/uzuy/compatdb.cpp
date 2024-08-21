@@ -9,7 +9,7 @@
 #include "common/telemetry.h"
 #include "core/telemetry_session.h"
 #include "ui_compatdb.h"
-#include "yuzu/compatdb.h"
+#include "uzuy/compatdb.h"
 
 CompatDB::CompatDB(Core::TelemetrySession& telemetry_session_, QWidget* parent)
     : QWizard(parent, Qt::WindowTitleHint | Qt::WindowCloseButtonHint | Qt::WindowSystemMenuHint),

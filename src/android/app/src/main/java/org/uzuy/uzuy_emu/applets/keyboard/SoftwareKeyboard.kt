@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: Copyright 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.applets.keyboard
+package org.uzuy.uzuy_emu.applets.keyboard
 
 import android.content.Context
 import android.os.Handler
@@ -13,9 +13,9 @@ import android.view.inputmethod.InputMethodManager
 import androidx.annotation.Keep
 import androidx.core.view.ViewCompat
 import java.io.Serializable
-import org.yuzu.yuzu_emu.NativeLibrary
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.applets.keyboard.ui.KeyboardDialogFragment
+import org.uzuy.uzuy_emu.NativeLibrary
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.applets.keyboard.ui.KeyboardDialogFragment
 
 @Keep
 object SoftwareKeyboard {

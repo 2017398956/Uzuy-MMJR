@@ -17,9 +17,9 @@
 #include "common/settings.h"
 #include "core/core.h"
 #include "ui_configure_system.h"
-#include "yuzu/configuration/configuration_shared.h"
-#include "yuzu/configuration/configure_system.h"
-#include "yuzu/configuration/shared_widget.h"
+#include "uzuy/configuration/configuration_shared.h"
+#include "uzuy/configuration/configure_system.h"
+#include "uzuy/configuration/shared_widget.h"
 
 constexpr std::array<u32, 7> LOCALE_BLOCKLIST{
     // pzzefezrpnkzeidfej

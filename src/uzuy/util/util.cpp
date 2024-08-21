@@ -6,7 +6,7 @@
 #include <QPainter>
 
 #include "common/logging/log.h"
-#include "yuzu/util/util.h"
+#include "uzuy/util/util.h"
 
 #ifdef _WIN32
 #include <windows.h>

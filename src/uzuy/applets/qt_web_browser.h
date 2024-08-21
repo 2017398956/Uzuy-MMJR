@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2020 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2020 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
@@ -8,7 +8,7 @@
 
 #include <QObject>
 
-#ifdef YUZU_USE_QT_WEB_ENGINE
+#ifdef UZUY_USE_QT_WEB_ENGINE
 #include <QWebEngineView>
 #endif
 
@@ -30,7 +30,7 @@ namespace InputCommon {
 class InputSubsystem;
 }
 
-#ifdef YUZU_USE_QT_WEB_ENGINE
+#ifdef UZUY_USE_QT_WEB_ENGINE
 
 enum class UserAgent {
     WebApplet,
@@ -108,11 +108,11 @@ protected:
 
 private:
     /**
-     * Handles button presses to execute functions assigned in yuzu_key_callbacks.
-     * yuzu_key_callbacks contains specialized functions for the buttons in the window footer
+     * Handles button presses to execute functions assigned in uzuy_key_callbacks.
+     * uzuy_key_callbacks contains specialized functions for the buttons in the window footer
      * that can be overridden by games to achieve desired functionality.
      *
-     * @tparam HIDButton The list of buttons contained in yuzu_key_callbacks
+     * @tparam HIDButton The list of buttons contained in uzuy_key_callbacks
      */
     template <Core::HID::NpadButton... T>
     void HandleWindowFooterButtonPressedOnce();

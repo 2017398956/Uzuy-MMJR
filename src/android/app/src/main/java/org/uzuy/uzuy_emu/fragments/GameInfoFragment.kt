@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.fragments
+package org.uzuy.uzuy_emu.fragments
 
 import android.content.ClipData
 import android.content.ClipboardManager
@@ -21,14 +21,14 @@ import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import com.google.android.material.transition.MaterialSharedAxis
-import org.yuzu.yuzu_emu.NativeLibrary
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.databinding.FragmentGameInfoBinding
-import org.yuzu.yuzu_emu.model.GameVerificationResult
-import org.yuzu.yuzu_emu.model.HomeViewModel
-import org.yuzu.yuzu_emu.utils.GameMetadata
-import org.yuzu.yuzu_emu.utils.ViewUtils.setVisible
-import org.yuzu.yuzu_emu.utils.ViewUtils.updateMargins
+import org.uzuy.uzuy_emu.NativeLibrary
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.databinding.FragmentGameInfoBinding
+import org.uzuy.uzuy_emu.model.GameVerificationResult
+import org.uzuy.uzuy_emu.model.HomeViewModel
+import org.uzuy.uzuy_emu.utils.GameMetadata
+import org.uzuy.uzuy_emu.utils.ViewUtils.setVisible
+import org.uzuy.uzuy_emu.utils.ViewUtils.updateMargins
 
 class GameInfoFragment : Fragment() {
     private var _binding: FragmentGameInfoBinding? = null

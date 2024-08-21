@@ -1,6 +1,6 @@
 #!/bin/bash -ex
 
-# SPDX-FileCopyrightText: 2024 yuzu Emulator Project
+# SPDX-FileCopyrightText: 2024 uzuy Emulator Project
 # SPDX-License-Identifier: MIT
 
 git submodule sync

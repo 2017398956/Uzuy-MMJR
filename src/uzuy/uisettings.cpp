@@ -4,7 +4,7 @@
 #include <QSettings>
 #include "common/fs/fs.h"
 #include "common/fs/path_util.h"
-#include "yuzu/uisettings.h"
+#include "uzuy/uisettings.h"
 
 #ifndef CANNOT_EXPLICITLY_INSTANTIATE
 namespace Settings {
@@ -57,7 +57,7 @@ u32 CalculateWidth(u32 height, Settings::AspectRatio ratio) {
 
 void SaveWindowState() {
     const auto window_state_config_loc =
-        FS::PathToUTF8String(FS::GetYuzuPath(FS::YuzuPath::ConfigDir) / "window_state.ini");
+        FS::PathToUTF8String(FS::GetUzuyPath(FS::UzuyPath::ConfigDir) / "window_state.ini");
 
     void(FS::CreateParentDir(window_state_config_loc));
     QSettings config(QString::fromStdString(window_state_config_loc), QSettings::IniFormat);
@@ -73,12 +73,12 @@ void SaveWindowState() {
 
 void RestoreWindowState(std::unique_ptr<QtConfig>& qtConfig) {
     const auto window_state_config_loc =
-        FS::PathToUTF8String(FS::GetYuzuPath(FS::YuzuPath::ConfigDir) / "window_state.ini");
+        FS::PathToUTF8String(FS::GetUzuyPath(FS::UzuyPath::ConfigDir) / "window_state.ini");
 
     // Migrate window state from old location
     if (!FS::Exists(window_state_config_loc) && qtConfig->Exists("UI", "UILayout\\geometry")) {
         const auto config_loc =
-            FS::PathToUTF8String(FS::GetYuzuPath(FS::YuzuPath::ConfigDir) / "qt-config.ini");
+            FS::PathToUTF8String(FS::GetUzuyPath(FS::UzuyPath::ConfigDir) / "qt-config.ini");
         QSettings config(QString::fromStdString(config_loc), QSettings::IniFormat);
 
         config.beginGroup(QStringLiteral("UI"));

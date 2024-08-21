@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: Copyright 2020 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2020 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-#ifdef YUZU_USE_QT_WEB_ENGINE
+#ifdef UZUY_USE_QT_WEB_ENGINE
 #include <bit>
 
 #include <QApplication>
@@ -14,17 +14,17 @@
 #include <QWebEngineUrlScheme>
 
 #include "hid_core/frontend/input_interpreter.h"
-#include "yuzu/applets/qt_web_browser_scripts.h"
+#include "uzuy/applets/qt_web_browser_scripts.h"
 #endif
 
 #include "common/fs/path_util.h"
 #include "core/core.h"
 #include "input_common/drivers/keyboard.h"
-#include "yuzu/applets/qt_web_browser.h"
-#include "yuzu/main.h"
-#include "yuzu/util/url_request_interceptor.h"
+#include "uzuy/applets/qt_web_browser.h"
+#include "uzuy/main.h"
+#include "uzuy/util/url_request_interceptor.h"
 
-#ifdef YUZU_USE_QT_WEB_ENGINE
+#ifdef UZUY_USE_QT_WEB_ENGINE
 
 namespace {
 
@@ -57,7 +57,7 @@ QtNXWebEngineView::QtNXWebEngineView(QWidget* parent, Core::System& system,
       default_profile{QWebEngineProfile::defaultProfile()}, global_settings{
                                                                 default_profile->settings()} {
     default_profile->setPersistentStoragePath(QString::fromStdString(Common::FS::PathToUTF8String(
-        Common::FS::GetYuzuPath(Common::FS::YuzuPath::YuzuDir) / "qtwebengine")));
+        Common::FS::GetUzuyPath(Common::FS::UzuyPath::UzuyDir) / "qtwebengine")));
 
     QWebEngineScript gamepad;
     QWebEngineScript window_nx;
@@ -216,7 +216,7 @@ void QtNXWebEngineView::HandleWindowFooterButtonPressedOnce() {
             const auto button_index = std::countr_zero(static_cast<u64>(button));
 
             page()->runJavaScript(
-                QStringLiteral("yuzu_key_callbacks[%1] == null;").arg(button_index),
+                QStringLiteral("uzuy_key_callbacks[%1] == null;").arg(button_index),
                 [this, button](const QVariant& variant) {
                     if (variant.toBool()) {
                         switch (button) {
@@ -239,7 +239,7 @@ void QtNXWebEngineView::HandleWindowFooterButtonPressedOnce() {
                 });
 
             page()->runJavaScript(
-                QStringLiteral("if (yuzu_key_callbacks[%1] != null) { yuzu_key_callbacks[%1](); }")
+                QStringLiteral("if (uzuy_key_callbacks[%1] != null) { uzuy_key_callbacks[%1](); }")
                     .arg(button_index));
         }
     };
@@ -336,7 +336,7 @@ void QtNXWebEngineView::LoadExtractedFonts() {
     QWebEngineScript load_nx_font;
 
     auto fonts_dir_str = Common::FS::PathToUTF8String(
-        Common::FS::GetYuzuPath(Common::FS::YuzuPath::CacheDir) / "fonts/");
+        Common::FS::GetUzuyPath(Common::FS::UzuyPath::CacheDir) / "fonts/");
 
     std::replace(fonts_dir_str.begin(), fonts_dir_str.end(), '\\', '/');
 

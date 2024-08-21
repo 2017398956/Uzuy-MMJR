@@ -1,10 +1,10 @@
-// SPDX-FileCopyrightText: Copyright 2020 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2020 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include "core/core.h"
 #include "ui_configure_input_profile_dialog.h"
-#include "yuzu/configuration/configure_input_player.h"
-#include "yuzu/configuration/configure_input_profile_dialog.h"
+#include "uzuy/configuration/configure_input_player.h"
+#include "uzuy/configuration/configure_input_profile_dialog.h"
 
 ConfigureInputProfileDialog::ConfigureInputProfileDialog(
     QWidget* parent, InputCommon::InputSubsystem* input_subsystem, InputProfiles* profiles,

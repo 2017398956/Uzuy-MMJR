@@ -16,13 +16,13 @@
 #include "core/internal_network/network_interface.h"
 #include "network/announce_multiplayer_session.h"
 #include "ui_host_room.h"
-#include "yuzu/game_list_p.h"
-#include "yuzu/main.h"
-#include "yuzu/multiplayer/host_room.h"
-#include "yuzu/multiplayer/message.h"
-#include "yuzu/multiplayer/state.h"
-#include "yuzu/multiplayer/validation.h"
-#include "yuzu/uisettings.h"
+#include "uzuy/game_list_p.h"
+#include "uzuy/main.h"
+#include "uzuy/multiplayer/host_room.h"
+#include "uzuy/multiplayer/message.h"
+#include "uzuy/multiplayer/state.h"
+#include "uzuy/multiplayer/validation.h"
+#include "uzuy/uisettings.h"
 #ifdef ENABLE_WEB_SERVICE
 #include "web_service/verify_user_jwt.h"
 #endif
@@ -57,9 +57,9 @@ HostRoomWindow::HostRoomWindow(QWidget* parent, QStandardItemModel* list,
     // Restore the settings:
     ui->username->setText(
         QString::fromStdString(UISettings::values.multiplayer_room_nickname.GetValue()));
-    if (ui->username->text().isEmpty() && !Settings::values.yuzu_username.GetValue().empty()) {
-        // Use yuzu Web Service user name as nickname by default
-        ui->username->setText(QString::fromStdString(Settings::values.yuzu_username.GetValue()));
+    if (ui->username->text().isEmpty() && !Settings::values.uzuy_username.GetValue().empty()) {
+        // Use uzuy Web Service user name as nickname by default
+        ui->username->setText(QString::fromStdString(Settings::values.uzuy_username.GetValue()));
     }
     ui->room_name->setText(
         QString::fromStdString(UISettings::values.multiplayer_room_name.GetValue()));
@@ -165,7 +165,7 @@ void HostRoomWindow::Host() {
             const bool created =
                 room->Create(ui->room_name->text().toStdString(),
                              ui->room_description->toPlainText().toStdString(), "", port, password,
-                             ui->max_player->value(), Settings::values.yuzu_username.GetValue(),
+                             ui->max_player->value(), Settings::values.uzuy_username.GetValue(),
                              game, CreateVerifyBackend(is_public), ban_list);
             if (!created) {
                 NetworkMessage::ErrorManager::ShowError(
@@ -184,7 +184,7 @@ void HostRoomWindow::Host() {
                     QMessageBox::warning(
                         this, tr("Error"),
                         tr("Failed to announce the room to the public lobby. In order to host a "
-                           "room publicly, you must have a valid yuzu account configured in "
+                           "room publicly, you must have a valid uzuy account configured in "
                            "Emulation -> Configure -> Web. If you do not want to publish a room in "
                            "the public lobby, then select Unlisted instead.\nDebug Message: ") +
                             QString::fromStdString(result.result_string),
@@ -204,8 +204,8 @@ void HostRoomWindow::Host() {
 #ifdef ENABLE_WEB_SERVICE
         if (is_public) {
             WebService::Client client(Settings::values.web_api_url.GetValue(),
-                                      Settings::values.yuzu_username.GetValue(),
-                                      Settings::values.yuzu_token.GetValue());
+                                      Settings::values.uzuy_username.GetValue(),
+                                      Settings::values.uzuy_token.GetValue());
             if (auto room = room_network.GetRoom().lock()) {
                 token = client.GetExternalJWT(room->GetVerifyUID()).returned_data;
             }

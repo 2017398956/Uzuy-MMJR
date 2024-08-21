@@ -7,8 +7,8 @@
 #include <QtGlobal>
 
 #include "hid_core/frontend/emulated_controller.h"
-#include "yuzu/hotkeys.h"
-#include "yuzu/uisettings.h"
+#include "uzuy/hotkeys.h"
+#include "uzuy/uisettings.h"
 
 HotkeyRegistry::HotkeyRegistry() = default;
 HotkeyRegistry::~HotkeyRegistry() = default;

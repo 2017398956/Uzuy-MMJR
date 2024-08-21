@@ -1,18 +1,18 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.features.settings.ui
+package org.uzuy.uzuy_emu.features.settings.ui
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.YuzuApplication
-import org.yuzu.yuzu_emu.features.settings.model.view.SettingsItem
-import org.yuzu.yuzu_emu.model.Game
-import org.yuzu.yuzu_emu.utils.InputHandler
-import org.yuzu.yuzu_emu.utils.ParamPackage
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.UzuyApplication
+import org.uzuy.uzuy_emu.features.settings.model.view.SettingsItem
+import org.uzuy.uzuy_emu.model.Game
+import org.uzuy.uzuy_emu.utils.InputHandler
+import org.uzuy.uzuy_emu.utils.ParamPackage
 
 class SettingsViewModel : ViewModel() {
     var game: Game? = null
@@ -73,7 +73,7 @@ class SettingsViewModel : ViewModel() {
     fun setSliderTextValue(value: Float, units: String) {
         _sliderProgress.value = value.toInt()
         _sliderTextValue.value = String.format(
-            YuzuApplication.appContext.getString(R.string.value_with_units),
+            UzuyApplication.appContext.getString(R.string.value_with_units),
             value.toInt().toString(),
             units
         )

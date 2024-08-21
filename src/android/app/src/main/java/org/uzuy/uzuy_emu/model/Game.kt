@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.model
+package org.uzuy.uzuy_emu.model
 
 import android.content.Intent
 import android.net.Uri
@@ -9,12 +9,12 @@ import android.os.Parcelable
 import java.util.HashSet
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
-import org.yuzu.yuzu_emu.NativeLibrary
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.YuzuApplication
-import org.yuzu.yuzu_emu.activities.EmulationActivity
-import org.yuzu.yuzu_emu.utils.DirectoryInitialization
-import org.yuzu.yuzu_emu.utils.FileUtil
+import org.uzuy.uzuy_emu.NativeLibrary
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.UzuyApplication
+import org.uzuy.uzuy_emu.activities.EmulationActivity
+import org.uzuy.uzuy_emu.utils.DirectoryInitialization
+import org.uzuy.uzuy_emu.utils.FileUtil
 import java.time.LocalDateTime
 import java.time.format.DateTimeFormatter
 
@@ -52,7 +52,7 @@ class Game(
         }
 
     val saveZipName: String
-        get() = "$title ${YuzuApplication.appContext.getString(R.string.save_data).lowercase()} - ${
+        get() = "$title ${UzuyApplication.appContext.getString(R.string.save_data).lowercase()} - ${
         LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"))
         }.zip"
 
@@ -64,7 +64,7 @@ class Game(
         get() = DirectoryInitialization.userDirectory + "/load/" + programIdHex + "/"
 
     val launchIntent: Intent
-        get() = Intent(YuzuApplication.appContext, EmulationActivity::class.java).apply {
+        get() = Intent(UzuyApplication.appContext, EmulationActivity::class.java).apply {
             action = Intent.ACTION_VIEW
             data = Uri.parse(path)
         }

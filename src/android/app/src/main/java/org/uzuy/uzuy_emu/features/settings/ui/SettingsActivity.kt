@@ -1,7 +1,7 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.features.settings.ui
+package org.uzuy.uzuy_emu.features.settings.ui
 
 import android.os.Bundle
 import android.view.View
@@ -16,14 +16,14 @@ import androidx.core.view.WindowInsetsCompat
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.navArgs
 import com.google.android.material.color.MaterialColors
-import org.yuzu.yuzu_emu.NativeLibrary
+import org.uzuy.uzuy_emu.NativeLibrary
 import java.io.IOException
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.databinding.ActivitySettingsBinding
-import org.yuzu.yuzu_emu.features.input.NativeInput
-import org.yuzu.yuzu_emu.features.settings.utils.SettingsFile
-import org.yuzu.yuzu_emu.fragments.ResetSettingsDialogFragment
-import org.yuzu.yuzu_emu.utils.*
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.databinding.ActivitySettingsBinding
+import org.uzuy.uzuy_emu.features.input.NativeInput
+import org.uzuy.uzuy_emu.features.settings.utils.SettingsFile
+import org.uzuy.uzuy_emu.fragments.ResetSettingsDialogFragment
+import org.uzuy.uzuy_emu.utils.*
 
 class SettingsActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySettingsBinding

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #pragma once
@@ -100,13 +100,13 @@ jfieldID GetPlayerInputButtonColorRightField();
 jfieldID GetPlayerInputProfileNameField();
 jfieldID GetPlayerInputUseSystemVibratorField();
 
-jclass GetYuzuInputDeviceInterface();
-jmethodID GetYuzuDeviceGetName();
-jmethodID GetYuzuDeviceGetGUID();
-jmethodID GetYuzuDeviceGetPort();
-jmethodID GetYuzuDeviceGetSupportsVibration();
-jmethodID GetYuzuDeviceVibrate();
-jmethodID GetYuzuDeviceGetAxes();
-jmethodID GetYuzuDeviceHasKeys();
+jclass GetUzuyInputDeviceInterface();
+jmethodID GetUzuyDeviceGetName();
+jmethodID GetUzuyDeviceGetGUID();
+jmethodID GetUzuyDeviceGetPort();
+jmethodID GetUzuyDeviceGetSupportsVibration();
+jmethodID GetUzuyDeviceVibrate();
+jmethodID GetUzuyDeviceGetAxes();
+jmethodID GetUzuyDeviceHasKeys();
 
 } // namespace Common::Android

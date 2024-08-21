@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2019 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2019 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #include <unordered_map>
@@ -15,11 +15,11 @@
 #include "core/loader/loader.h"
 #include "ui_loading_screen.h"
 #include "video_core/rasterizer_interface.h"
-#include "yuzu/loading_screen.h"
+#include "uzuy/loading_screen.h"
 
 // Mingw seems to not have QMovie at all. If QMovie is missing then use a single frame instead of an
 // showing the full animation
-#if !YUZU_QT_MOVIE_MISSING
+#if !UZUY_QT_MOVIE_MISSING
 #include <QMovie>
 #endif
 
@@ -96,7 +96,7 @@ LoadingScreen::~LoadingScreen() = default;
 void LoadingScreen::Prepare(Loader::AppLoader& loader) {
     std::vector<u8> buffer;
     if (loader.ReadBanner(buffer) == Loader::ResultStatus::Success) {
-#ifdef YUZU_QT_MOVIE_MISSING
+#ifdef UZUY_QT_MOVIE_MISSING
         QPixmap map;
         map.loadFromData(buffer.data(), buffer.size());
         ui->banner->setPixmap(map);
@@ -194,7 +194,7 @@ void LoadingScreen::paintEvent(QPaintEvent* event) {
 }
 
 void LoadingScreen::Clear() {
-#ifndef YUZU_QT_MOVIE_MISSING
+#ifndef UZUY_QT_MOVIE_MISSING
     animation.reset();
     backing_buf.reset();
     backing_mem.reset();

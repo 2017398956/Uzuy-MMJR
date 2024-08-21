@@ -371,7 +371,7 @@
          <item row="2" column="0">
           <widget class="QCheckBox" name="enable_shader_feedback">
            <property name="toolTip">
-            <string>When checked, yuzu will log statistics about the compiled pipeline cache</string>
+            <string>When checked, uzuy will log statistics about the compiled pipeline cache</string>
            </property>
            <property name="text">
             <string>Enable Shader Feedback</string>
@@ -400,7 +400,7 @@
          <item row="3" column="0">
           <widget class="QCheckBox" name="perform_vulkan_check">
            <property name="toolTip">
-            <string>Enables yuzu to check for a working Vulkan environment when the program starts up. Disable this if this is causing issues with external programs seeing yuzu.</string>
+            <string>Enables uzuy to check for a working Vulkan environment when the program starts up. Disable this if this is causing issues with external programs seeing uzuy.</string>
            </property>
            <property name="text">
             <string>Perform Startup Vulkan Check</string>
@@ -546,7 +546,7 @@
        </font>
       </property>
       <property name="text">
-       <string>**This will be reset automatically when yuzu closes.</string>
+       <string>**This will be reset automatically when uzuy closes.</string>
       </property>
       <property name="indent">
        <number>20</number>

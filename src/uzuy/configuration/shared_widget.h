@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
@@ -11,7 +11,7 @@
 #include <QStringLiteral>
 #include <QWidget>
 #include <qobjectdefs.h>
-#include "yuzu/configuration/shared_translation.h"
+#include "uzuy/configuration/shared_translation.h"
 
 class QCheckBox;
 class QComboBox;

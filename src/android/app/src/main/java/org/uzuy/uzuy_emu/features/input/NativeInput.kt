@@ -1,15 +1,15 @@
-// SPDX-FileCopyrightText: 2024 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2024 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.features.input
+package org.uzuy.uzuy_emu.features.input
 
-import org.yuzu.yuzu_emu.features.input.model.NativeButton
-import org.yuzu.yuzu_emu.features.input.model.NativeAnalog
-import org.yuzu.yuzu_emu.features.input.model.InputType
-import org.yuzu.yuzu_emu.features.input.model.ButtonName
-import org.yuzu.yuzu_emu.features.input.model.NpadStyleIndex
-import org.yuzu.yuzu_emu.utils.NativeConfig
-import org.yuzu.yuzu_emu.utils.ParamPackage
+import org.uzuy.uzuy_emu.features.input.model.NativeButton
+import org.uzuy.uzuy_emu.features.input.model.NativeAnalog
+import org.uzuy.uzuy_emu.features.input.model.InputType
+import org.uzuy.uzuy_emu.features.input.model.ButtonName
+import org.uzuy.uzuy_emu.features.input.model.NpadStyleIndex
+import org.uzuy.uzuy_emu.utils.NativeConfig
+import org.uzuy.uzuy_emu.utils.ParamPackage
 import android.view.InputDevice
 
 object NativeInput {
@@ -177,9 +177,9 @@ object NativeInput {
 
     /**
      * Registers a controller to be used with mapping
-     * @param device An [InputDevice] or the input overlay wrapped with [YuzuInputDevice]
+     * @param device An [InputDevice] or the input overlay wrapped with [UzuyInputDevice]
      */
-    external fun registerController(device: YuzuInputDevice)
+    external fun registerController(device: UzuyInputDevice)
 
     /**
      * Gets the names of input devices that have been registered with the input subsystem via [registerController]

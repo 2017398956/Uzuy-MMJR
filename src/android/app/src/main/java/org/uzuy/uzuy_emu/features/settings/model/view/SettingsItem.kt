@@ -1,23 +1,23 @@
-// SPDX-FileCopyrightText: 2023 yuzu Emulator Project
+// SPDX-FileCopyrightText: 2023 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
-package org.yuzu.yuzu_emu.features.settings.model.view
+package org.uzuy.uzuy_emu.features.settings.model.view
 
 import androidx.annotation.StringRes
-import org.yuzu.yuzu_emu.NativeLibrary
-import org.yuzu.yuzu_emu.R
-import org.yuzu.yuzu_emu.YuzuApplication
-import org.yuzu.yuzu_emu.features.input.NativeInput
-import org.yuzu.yuzu_emu.features.input.model.NpadStyleIndex
-import org.yuzu.yuzu_emu.features.settings.model.AbstractBooleanSetting
-import org.yuzu.yuzu_emu.features.settings.model.AbstractSetting
-import org.yuzu.yuzu_emu.features.settings.model.BooleanSetting
-import org.yuzu.yuzu_emu.features.settings.model.ByteSetting
-import org.yuzu.yuzu_emu.features.settings.model.IntSetting
-import org.yuzu.yuzu_emu.features.settings.model.LongSetting
-import org.yuzu.yuzu_emu.features.settings.model.ShortSetting
-import org.yuzu.yuzu_emu.features.settings.model.StringSetting
-import org.yuzu.yuzu_emu.utils.NativeConfig
+import org.uzuy.uzuy_emu.NativeLibrary
+import org.uzuy.uzuy_emu.R
+import org.uzuy.uzuy_emu.UzuyApplication
+import org.uzuy.uzuy_emu.features.input.NativeInput
+import org.uzuy.uzuy_emu.features.input.model.NpadStyleIndex
+import org.uzuy.uzuy_emu.features.settings.model.AbstractBooleanSetting
+import org.uzuy.uzuy_emu.features.settings.model.AbstractSetting
+import org.uzuy.uzuy_emu.features.settings.model.BooleanSetting
+import org.uzuy.uzuy_emu.features.settings.model.ByteSetting
+import org.uzuy.uzuy_emu.features.settings.model.IntSetting
+import org.uzuy.uzuy_emu.features.settings.model.LongSetting
+import org.uzuy.uzuy_emu.features.settings.model.ShortSetting
+import org.uzuy.uzuy_emu.features.settings.model.StringSetting
+import org.uzuy.uzuy_emu.utils.NativeConfig
 
 /**
  * ViewModel abstraction for an Item in the RecyclerView powering SettingsFragments.
@@ -37,14 +37,14 @@ abstract class SettingsItem(
 
     val title: String by lazy {
         if (titleId != 0) {
-            return@lazy YuzuApplication.appContext.getString(titleId)
+            return@lazy UzuyApplication.appContext.getString(titleId)
         }
         return@lazy titleString
     }
 
     val description: String by lazy {
         if (descriptionId != 0) {
-            return@lazy YuzuApplication.appContext.getString(descriptionId)
+            return@lazy UzuyApplication.appContext.getString(descriptionId)
         }
         return@lazy descriptionString
     }

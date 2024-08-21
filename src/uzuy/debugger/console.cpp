@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2018 yuzu Emulator Project
+// SPDX-FileCopyrightText: Copyright 2018 uzuy Emulator Project
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #ifdef _WIN32
@@ -8,8 +8,8 @@
 #endif
 
 #include "common/logging/backend.h"
-#include "yuzu/debugger/console.h"
-#include "yuzu/uisettings.h"
+#include "uzuy/debugger/console.h"
+#include "uzuy/uisettings.h"
 
 namespace Debugger {
 void ToggleConsole() {

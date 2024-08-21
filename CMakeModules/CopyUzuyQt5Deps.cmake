@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2016 Citra Emulator Project
 # SPDX-License-Identifier: GPL-2.0-or-later
 
-function(copy_yuzu_Qt5_deps target_dir)
+function(copy_uzuy_Qt5_deps target_dir)
     include(WindowsCopyFiles)
     if (MSVC)
         set(DLL_DEST "$<TARGET_FILE_DIR:${target_dir}>/")
@@ -29,12 +29,12 @@ function(copy_yuzu_Qt5_deps target_dir)
             Qt5Widgets$<$<CONFIG:Debug>:d>.*
             Qt5Network$<$<CONFIG:Debug>:d>.*
         )
-        if (YUZU_USE_QT_MULTIMEDIA)
+        if (UZUY_USE_QT_MULTIMEDIA)
             windows_copy_files(${target_dir} ${Qt5_DLL_DIR} ${DLL_DEST}
                 Qt5Multimedia$<$<CONFIG:Debug>:d>.*
             )
         endif()
-        if (YUZU_USE_QT_WEB_ENGINE)
+        if (UZUY_USE_QT_WEB_ENGINE)
             windows_copy_files(${target_dir} ${Qt5_DLL_DIR} ${DLL_DEST}
                 Qt5Network$<$<CONFIG:Debug>:d>.*
                 Qt5Positioning$<$<CONFIG:Debug>:d>.*
@@ -57,13 +57,13 @@ function(copy_yuzu_Qt5_deps target_dir)
                 qtwebengine_resources_200p.pak
             )
         endif ()
-        windows_copy_files(yuzu ${Qt5_PLATFORMS_DIR} ${PLATFORMS} qwindows$<$<CONFIG:Debug>:d>.*)
-        windows_copy_files(yuzu ${Qt5_STYLES_DIR} ${STYLES} qwindowsvistastyle$<$<CONFIG:Debug>:d>.*)
-        windows_copy_files(yuzu ${Qt5_IMAGEFORMATS_DIR} ${IMAGEFORMATS}
+        windows_copy_files(uzuy ${Qt5_PLATFORMS_DIR} ${PLATFORMS} qwindows$<$<CONFIG:Debug>:d>.*)
+        windows_copy_files(uzuy ${Qt5_STYLES_DIR} ${STYLES} qwindowsvistastyle$<$<CONFIG:Debug>:d>.*)
+        windows_copy_files(uzuy ${Qt5_IMAGEFORMATS_DIR} ${IMAGEFORMATS}
             qjpeg$<$<CONFIG:Debug>:d>.*
             qgif$<$<CONFIG:Debug>:d>.*
         )
-        windows_copy_files(yuzu ${Qt5_MEDIASERVICE_DIR} ${MEDIASERVICE}
+        windows_copy_files(uzuy ${Qt5_MEDIASERVICE_DIR} ${MEDIASERVICE}
             dsengine$<$<CONFIG:Debug>:d>.*
             wmfengine$<$<CONFIG:Debug>:d>.*
         )
@@ -119,7 +119,7 @@ function(copy_yuzu_Qt5_deps target_dir)
     endif()
     # Create an empty qt.conf file. Qt will detect that this file exists, and use the folder that its in as the root folder.
     # This way it'll look for plugins in the root/plugins/ folder
-    add_custom_command(TARGET yuzu POST_BUILD
+    add_custom_command(TARGET uzuy POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E touch ${DLL_DEST}qt.conf
     )
-endfunction(copy_yuzu_Qt5_deps)
+endfunction(copy_uzuy_Qt5_deps)

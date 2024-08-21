@@ -1,4 +1,4 @@
-# SPDX-FileCopyrightText: 2019 yuzu Emulator Project
+# SPDX-FileCopyrightText: 2019 uzuy Emulator Project
 # SPDX-License-Identifier: GPL-2.0-or-later
 
 param($BUILD_NAME)
@@ -7,18 +7,18 @@ $GITDATE = $(git show -s --date=short --format='%ad') -replace "-", ""
 $GITREV = $(git show -s --format='%h')
 
 if ("$BUILD_NAME" -eq "mainline") {
-    $RELEASE_DIST = "yuzu-windows-msvc"
+    $RELEASE_DIST = "uzuy-windows-msvc"
 }
 else {
-    $RELEASE_DIST = "yuzu-windows-msvc-$BUILD_NAME"
+    $RELEASE_DIST = "uzuy-windows-msvc-$BUILD_NAME"
 }
 
-$MSVC_BUILD_ZIP = "yuzu-windows-msvc-$GITDATE-$GITREV.zip" -replace " ", ""
-$MSVC_BUILD_PDB = "yuzu-windows-msvc-$GITDATE-$GITREV-debugsymbols.zip" -replace " ", ""
-$MSVC_SEVENZIP = "yuzu-windows-msvc-$GITDATE-$GITREV.7z" -replace " ", ""
-$MSVC_TAR = "yuzu-windows-msvc-$GITDATE-$GITREV.tar" -replace " ", ""
-$MSVC_TARXZ = "yuzu-windows-msvc-$GITDATE-$GITREV.tar.xz" -replace " ", ""
-$MSVC_SOURCE = "yuzu-windows-msvc-source-$GITDATE-$GITREV" -replace " ", ""
+$MSVC_BUILD_ZIP = "uzuy-windows-msvc-$GITDATE-$GITREV.zip" -replace " ", ""
+$MSVC_BUILD_PDB = "uzuy-windows-msvc-$GITDATE-$GITREV-debugsymbols.zip" -replace " ", ""
+$MSVC_SEVENZIP = "uzuy-windows-msvc-$GITDATE-$GITREV.7z" -replace " ", ""
+$MSVC_TAR = "uzuy-windows-msvc-$GITDATE-$GITREV.tar" -replace " ", ""
+$MSVC_TARXZ = "uzuy-windows-msvc-$GITDATE-$GITREV.tar.xz" -replace " ", ""
+$MSVC_SOURCE = "uzuy-windows-msvc-source-$GITDATE-$GITREV" -replace " ", ""
 $MSVC_SOURCE_TAR = "$MSVC_SOURCE.tar"
 $MSVC_SOURCE_TARXZ = "$MSVC_SOURCE_TAR.xz"
 
@@ -62,7 +62,7 @@ if ("$env:GITHUB_ACTIONS" -eq "true") {
     cp .\build\bin\*.dll .\artifacts\
 
     # Hopefully there is an exe in either .\build\bin or .\build\bin\Release
-    cp .\build\bin\yuzu*.exe .\artifacts\
+    cp .\build\bin\uzuy*.exe .\artifacts\
     Copy-Item "$BUILD_DIR\*" -Destination "artifacts" -Recurse
     Remove-Item .\artifacts\tests.exe -ErrorAction ignore
 
@@ -70,7 +70,7 @@ if ("$env:GITHUB_ACTIONS" -eq "true") {
     #Copy-Item $MSVC_SOURCE_TARXZ -Destination "artifacts"
 
     # Debugging symbols
-    cp .\build\bin\yuzu*.pdb .\artifacts\
+    cp .\build\bin\uzuy*.pdb .\artifacts\
 
     # Write out a tag BUILD_TAG to environment for the Upload step
     # We're getting ${{ github.event.number }} as $env:PR_NUMBER"
@@ -91,11 +91,11 @@ if ("$env:GITHUB_ACTIONS" -eq "true") {
     echo "BUILD_TAG=$BUILD_TAG" >> $env:GITHUB_ENV
 
     # For extra job, just the exe
-    $INDIVIDUAL_EXE = "yuzu-msvc-$BUILD_TAG.exe"
+    $INDIVIDUAL_EXE = "uzuy-msvc-$BUILD_TAG.exe"
     echo "INDIVIDUAL_EXE=$INDIVIDUAL_EXE"
     echo "INDIVIDUAL_EXE=$INDIVIDUAL_EXE" >> $env:GITHUB_ENV
     echo "Just the exe: $INDIVIDUAL_EXE"
-    cp .\artifacts\yuzu.exe .\$INDIVIDUAL_EXE
+    cp .\artifacts\uzuy.exe .\$INDIVIDUAL_EXE
 
 
 } else {
@@ -104,7 +104,7 @@ if ("$env:GITHUB_ACTIONS" -eq "true") {
 Copy-Item $MSVC_SOURCE_TARXZ -Destination $RELEASE_DIST
 Copy-Item "$BUILD_DIR\*" -Destination $RELEASE_DIST -Recurse
 rm "$RELEASE_DIST\*.exe"
-Get-ChildItem "$BUILD_DIR" -Recurse -Filter "yuzu*.exe" | Copy-Item -destination $RELEASE_DIST
+Get-ChildItem "$BUILD_DIR" -Recurse -Filter "uzuy*.exe" | Copy-Item -destination $RELEASE_DIST
 Get-ChildItem "$BUILD_DIR" -Recurse -Filter "QtWebEngineProcess*.exe" | Copy-Item -destination $RELEASE_DIST
 7z a -tzip $MSVC_BUILD_ZIP $RELEASE_DIST\*
 7z a $MSVC_SEVENZIP $RELEASE_DIST
