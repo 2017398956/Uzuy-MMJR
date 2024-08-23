@@ -928,6 +928,7 @@ bool AccelerateDMA::BufferToImage(const Tegra::DMA::ImageCopy& copy_info,
 
 void RasterizerVulkan::UpdateDynamicStates() {
     auto& regs = maxwell3d->regs;
+
     UpdateViewportsState(regs);
     UpdateScissorsState(regs);
     UpdateDepthBias(regs);
@@ -935,37 +936,80 @@ void RasterizerVulkan::UpdateDynamicStates() {
     UpdateDepthBounds(regs);
     UpdateStencilFaces(regs);
     UpdateLineWidth(regs);
-    if (device.IsExtExtendedDynamicStateSupported()) {
-        UpdateCullMode(regs);
-        UpdateDepthCompareOp(regs);
-        UpdateFrontFace(regs);
-        UpdateStencilOp(regs);
 
-        if (state_tracker.TouchStateEnable()) {
-            UpdateDepthBoundsTestEnable(regs);
-            UpdateDepthTestEnable(regs);
-            UpdateDepthWriteEnable(regs);
-            UpdateStencilTestEnable(regs);
-            if (device.IsExtExtendedDynamicState2Supported()) {
-                UpdatePrimitiveRestartEnable(regs);
-                UpdateRasterizerDiscardEnable(regs);
-                UpdateDepthBiasEnable(regs);
-            }
-            if (device.IsExtExtendedDynamicState3EnablesSupported()) {
-                UpdateLogicOpEnable(regs);
-                UpdateDepthClampEnable(regs);
-            }
-        }
-        if (device.IsExtExtendedDynamicState2ExtrasSupported()) {
-            UpdateLogicOp(regs);
-        }
-        if (device.IsExtExtendedDynamicState3Supported()) {
-            UpdateBlending(regs);
-        }
+    if (device.IsExtExtendedDynamicStateSupported()) {
+        UpdateExtendedDynamicStates(regs);
     }
+
     if (device.IsExtVertexInputDynamicStateSupported()) {
         UpdateVertexInput(regs);
     }
+}
+
+void RasterizerVulkan::UpdateExtendedDynamicStates(RegsType& regs) {
+    UpdateCullMode(regs);
+    UpdateDepthCompareOp(regs);
+    UpdateFrontFace(regs);
+    UpdateStencilOp(regs);
+
+    if (!state_tracker.TouchStateEnable()) {
+        return;
+    }
+
+    UpdateStateEnables(regs);
+
+    if (device.IsExtExtendedDynamicState2ExtrasSupported()) {
+        UpdateLogicOp(regs);
+    }
+
+    if (device.IsExtExtendedDynamicState3Supported()) {
+        UpdateBlending(regs);
+    }
+}
+
+void RasterizerVulkan::UpdateStateEnables(RegsType& regs) {
+    UpdateDepthBoundsTestEnable(regs);
+    UpdateDepthTestEnable(regs);
+    UpdateDepthWriteEnable(regs);
+    UpdateStencilTestEnable(regs);
+
+    if (device.IsExtExtendedDynamicState2Supported()) {
+        UpdatePrimitiveRestartEnable(regs);
+        UpdateRasterizerDiscardEnable(regs);
+        UpdateDepthBiasEnable(regs);
+    }
+
+    if (device.IsExtExtendedDynamicState3EnablesSupported()) {
+        HandleLogicOpForAmdDriver(regs);
+        UpdateDepthClampEnable(regs);
+    }
+}
+
+void RasterizerVulkan::HandleLogicOpForAmdDriver(RegsType& regs) {
+    const auto old_logic_op_enable = regs.logic_op.enable;
+
+    if (IsAmdDriver()) {
+        auto has_float = std::any_of(
+            regs.vertex_attrib_format.begin(),
+            regs.vertex_attrib_format.end(),
+            [](const Tegra::Engines::Maxwell3D::Regs::VertexAttribute& attrib) {
+                return attrib.type == Tegra::Engines::Maxwell3D::Regs::VertexAttribute::Type::Float;
+            });
+
+        regs.logic_op.enable = !has_float;
+    }
+
+    UpdateLogicOpEnable(regs);
+
+    if (IsAmdDriver()) {
+        regs.logic_op.enable = old_logic_op_enable;
+    }
+}
+
+bool RasterizerVulkan::IsAmdDriver() const {
+    auto driver_id = device.GetDriverID();
+    return driver_id == VkDriverIdKHR::VK_DRIVER_ID_AMD_OPEN_SOURCE ||
+           driver_id == VkDriverIdKHR::VK_DRIVER_ID_AMD_OPEN_SOURCE_KHR;
 }
 
 void RasterizerVulkan::HandleTransformFeedback() {
