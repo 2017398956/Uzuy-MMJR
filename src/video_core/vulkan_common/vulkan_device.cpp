@@ -1301,7 +1301,7 @@ void Device::CollectPhysicalMemoryInfo() {
     VkPhysicalDeviceMemoryBudgetPropertiesEXT budget{};
     budget.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT;
     const auto mem_info =
-        physical.GetMemoryProperties(extensions.memory_budget ? &budget : nullptr);
+            physical.GetMemoryProperties(extensions.memory_budget ? &budget : nullptr);
     const auto& mem_properties = mem_info.memoryProperties;
     const size_t num_properties = mem_properties.memoryHeapCount;
     device_access_memory = 0;
@@ -1309,7 +1309,7 @@ void Device::CollectPhysicalMemoryInfo() {
     u64 local_memory = 0;
     for (size_t element = 0; element < num_properties; ++element) {
         const bool is_heap_local =
-            (mem_properties.memoryHeaps[element].flags & VK_MEMORY_HEAP_DEVICE_LOCAL_BIT) != 0;
+                (mem_properties.memoryHeaps[element].flags & VK_MEMORY_HEAP_DEVICE_LOCAL_BIT) != 0;
         if (!is_integrated && !is_heap_local) {
             continue;
         }
@@ -1324,23 +1324,35 @@ void Device::CollectPhysicalMemoryInfo() {
         }
         device_access_memory += mem_properties.memoryHeaps[element].size;
     }
+
+    // Determine memory limit based on available memory
+    u64 total_available_memory = device_access_memory;
+    u64 memory_limit;
+
+    if (total_available_memory >= 8_GiB) {
+        memory_limit = 8_GiB;
+    } else if (total_available_memory >= 6_GiB) {
+        memory_limit = 6_GiB;
+    } else if (total_available_memory >= 4_GiB) {
+        memory_limit = 4_GiB;
+    } else {
+        memory_limit = total_available_memory; // Use available memory if less than 4 GiB
+    }
+
     if (!is_integrated) {
+        // Reserve a portion of memory
         const u64 reserve_memory = std::min<u64>(device_access_memory / 8, 1_GiB);
         device_access_memory -= reserve_memory;
 
-        if (Settings::values.vram_usage_mode.GetValue() != Settings::VramUsageMode::Aggressive) {
-            // Account for resolution scaling in memory limits
-            const size_t normal_memory = 6_GiB;
-            const size_t scaler_memory = 1_GiB * Settings::values.resolution_info.ScaleUp(1);
-            device_access_memory =
-                std::min<u64>(device_access_memory, normal_memory + scaler_memory);
-        }
+        // Adjust memory limit based on available memory
+        device_access_memory = std::min<u64>(device_access_memory, memory_limit);
 
         return;
     }
+
     const s64 available_memory = static_cast<s64>(device_access_memory - device_initial_usage);
     device_access_memory = static_cast<u64>(std::max<s64>(
-        std::min<s64>(available_memory - 8_GiB, 4_GiB), std::min<s64>(local_memory, 4_GiB)));
+            std::min<s64>(available_memory - 8_GiB, 4_GiB), std::min<s64>(local_memory, 4_GiB)));
 }
 
 void Device::CollectToolingInfo() {
