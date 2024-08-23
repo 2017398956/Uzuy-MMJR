@@ -510,17 +510,12 @@ void JNICALL Java_org_uzuy_uzuy_1emu_NativeLibrary_initializeGpuDriver(JNIEnv* e
 }
 
 [[maybe_unused]] bool SupportsCustomDriver() {
-    return android_get_device_api_level() >= 28 && CheckKgslPresent();
+    return android_get_device_api_level() >= 28; // Consider adding && CheckKgslPresent() if KGSL presence is needed
 }
 
 jboolean JNICALL Java_org_uzuy_uzuy_1emu_utils_GpuDriverHelper_supportsCustomDriverLoading(
     JNIEnv* env, jobject instance) {
-#ifdef ARCHITECTURE_arm64
-    // If the KGSL device exists custom drivers can be loaded using adrenotools
     return SupportsCustomDriver();
-#else
-    return false;
-#endif
 }
 
 jobjectArray Java_org_uzuy_uzuy_1emu_utils_GpuDriverHelper_getSystemDriverInfo(
