@@ -424,11 +424,19 @@ void EmitInvocationInfo(EmitContext& ctx, IR::Inst& inst) {
     switch (ctx.stage) {
     case Stage::TessellationControl:
     case Stage::TessellationEval:
-        ctx.AddU32("{}=uint(gl_PatchVerticesIn)<<16;", inst);
+        // Emitting code for tessellation stages, using gl_PatchVerticesIn
+        ctx.AddU32("{} = uint(gl_PatchVerticesIn) << 16;", inst);
+        break;
+    case Stage::Geometry:
+        // Emitting code for geometry stage, using the input topology's vertex count
+        ctx.AddU32("{} = uint({}) << 16;", inst,
+                   InputTopologyVertices::vertices(ctx.runtime_info.input_topology));
         break;
     default:
-        LOG_WARNING(Shader, "(STUBBED) called");
-        ctx.AddU32("{}=uint(0x00ff0000);", inst);
+        // Logging a warning for unhandled stages
+        LOG_WARNING(Shader, "(STUBBED) EmitInvocationInfo called with unhandled stage");
+        ctx.AddU32("{} = uint(0x00ff0000);", inst);
+        break;
     }
 }
 

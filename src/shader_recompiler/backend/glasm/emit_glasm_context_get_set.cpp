@@ -8,6 +8,7 @@
 #include "shader_recompiler/frontend/ir/value.h"
 #include "shader_recompiler/profile.h"
 #include "shader_recompiler/shader_info.h"
+#include "shader_recompiler/runtime_info.h"
 
 namespace Shader::Backend::GLASM {
 namespace {
@@ -404,11 +405,19 @@ void EmitInvocationInfo(EmitContext& ctx, IR::Inst& inst) {
     switch (ctx.stage) {
     case Stage::TessellationControl:
     case Stage::TessellationEval:
-        ctx.Add("SHL.U {}.x,primitive.vertexcount,16;", inst);
+        // Shift the vertex count left by 16 bits
+        ctx.Add("SHL.U {}.x, primitive.vertexcount, 16;", inst);
+        break;
+    case Stage::Geometry:
+        // Shift the number of vertices defined by the input topology left by 16 bits
+        ctx.Add("SHL.U {}.x, {}, 16;", inst,
+                InputTopologyVertices::vertices(ctx.runtime_info.input_topology));
         break;
     default:
-        LOG_WARNING(Shader, "(STUBBED) called");
-        ctx.Add("MOV.S {}.x,0x00ff0000;", inst);
+        // Emit a move instruction with a stubbed warning for unhandled stages
+        LOG_WARNING(Shader, "(STUBBED) EmitInvocationInfo called for unsupported stage");
+        ctx.Add("MOV.S {}.x, 0x00ff0000;", inst);
+        break;
     }
 }
 

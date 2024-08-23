@@ -546,11 +546,17 @@ Id EmitInvocationId(EmitContext& ctx) {
 Id EmitInvocationInfo(EmitContext& ctx) {
     switch (ctx.stage) {
     case Stage::TessellationControl:
-    case Stage::TessellationEval:
-        return ctx.OpShiftLeftLogical(ctx.U32[1], ctx.OpLoad(ctx.U32[1], ctx.patch_vertices_in),
-                                      ctx.Const(16u));
+    case Stage::TessellationEval: {
+        // Load the number of patch vertices and perform a left shift by 16 bits
+        Id patch_vertices = ctx.OpLoad(ctx.U32[1], ctx.patch_vertices_in);
+        return ctx.OpShiftLeftLogical(ctx.U32[1], patch_vertices, ctx.Const(16u));
+    }
+    case Stage::Geometry:
+        // Return the number of vertices in the input topology, left-shifted by 16 bits
+        return ctx.Const(InputTopologyVertices::vertices(ctx.runtime_info.input_topology) << 16);
     default:
-        LOG_WARNING(Shader, "(STUBBED) called");
+        // Log a warning for unhandled stages and return a constant placeholder value
+        LOG_WARNING(Shader, "(STUBBED) EmitInvocationInfo called for unsupported stage");
         return ctx.Const(0x00ff0000u);
     }
 }
