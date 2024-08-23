@@ -22,26 +22,6 @@ enum class AttributeType : u8 {
     Disabled,
 };
 
-// The InputTopologyVertices struct provides a mapping from InputTopology enum values
-// to the corresponding number of vertices used by that topology.
-struct InputTopologyVertices {
-    static u32 vertices(InputTopology input_topology) {
-        switch (input_topology) {
-        case InputTopology::Lines:
-            return 2;
-        case InputTopology::LinesAdjacency:
-            return 4;
-        case InputTopology::Triangles:
-            return 3;
-        case InputTopology::TrianglesAdjacency:
-            return 6;
-        case InputTopology::Points:
-        default:
-            return 1;
-        }
-    }
-};
-
 enum class InputTopology {
     Points,
     Lines,
