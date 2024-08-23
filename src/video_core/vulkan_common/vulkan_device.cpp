@@ -1297,6 +1297,10 @@ u64 Device::GetDeviceMemoryUsage() const {
 }
 
 void Device::CollectPhysicalMemoryInfo() {
+    // Account for resolution scaling in memory limits
+    const size_t base_memory = 6_GiB; // Base memory for scaling
+    const size_t scaler_memory = 1_GiB * Settings::values.resolution_info.ScaleUp(1);
+
     // Calculate limits using memory budget
     VkPhysicalDeviceMemoryBudgetPropertiesEXT budget{};
     budget.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_MEMORY_BUDGET_PROPERTIES_EXT;
@@ -1324,23 +1328,45 @@ void Device::CollectPhysicalMemoryInfo() {
         }
         device_access_memory += mem_properties.memoryHeaps[element].size;
     }
-    if (!is_integrated) {
-        const u64 reserve_memory = std::min<u64>(device_access_memory / 8, 1_GiB);
-        device_access_memory -= reserve_memory;
 
-        if (Settings::values.vram_usage_mode.GetValue() != Settings::VramUsageMode::Aggressive) {
-            // Account for resolution scaling in memory limits
-            const size_t normal_memory = 6_GiB;
-            const size_t scaler_memory = 1_GiB * Settings::values.resolution_info.ScaleUp(1);
-            device_access_memory =
-                std::min<u64>(device_access_memory, normal_memory + scaler_memory);
-        }
+    // Calculate a dynamic memory limit based on available memory
+    u64 total_available_memory = device_access_memory;
+
+    // Calculate dynamic memory limits based on percentages
+    const float high_memory_threshold = 0.75f; // 75% of total memory
+    const float medium_memory_threshold = 0.50f; // 50% of total memory
+    const float low_memory_threshold = 0.25f; // 25% of total memory
+
+    u64 memory_limit;
+
+    if (total_available_memory >= high_memory_threshold * 8_GiB) {
+        memory_limit = static_cast<u64>(high_memory_threshold * total_available_memory);
+    } else if (total_available_memory >= medium_memory_threshold * 6_GiB) {
+        memory_limit = static_cast<u64>(medium_memory_threshold * total_available_memory);
+    } else if (total_available_memory >= low_memory_threshold * 4_GiB) {
+        memory_limit = static_cast<u64>(low_memory_threshold * total_available_memory);
+    } else {
+        memory_limit = total_available_memory; // Use all available memory if less than 4 GiB
+    }
+
+    if (!is_integrated) {
+        // Reserve a dynamic portion of memory based on a percentage
+        const float reserve_memory_percentage = 0.125f; // 12.5% of available memory
+        const u64 reserve_memory = static_cast<u64>(reserve_memory_percentage * device_access_memory);
+        device_access_memory -= std::min<u64>(reserve_memory, 1_GiB); // Cap reserve memory at 1 GiB
+        device_access_memory = std::min<u64>(device_access_memory, base_memory + scaler_memory);
+
+        // Adjust memory limit based on dynamically calculated available memory
+        device_access_memory = std::min<u64>(device_access_memory, memory_limit);
 
         return;
     }
+
     const s64 available_memory = static_cast<s64>(device_access_memory - device_initial_usage);
     device_access_memory = static_cast<u64>(std::max<s64>(
-        std::min<s64>(available_memory - 8_GiB, 4_GiB), std::min<s64>(local_memory, 4_GiB)));
+        std::min<s64>(available_memory - static_cast<s64>(high_memory_threshold * 8_GiB),
+                      static_cast<s64>(medium_memory_threshold * 4_GiB)),
+        std::min<s64>(local_memory, static_cast<s64>(medium_memory_threshold * 4_GiB))));
 }
 
 void Device::CollectToolingInfo() {
