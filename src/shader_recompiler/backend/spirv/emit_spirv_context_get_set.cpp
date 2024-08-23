@@ -551,9 +551,28 @@ Id EmitInvocationInfo(EmitContext& ctx) {
         Id patch_vertices = ctx.OpLoad(ctx.U32[1], ctx.patch_vertices_in);
         return ctx.OpShiftLeftLogical(ctx.U32[1], patch_vertices, ctx.Const(16u));
     }
-    case Stage::Geometry:
-        // Return the number of vertices in the input topology, left-shifted by 16 bits
-        return ctx.Const(InputTopologyVertices::vertices(ctx.runtime_info.input_topology) << 16);
+    case Stage::Geometry: {
+        // Calculate the number of vertices for the input topology
+        u32 vertex_count = 1;  // Default to 1 for unsupported topologies
+        switch (ctx.runtime_info.input_topology) {
+            case InputTopology::Lines:
+                vertex_count = 2;
+                break;
+            case InputTopology::LinesAdjacency:
+                vertex_count = 4;
+                break;
+            case InputTopology::Triangles:
+                vertex_count = 3;
+                break;
+            case InputTopology::TrianglesAdjacency:
+                vertex_count = 6;
+                break;
+            default:
+                break;
+        }
+        // Return the number of vertices left-shifted by 16 bits
+        return ctx.Const(vertex_count << 16);
+    }
     default:
         // Log a warning for unhandled stages and return a constant placeholder value
         LOG_WARNING(Shader, "(STUBBED) EmitInvocationInfo called for unsupported stage");

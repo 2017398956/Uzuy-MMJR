@@ -425,17 +425,35 @@ void EmitInvocationInfo(EmitContext& ctx, IR::Inst& inst) {
     case Stage::TessellationControl:
     case Stage::TessellationEval:
         // Emitting code for tessellation stages, using gl_PatchVerticesIn
-        ctx.AddU32("{} = uint(gl_PatchVerticesIn) << 16;", inst);
+        ctx.Add("{}.x = uint(gl_PatchVerticesIn) << 16;", inst);
         break;
-    case Stage::Geometry:
+    case Stage::Geometry: {
+        // Determine the number of vertices based on the input topology
+        u32 vertex_count = 1;  // Default to 1 for points and other unsupported topologies
+        switch (ctx.runtime_info.input_topology) {
+            case InputTopology::Lines:
+                vertex_count = 2;
+                break;
+            case InputTopology::LinesAdjacency:
+                vertex_count = 4;
+                break;
+            case InputTopology::Triangles:
+                vertex_count = 3;
+                break;
+            case InputTopology::TrianglesAdjacency:
+                vertex_count = 6;
+                break;
+            default:
+                break;
+        }
         // Emitting code for geometry stage, using the input topology's vertex count
-        ctx.AddU32("{} = uint({}) << 16;", inst,
-                   InputTopologyVertices::vertices(ctx.runtime_info.input_topology));
+        ctx.Add("{}.x = uint({}) << 16;", inst, vertex_count);
         break;
+    }
     default:
         // Logging a warning for unhandled stages
         LOG_WARNING(Shader, "(STUBBED) EmitInvocationInfo called with unhandled stage");
-        ctx.AddU32("{} = uint(0x00ff0000);", inst);
+        ctx.Add("{}.x = uint(0x00ff0000);", inst);
         break;
     }
 }
