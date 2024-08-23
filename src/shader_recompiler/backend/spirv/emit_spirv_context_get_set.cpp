@@ -569,6 +569,16 @@ Id EmitIsHelperInvocation(EmitContext& ctx) {
     return ctx.OpLoad(ctx.U1, ctx.is_helper_invocation);
 }
 
+Id EmitSR_WScaleFactorXY(EmitContext& ctx) {
+    // TODO: Implement the logic to handle WScaleFactorXY
+    return ctx.Const(1.0f); // Placeholder stub logic
+}
+
+Id EmitSR_WScaleFactorZ(EmitContext& ctx) {
+    // TODO: Implement the logic to handle WScaleFactorZ
+    return ctx.Const(1.0f); // Placeholder stub logic
+}
+
 Id EmitYDirection(EmitContext& ctx) {
     return ctx.Const(ctx.runtime_info.y_negate ? -1.0f : 1.0f);
 }

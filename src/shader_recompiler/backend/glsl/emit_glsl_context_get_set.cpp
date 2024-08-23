@@ -448,6 +448,16 @@ void EmitIsHelperInvocation(EmitContext& ctx, IR::Inst& inst) {
     ctx.AddU1("{}=gl_HelperInvocation;", inst);
 }
 
+void EmitSR_WScaleFactorXY(EmitContext& ctx, IR::Inst& inst) {
+    // TODO: Implement the logic to handle WScaleFactorXY
+    ctx.AddF32("{} = 1.0;", inst); // Placeholder stub logic
+}
+
+void EmitSR_WScaleFactorZ(EmitContext& ctx, IR::Inst& inst) {
+    // TODO: Implement the logic to handle WScaleFactorZ
+    ctx.AddF32("{} = 1.0;", inst); // Placeholder stub logic
+}
+
 void EmitYDirection(EmitContext& ctx, IR::Inst& inst) {
     ctx.uses_y_direction = true;
     ctx.AddF32("{}=gl_FrontMaterial.ambient.a;", inst);
