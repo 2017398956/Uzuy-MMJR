@@ -104,8 +104,11 @@ android {
             }
 
             resValue("string", "app_name_suffixed", "Uzuy MMJR")
+            isDefault = true
+            isShrinkResources = true
             isMinifyEnabled = true
             isDebuggable = false
+            isJniDebuggable = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android.txt"),
                 "proguard-rules.pro"
@@ -115,7 +118,6 @@ android {
         // builds a release build that doesn't need signing
         // Attaches 'debug' suffix to version and package name, allowing installation alongside the release build.
         register("relWithDebInfo") {
-            isDefault = true
             resValue("string", "app_name_suffixed", "Uzuy MMJR")
             signingConfig = signingConfigs.getByName("default")
             isMinifyEnabled = true
