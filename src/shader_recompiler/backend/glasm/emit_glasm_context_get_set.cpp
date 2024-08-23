@@ -7,8 +7,8 @@
 #include "shader_recompiler/backend/glasm/glasm_emit_context.h"
 #include "shader_recompiler/frontend/ir/value.h"
 #include "shader_recompiler/profile.h"
-#include "shader_recompiler/runtime_info.h"
 #include "shader_recompiler/shader_info.h"
+#include "shader_recompiler/runtime_info.h"
 
 namespace Shader::Backend::GLASM {
 namespace {
@@ -408,30 +408,11 @@ void EmitInvocationInfo(EmitContext& ctx, IR::Inst& inst) {
         // Shift the vertex count left by 16 bits
         ctx.Add("SHL.U {}.x, primitive.vertexcount, 16;", inst);
         break;
-    case Stage::Geometry: {
-        // Determine the number of vertices based on the input topology
-        u32 vertex_count = 1;  // Default to 1 for points and other unsupported topologies
-        switch (ctx.runtime_info.input_topology) {
-            case InputTopology::Lines:
-                vertex_count = 2;
-                break;
-            case InputTopology::LinesAdjacency:
-                vertex_count = 4;
-                break;
-            case InputTopology::Triangles:
-                vertex_count = 3;
-                break;
-            case InputTopology::TrianglesAdjacency:
-                vertex_count = 6;
-                break;
-            // Points and any other topologies default to 1
-            default:
-                break;
-        }
-        // Shift the number of vertices left by 16 bits
-        ctx.Add("SHL.U {}.x, {}, 16;", inst, vertex_count);
+    case Stage::Geometry:
+        // Shift the number of vertices defined by the input topology left by 16 bits
+        ctx.Add("SHL.U {}.x, {}, 16;", inst,
+                InputTopologyVertices::vertices(ctx.runtime_info.input_topology));
         break;
-    }
     default:
         // Emit a move instruction with a stubbed warning for unhandled stages
         LOG_WARNING(Shader, "(STUBBED) EmitInvocationInfo called for unsupported stage");
