@@ -28,19 +28,19 @@ android {
     namespace = "org.uzuy.uzuy_emu"
 
     compileSdkVersion = "android-34"
-    ndkVersion = "26.1.10909125"
+    ndkVersion = "27.0.12077973"// "26.1.10909125"
 
     buildFeatures {
         viewBinding = true
     }
 
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
+        sourceCompatibility = JavaVersion.VERSION_21
+        targetCompatibility = JavaVersion.VERSION_21
     }
 
     kotlinOptions {
-        jvmTarget = "17"
+        jvmTarget = "21"
     }
 
     packaging {
