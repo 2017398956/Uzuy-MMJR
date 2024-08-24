@@ -110,7 +110,7 @@ android {
             isDebuggable = false
             isJniDebuggable = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android.txt"),
+                getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
@@ -123,7 +123,7 @@ android {
             isMinifyEnabled = true
             isDebuggable = true
             proguardFiles(
-                getDefaultProguardFile("proguard-android.txt"),
+                getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
             versionNameSuffix = "-relWithDebInfo"
