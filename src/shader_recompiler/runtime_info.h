@@ -30,6 +30,26 @@ enum class InputTopology {
     TrianglesAdjacency,
 };
 
+struct InputTopologyVertices {
+    static u32 vertices(InputTopology input_topology) {
+        switch (input_topology) {
+        case InputTopology::Lines:
+            return 2; // Two vertices per line
+        case InputTopology::LinesAdjacency:
+            return 4; // Four vertices per line with adjacency information
+        case InputTopology::Triangles:
+            return 3; // Three vertices per triangle
+        case InputTopology::TrianglesAdjacency:
+            return 6; // Six vertices per triangle with adjacency information
+        case InputTopology::Points:
+            return 1; // One vertex per point
+        default:
+            LOG_WARNING(Shader, "Unknown input topology. Defaulting to 1 vertex.");
+            return 1; // Default case to handle unexpected topologies
+        }
+    }
+};
+
 enum class CompareFunction {
     Never,
     Less,
