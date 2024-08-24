@@ -148,13 +148,6 @@ android {
         create("mainline") {
             isDefault = true
             dimension = "version"
-            buildConfigField("Boolean", "PREMIUM", "true")
-        }
-
-        create("ea") {
-            dimension = "version"
-            buildConfigField("Boolean", "PREMIUM", "true")
-            applicationIdSuffix = ".ea"
         }
     }
 
