@@ -15,8 +15,10 @@
 #include "common/polyfill_ranges.h"
 #include "common/scope_exit.h"
 #include "common/settings.h"
+#include "common/telemetry.h"
 #include "core/core_timing.h"
 #include "core/frontend/graphics_context.h"
+#include "core/telemetry_session.h"
 #include "video_core/capture.h"
 #include "video_core/gpu.h"
 #include "video_core/present.h"
@@ -38,14 +40,14 @@
 #include <jni.h>
 
 namespace Vulkan {
-namespace {
+    namespace {
 
-constexpr VkExtent2D CaptureImageSize{
-    .width = VideoCore::Capture::LinearWidth,
-    .height = VideoCore::Capture::LinearHeight,
-};
+        constexpr VkExtent2D CaptureImageSize{
+        .width = VideoCore::Capture::LinearWidth,
+        .height = VideoCore::Capture::LinearHeight,
+    };
 
-constexpr VkExtent3D CaptureImageExtent{
+    constexpr VkExtent3D CaptureImageExtent{
     .width = VideoCore::Capture::LinearWidth,
     .height = VideoCore::Capture::LinearHeight,
     .depth = VideoCore::Capture::LinearDepth,
@@ -79,7 +81,7 @@ std::string GetDriverVersion(const Device& device) {
 }
 
 std::string BuildCommaSeparatedExtensions(
-    const std::set<std::string, std::less<>>& available_extensions) {
+        const std::set<std::string, std::less<>>& available_extensions) {
     return fmt::format("{}", fmt::join(available_extensions, ","));
 }
 
@@ -97,31 +99,32 @@ Device CreateDevice(const vk::Instance& instance, const vk::InstanceDispatch& dl
     return Device(*instance, physical_device, surface, dld);
 }
 
-RendererVulkan::RendererVulkan(Core::Frontend::EmuWindow& emu_window,
+RendererVulkan::RendererVulkan(Core::TelemetrySession& telemetry_session_,
+                               Core::Frontend::EmuWindow& emu_window,
                                Tegra::MaxwellDeviceMemoryManager& device_memory_, Tegra::GPU& gpu_,
                                std::unique_ptr<Core::Frontend::GraphicsContext> context_) try
-    : RendererBase(emu_window, std::move(context_)), device_memory(device_memory_), gpu(gpu_),
-      library(OpenLibrary(context.get())),
-      instance(CreateInstance(*library, dld, VK_API_VERSION_1_1, render_window.GetWindowInfo().type,
-                              Settings::values.renderer_debug.GetValue())),
-      debug_messenger(Settings::values.renderer_debug ? CreateDebugUtilsCallback(instance)
-                                                      : vk::DebugUtilsMessenger{}),
-      surface(CreateSurface(instance, render_window.GetWindowInfo())),
-      device(CreateDevice(instance, dld, *surface)), memory_allocator(device), state_tracker(),
-      scheduler(device, state_tracker),
-      swapchain(*surface, device, scheduler, render_window.GetFramebufferLayout().width,
-                render_window.GetFramebufferLayout().height),
-      present_manager(instance, render_window, device, memory_allocator, scheduler, swapchain,
-                      surface),
-      blit_swapchain(device_memory, device, memory_allocator, present_manager, scheduler,
-                     PresentFiltersForDisplay),
-      blit_capture(device_memory, device, memory_allocator, present_manager, scheduler,
-                   PresentFiltersForDisplay),
-      blit_applet(device_memory, device, memory_allocator, present_manager, scheduler,
-                  PresentFiltersForAppletCapture),
-      rasterizer(render_window, gpu, device_memory, device, memory_allocator, state_tracker,
-                 scheduler),
-      applet_frame() {
+        : RendererBase(emu_window, std::move(context_)), telemetry_session(telemetry_session_),
+          device_memory(device_memory_), gpu(gpu_), library(OpenLibrary(context.get())),
+          instance(CreateInstance(*library, dld, VK_API_VERSION_1_1, render_window.GetWindowInfo().type,
+                                  Settings::values.renderer_debug.GetValue())),
+          debug_messenger(Settings::values.renderer_debug ? CreateDebugUtilsCallback(instance)
+                                                          : vk::DebugUtilsMessenger{}),
+          surface(CreateSurface(instance, render_window.GetWindowInfo())),
+          device(CreateDevice(instance, dld, *surface)), memory_allocator(device), state_tracker(),
+          scheduler(device, state_tracker),
+          swapchain(*surface, device, scheduler, render_window.GetFramebufferLayout().width,
+                    render_window.GetFramebufferLayout().height),
+          present_manager(instance, render_window, device, memory_allocator, scheduler, swapchain,
+                          surface),
+          blit_swapchain(device_memory, device, memory_allocator, present_manager, scheduler,
+                         PresentFiltersForDisplay),
+          blit_capture(device_memory, device, memory_allocator, present_manager, scheduler,
+                       PresentFiltersForDisplay),
+          blit_applet(device_memory, device, memory_allocator, present_manager, scheduler,
+                      PresentFiltersForAppletCapture),
+          rasterizer(render_window, gpu, device_memory, device, memory_allocator, state_tracker,
+                     scheduler),
+          applet_frame() {
     if (Settings::values.renderer_force_max_clock.GetValue() && device.ShouldBoostClocks()) {
         turbo_mode.emplace(instance, dld);
         scheduler.RegisterOnSubmit([this] { turbo_mode->QueueSubmitted(); });
@@ -201,7 +204,7 @@ void RendererVulkan::Composite(std::span<const Tegra::FramebufferConfig> framebu
     }
 
     SCOPE_EXIT {
-        render_window.OnFrameDisplayed();
+            render_window.OnFrameDisplayed();
     };
 
     RenderAppletCaptureLayer(framebuffers);
@@ -241,6 +244,13 @@ void RendererVulkan::Report() const {
     LOG_INFO(Render_Vulkan, "Device: {}", model_name);
     LOG_INFO(Render_Vulkan, "Vulkan: {}", api_version);
     LOG_INFO(Render_Vulkan, "Available VRAM: {:.2f} GiB", available_vram);
+
+    static constexpr auto field = Common::Telemetry::FieldType::UserSystem;
+    telemetry_session.AddField(field, "GPU_Vendor", vendor_name);
+    telemetry_session.AddField(field, "GPU_Model", model_name);
+    telemetry_session.AddField(field, "GPU_Vulkan_Driver", driver_name);
+    telemetry_session.AddField(field, "GPU_Vulkan_Version", api_version);
+    telemetry_session.AddField(field, "GPU_Vulkan_Extensions", extensions);
 }
 
 vk::Buffer RendererVulkan::RenderToBuffer(std::span<const Tegra::FramebufferConfig> framebuffers,
@@ -249,7 +259,7 @@ vk::Buffer RendererVulkan::RenderToBuffer(std::span<const Tegra::FramebufferConf
     auto frame = [&]() {
         Frame f{};
         f.image =
-            CreateWrappedImage(memory_allocator, VkExtent2D{layout.width, layout.height}, format);
+                CreateWrappedImage(memory_allocator, VkExtent2D{layout.width, layout.height}, format);
         f.image_view = CreateWrappedImageView(device, f.image, format);
         f.framebuffer = blit_capture.CreateFramebuffer(layout, *f.image_view, format);
         return f;
@@ -297,7 +307,7 @@ std::vector<u8> RendererVulkan::GetAppletCaptureBuffer() {
     }
 
     const auto dst_buffer =
-        CreateWrappedBuffer(memory_allocator, VideoCore::Capture::TiledSize, MemoryUsage::Download);
+            CreateWrappedBuffer(memory_allocator, VideoCore::Capture::TiledSize, MemoryUsage::Download);
 
     scheduler.RequestOutsideRenderPassOperationContext();
     scheduler.Record([&](vk::CommandBuffer cmdbuf) {
@@ -316,12 +326,12 @@ std::vector<u8> RendererVulkan::GetAppletCaptureBuffer() {
 }
 
 void RendererVulkan::RenderAppletCaptureLayer(
-    std::span<const Tegra::FramebufferConfig> framebuffers) {
+        std::span<const Tegra::FramebufferConfig> framebuffers) {
     if (!applet_frame.image) {
         applet_frame.image = CreateWrappedImage(memory_allocator, CaptureImageSize, CaptureFormat);
         applet_frame.image_view = CreateWrappedImageView(device, applet_frame.image, CaptureFormat);
         applet_frame.framebuffer = blit_applet.CreateFramebuffer(
-            VideoCore::Capture::Layout, *applet_frame.image_view, CaptureFormat);
+                VideoCore::Capture::Layout, *applet_frame.image_view, CaptureFormat);
     }
 
     blit_applet.DrawToFrame(rasterizer, &applet_frame, framebuffers, VideoCore::Capture::Layout, 1,
