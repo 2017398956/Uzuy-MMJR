@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: Copyright 2018 uzuy Emulator Project
+// SPDX-FileCopyrightText: Copyright 2024 Uzuy MMJR
 // SPDX-License-Identifier: GPL-2.0-or-later
 
 #pragma once
@@ -21,10 +21,6 @@
 #include "video_core/vulkan_common/vulkan_memory_allocator.h"
 #include "video_core/vulkan_common/vulkan_wrapper.h"
 
-namespace Core {
-class TelemetrySession;
-}
-
 namespace Core::Memory {
 class Memory;
 }
@@ -40,8 +36,7 @@ Device CreateDevice(const vk::Instance& instance, const vk::InstanceDispatch& dl
 
 class RendererVulkan final : public VideoCore::RendererBase {
 public:
-    explicit RendererVulkan(Core::TelemetrySession& telemtry_session,
-                            Core::Frontend::EmuWindow& emu_window,
+    explicit RendererVulkan(Core::Frontend::EmuWindow& emu_window,
                             Tegra::MaxwellDeviceMemoryManager& device_memory_, Tegra::GPU& gpu_,
                             std::unique_ptr<Core::Frontend::GraphicsContext> context_);
     ~RendererVulkan() override;
@@ -59,6 +54,11 @@ public:
     }
 
 private:
+    void InterpolateFrames(Frame* prev_frame, Frame* curr_frame);
+    Frame* previous_frame = nullptr;  // Store the previous frame for interpolation
+    VkCommandBuffer BeginSingleTimeCommands();
+    void EndSingleTimeCommands(VkCommandBuffer command_buffer);
+
     void Report() const;
 
     vk::Buffer RenderToBuffer(std::span<const Tegra::FramebufferConfig> framebuffers,
@@ -67,7 +67,6 @@ private:
     void RenderScreenshot(std::span<const Tegra::FramebufferConfig> framebuffers);
     void RenderAppletCaptureLayer(std::span<const Tegra::FramebufferConfig> framebuffers);
 
-    Core::TelemetrySession& telemetry_session;
     Tegra::MaxwellDeviceMemoryManager& device_memory;
     Tegra::GPU& gpu;
 

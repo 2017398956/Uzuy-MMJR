@@ -35,6 +35,7 @@
 #include "video_core/vulkan_common/vulkan_memory_allocator.h"
 #include "video_core/vulkan_common/vulkan_surface.h"
 #include "video_core/vulkan_common/vulkan_wrapper.h"
+#include <jni.h>
 
 namespace Vulkan {
 namespace {
@@ -136,25 +137,67 @@ RendererVulkan::~RendererVulkan() {
     void(device.GetLogical().WaitIdle());
 }
 
+class BooleanSetting {
+public:
+    static BooleanSetting ENABLE_FRAME_SKIPPING;
+    static BooleanSetting ENABLE_FRAME_INTERPOLATION;
+
+    BooleanSetting(bool initial_value = false) : value(initial_value) {}
+
+    bool getBoolean() const {
+        return value;
+    }
+
+    void setBoolean(bool new_value) {
+        value = new_value;
+    }
+
+private:
+    bool value;
+};
+
+// Initialize static members
+BooleanSetting BooleanSetting::ENABLE_FRAME_SKIPPING(false);
+BooleanSetting BooleanSetting::ENABLE_FRAME_INTERPOLATION(false);
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_org_uzuy_uzuy_emu_features_settings_model_BooleanSetting_isFrameSkippingEnabled(JNIEnv* env, jobject /* this */) {
+    return static_cast<jboolean>(BooleanSetting::ENABLE_FRAME_SKIPPING.getBoolean());
+}
+
+extern "C" JNIEXPORT jboolean JNICALL
+Java_org_uzuy_uzuy_emu_features_settings_model_BooleanSetting_isFrameInterpolationEnabled(JNIEnv* env, jobject /* this */) {
+    return static_cast<jboolean>(BooleanSetting::ENABLE_FRAME_INTERPOLATION.getBoolean());
+}
+
 void RendererVulkan::Composite(std::span<const Tegra::FramebufferConfig> framebuffers) {
     static int frame_counter = 0;
     static int target_fps = 60; // Target FPS (30 or 60)
     int frame_skip_threshold = 1;
 
+    bool enable_frame_skipping = BooleanSetting::ENABLE_FRAME_SKIPPING.getBoolean();
+    bool enable_frame_interpolation = BooleanSetting::ENABLE_FRAME_INTERPOLATION.getBoolean();
+
     if (framebuffers.empty()) {
         return;
     }
 
-    // Adjust the frame skip threshold based on the target FPS
-    if (target_fps == 30) {
-        frame_skip_threshold = 1; // Skip every other frame for 30 FPS
-    } else if (target_fps == 60) {
-        frame_skip_threshold = 2; // No frame skip for 60 FPS
+    if (enable_frame_skipping) {
+        frame_skip_threshold = (target_fps == 30) ? 2 : 1;
     }
 
     frame_counter++;
     if (frame_counter % frame_skip_threshold != 0) {
-        return; // Skip this frame
+        if (enable_frame_interpolation && previous_frame) {
+            Frame* interpolated_frame = present_manager.GetRenderFrame();
+            InterpolateFrames(previous_frame, interpolated_frame);
+            blit_swapchain.DrawToFrame(rasterizer, interpolated_frame, framebuffers,
+                                       render_window.GetFramebufferLayout(), swapchain.GetImageCount(),
+                                       swapchain.GetImageViewFormat());
+            scheduler.Flush(*interpolated_frame->render_ready);
+            present_manager.Present(interpolated_frame);
+        }
+        return;
     }
 
     SCOPE_EXIT {
@@ -177,6 +220,8 @@ void RendererVulkan::Composite(std::span<const Tegra::FramebufferConfig> framebu
 
     gpu.RendererFrameEndNotify();
     rasterizer.TickFrame();
+
+    previous_frame = frame;
 }
 
 void RendererVulkan::Report() const {
