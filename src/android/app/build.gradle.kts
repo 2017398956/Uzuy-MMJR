@@ -28,7 +28,7 @@ android {
     namespace = "org.uzuy.uzuy_emu"
 
     compileSdkVersion = "android-34"
-    ndkVersion = "27.0.12077973"// "26.1.10909125"
+    ndkVersion = "26.3.11579264"// "26.1.10909125"
 
     buildFeatures {
         viewBinding = true
