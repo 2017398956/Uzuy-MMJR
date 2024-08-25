@@ -160,8 +160,8 @@ private:
 };
 
 // Initialize static members
-BooleanSetting BooleanSetting::ENABLE_FRAME_SKIPPING(false);
-BooleanSetting BooleanSetting::ENABLE_FRAME_INTERPOLATION(false);
+BooleanSetting BooleanSetting::ENABLE_FRAME_SKIPPING(true);
+BooleanSetting BooleanSetting::ENABLE_FRAME_INTERPOLATION(true);
 
 extern "C" JNIEXPORT jboolean JNICALL
 Java_org_uzuy_uzuy_emu_features_settings_model_BooleanSetting_isFrameSkippingEnabled(JNIEnv* env, jobject /* this */) {
@@ -186,7 +186,7 @@ void RendererVulkan::Composite(std::span<const Tegra::FramebufferConfig> framebu
     }
 
     if (enable_frame_skipping) {
-        frame_skip_threshold = (target_fps == 30) ? 2 : 1;
+        frame_skip_threshold = (target_fps == 30) ? 2 : 2;
     }
 
     frame_counter++;
