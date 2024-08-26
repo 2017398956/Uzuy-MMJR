@@ -540,8 +540,8 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback {
 
                     if (_binding != null) {
                         binding.showFpsText.text = String.format(
-                            "FPS: %.1f\nMEM: %d MB\n%s/%s",
-                            perfStats[FPS], usedMegs, cpuBackend, gpuDriver
+                            "FPS: %.1f%d Speed: %d%%\nMEM: %d MB\n%s/%s",
+                            (perfStats[FPS] + 0.5).toInt(), (perfStats[SPEED] * 100.0 + 0.5).toInt(), usedMegs, cpuBackend, gpuDriver
                         )
                     }
                     perfStatsUpdateHandler.postDelayed(perfStatsUpdater!!, 2000)
