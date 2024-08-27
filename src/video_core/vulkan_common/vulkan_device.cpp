@@ -24,61 +24,61 @@
 #endif
 
 namespace Vulkan {
-using namespace Common::Literals;
-namespace {
-namespace Alternatives {
-constexpr std::array STENCIL8_UINT{
-    VK_FORMAT_D16_UNORM_S8_UINT,
-    VK_FORMAT_D24_UNORM_S8_UINT,
-    VK_FORMAT_D32_SFLOAT_S8_UINT,
-    VK_FORMAT_UNDEFINED,
-};
+    using namespace Common::Literals;
+    namespace {
+        namespace Alternatives {
+            constexpr std::array STENCIL8_UINT{
+            VK_FORMAT_D16_UNORM_S8_UINT,
+            VK_FORMAT_D24_UNORM_S8_UINT,
+            VK_FORMAT_D32_SFLOAT_S8_UINT,
+            VK_FORMAT_UNDEFINED,
+        };
 
-constexpr std::array DEPTH24_UNORM_STENCIL8_UINT{
-    VK_FORMAT_D32_SFLOAT_S8_UINT,
-    VK_FORMAT_D16_UNORM_S8_UINT,
-    VK_FORMAT_UNDEFINED,
-};
+        constexpr std::array DEPTH24_UNORM_STENCIL8_UINT{
+        VK_FORMAT_D32_SFLOAT_S8_UINT,
+        VK_FORMAT_D16_UNORM_S8_UINT,
+        VK_FORMAT_UNDEFINED,
+    };
 
-constexpr std::array DEPTH16_UNORM_STENCIL8_UINT{
+    constexpr std::array DEPTH16_UNORM_STENCIL8_UINT{
     VK_FORMAT_D24_UNORM_S8_UINT,
     VK_FORMAT_D32_SFLOAT_S8_UINT,
     VK_FORMAT_UNDEFINED,
 };
 
 constexpr std::array B5G6R5_UNORM_PACK16{
-    VK_FORMAT_R5G6B5_UNORM_PACK16,
-    VK_FORMAT_UNDEFINED,
+VK_FORMAT_R5G6B5_UNORM_PACK16,
+VK_FORMAT_UNDEFINED,
 };
 
 constexpr std::array R4G4_UNORM_PACK8{
-    VK_FORMAT_R8_UNORM,
-    VK_FORMAT_UNDEFINED,
+VK_FORMAT_R8_UNORM,
+VK_FORMAT_UNDEFINED,
 };
 
 constexpr std::array R16G16B16_SFLOAT{
-    VK_FORMAT_R16G16B16A16_SFLOAT,
-    VK_FORMAT_UNDEFINED,
+VK_FORMAT_R16G16B16A16_SFLOAT,
+VK_FORMAT_UNDEFINED,
 };
 
 constexpr std::array R16G16B16_SSCALED{
-    VK_FORMAT_R16G16B16A16_SSCALED,
-    VK_FORMAT_UNDEFINED,
+VK_FORMAT_R16G16B16A16_SSCALED,
+VK_FORMAT_UNDEFINED,
 };
 
 constexpr std::array R8G8B8_SSCALED{
-    VK_FORMAT_R8G8B8A8_SSCALED,
-    VK_FORMAT_UNDEFINED,
+VK_FORMAT_R8G8B8A8_SSCALED,
+VK_FORMAT_UNDEFINED,
 };
 
 constexpr std::array VK_FORMAT_R32G32B32_SFLOAT{
-    VK_FORMAT_R32G32B32A32_SFLOAT,
-    VK_FORMAT_UNDEFINED,
+VK_FORMAT_R32G32B32A32_SFLOAT,
+VK_FORMAT_UNDEFINED,
 };
 
 constexpr std::array VK_FORMAT_A4B4G4R4_UNORM_PACK16{
-    VK_FORMAT_R4G4B4A4_UNORM_PACK16,
-    VK_FORMAT_UNDEFINED,
+VK_FORMAT_R4G4B4A4_UNORM_PACK16,
+VK_FORMAT_UNDEFINED,
 };
 
 } // namespace Alternatives
@@ -90,186 +90,186 @@ void SetNext(void**& next, T& data) {
 }
 
 constexpr const VkFormat* GetFormatAlternatives(VkFormat format) {
-    switch (format) {
-    case VK_FORMAT_S8_UINT:
-        return Alternatives::STENCIL8_UINT.data();
-    case VK_FORMAT_D24_UNORM_S8_UINT:
-        return Alternatives::DEPTH24_UNORM_STENCIL8_UINT.data();
-    case VK_FORMAT_D16_UNORM_S8_UINT:
-        return Alternatives::DEPTH16_UNORM_STENCIL8_UINT.data();
-    case VK_FORMAT_B5G6R5_UNORM_PACK16:
-        return Alternatives::B5G6R5_UNORM_PACK16.data();
-    case VK_FORMAT_R4G4_UNORM_PACK8:
-        return Alternatives::R4G4_UNORM_PACK8.data();
-    case VK_FORMAT_R16G16B16_SFLOAT:
-        return Alternatives::R16G16B16_SFLOAT.data();
-    case VK_FORMAT_R16G16B16_SSCALED:
-        return Alternatives::R16G16B16_SSCALED.data();
-    case VK_FORMAT_R8G8B8_SSCALED:
-        return Alternatives::R8G8B8_SSCALED.data();
-    case VK_FORMAT_R32G32B32_SFLOAT:
-        return Alternatives::VK_FORMAT_R32G32B32_SFLOAT.data();
-    case VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT:
-        return Alternatives::VK_FORMAT_A4B4G4R4_UNORM_PACK16.data();
-    default:
-        return nullptr;
-    }
+switch (format) {
+case VK_FORMAT_S8_UINT:
+return Alternatives::STENCIL8_UINT.data();
+case VK_FORMAT_D24_UNORM_S8_UINT:
+return Alternatives::DEPTH24_UNORM_STENCIL8_UINT.data();
+case VK_FORMAT_D16_UNORM_S8_UINT:
+return Alternatives::DEPTH16_UNORM_STENCIL8_UINT.data();
+case VK_FORMAT_B5G6R5_UNORM_PACK16:
+return Alternatives::B5G6R5_UNORM_PACK16.data();
+case VK_FORMAT_R4G4_UNORM_PACK8:
+return Alternatives::R4G4_UNORM_PACK8.data();
+case VK_FORMAT_R16G16B16_SFLOAT:
+return Alternatives::R16G16B16_SFLOAT.data();
+case VK_FORMAT_R16G16B16_SSCALED:
+return Alternatives::R16G16B16_SSCALED.data();
+case VK_FORMAT_R8G8B8_SSCALED:
+return Alternatives::R8G8B8_SSCALED.data();
+case VK_FORMAT_R32G32B32_SFLOAT:
+return Alternatives::VK_FORMAT_R32G32B32_SFLOAT.data();
+case VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT:
+return Alternatives::VK_FORMAT_A4B4G4R4_UNORM_PACK16.data();
+default:
+return nullptr;
+}
 }
 
 VkFormatFeatureFlags GetFormatFeatures(VkFormatProperties properties, FormatType format_type) {
     switch (format_type) {
-    case FormatType::Linear:
-        return properties.linearTilingFeatures;
-    case FormatType::Optimal:
-        return properties.optimalTilingFeatures;
-    case FormatType::Buffer:
-        return properties.bufferFeatures;
-    default:
-        return {};
+        case FormatType::Linear:
+            return properties.linearTilingFeatures;
+        case FormatType::Optimal:
+            return properties.optimalTilingFeatures;
+        case FormatType::Buffer:
+            return properties.bufferFeatures;
+        default:
+            return {};
     }
 }
 
 std::unordered_map<VkFormat, VkFormatProperties> GetFormatProperties(vk::PhysicalDevice physical) {
     static constexpr std::array formats{
-        VK_FORMAT_A1R5G5B5_UNORM_PACK16,
-        VK_FORMAT_A2B10G10R10_SINT_PACK32,
-        VK_FORMAT_A2B10G10R10_SNORM_PACK32,
-        VK_FORMAT_A2B10G10R10_SSCALED_PACK32,
-        VK_FORMAT_A2B10G10R10_UINT_PACK32,
-        VK_FORMAT_A2B10G10R10_UNORM_PACK32,
-        VK_FORMAT_A2B10G10R10_USCALED_PACK32,
-        VK_FORMAT_A2R10G10B10_UNORM_PACK32,
-        VK_FORMAT_A8B8G8R8_SINT_PACK32,
-        VK_FORMAT_A8B8G8R8_SNORM_PACK32,
-        VK_FORMAT_A8B8G8R8_SRGB_PACK32,
-        VK_FORMAT_A8B8G8R8_UINT_PACK32,
-        VK_FORMAT_A8B8G8R8_UNORM_PACK32,
-        VK_FORMAT_ASTC_10x10_SRGB_BLOCK,
-        VK_FORMAT_ASTC_10x10_UNORM_BLOCK,
-        VK_FORMAT_ASTC_10x5_SRGB_BLOCK,
-        VK_FORMAT_ASTC_10x5_UNORM_BLOCK,
-        VK_FORMAT_ASTC_10x6_SRGB_BLOCK,
-        VK_FORMAT_ASTC_10x6_UNORM_BLOCK,
-        VK_FORMAT_ASTC_10x8_SRGB_BLOCK,
-        VK_FORMAT_ASTC_10x8_UNORM_BLOCK,
-        VK_FORMAT_ASTC_12x10_SRGB_BLOCK,
-        VK_FORMAT_ASTC_12x10_UNORM_BLOCK,
-        VK_FORMAT_ASTC_12x12_SRGB_BLOCK,
-        VK_FORMAT_ASTC_12x12_UNORM_BLOCK,
-        VK_FORMAT_ASTC_4x4_SRGB_BLOCK,
-        VK_FORMAT_ASTC_4x4_UNORM_BLOCK,
-        VK_FORMAT_ASTC_5x4_SRGB_BLOCK,
-        VK_FORMAT_ASTC_5x4_UNORM_BLOCK,
-        VK_FORMAT_ASTC_5x5_SRGB_BLOCK,
-        VK_FORMAT_ASTC_5x5_UNORM_BLOCK,
-        VK_FORMAT_ASTC_6x5_SRGB_BLOCK,
-        VK_FORMAT_ASTC_6x5_UNORM_BLOCK,
-        VK_FORMAT_ASTC_6x6_SRGB_BLOCK,
-        VK_FORMAT_ASTC_6x6_UNORM_BLOCK,
-        VK_FORMAT_ASTC_8x5_SRGB_BLOCK,
-        VK_FORMAT_ASTC_8x5_UNORM_BLOCK,
-        VK_FORMAT_ASTC_8x6_SRGB_BLOCK,
-        VK_FORMAT_ASTC_8x6_UNORM_BLOCK,
-        VK_FORMAT_ASTC_8x8_SRGB_BLOCK,
-        VK_FORMAT_ASTC_8x8_UNORM_BLOCK,
-        VK_FORMAT_B10G11R11_UFLOAT_PACK32,
-        VK_FORMAT_B4G4R4A4_UNORM_PACK16,
-        VK_FORMAT_B5G5R5A1_UNORM_PACK16,
-        VK_FORMAT_B5G6R5_UNORM_PACK16,
-        VK_FORMAT_B8G8R8A8_SRGB,
-        VK_FORMAT_B8G8R8A8_UNORM,
-        VK_FORMAT_BC1_RGBA_SRGB_BLOCK,
-        VK_FORMAT_BC1_RGBA_UNORM_BLOCK,
-        VK_FORMAT_BC2_SRGB_BLOCK,
-        VK_FORMAT_BC2_UNORM_BLOCK,
-        VK_FORMAT_BC3_SRGB_BLOCK,
-        VK_FORMAT_BC3_UNORM_BLOCK,
-        VK_FORMAT_BC4_SNORM_BLOCK,
-        VK_FORMAT_BC4_UNORM_BLOCK,
-        VK_FORMAT_BC5_SNORM_BLOCK,
-        VK_FORMAT_BC5_UNORM_BLOCK,
-        VK_FORMAT_BC6H_SFLOAT_BLOCK,
-        VK_FORMAT_BC6H_UFLOAT_BLOCK,
-        VK_FORMAT_BC7_SRGB_BLOCK,
-        VK_FORMAT_BC7_UNORM_BLOCK,
-        VK_FORMAT_D16_UNORM,
-        VK_FORMAT_D16_UNORM_S8_UINT,
-        VK_FORMAT_X8_D24_UNORM_PACK32,
-        VK_FORMAT_D24_UNORM_S8_UINT,
-        VK_FORMAT_D32_SFLOAT,
-        VK_FORMAT_D32_SFLOAT_S8_UINT,
-        VK_FORMAT_E5B9G9R9_UFLOAT_PACK32,
-        VK_FORMAT_R16G16B16A16_SFLOAT,
-        VK_FORMAT_R16G16B16A16_SINT,
-        VK_FORMAT_R16G16B16A16_SNORM,
-        VK_FORMAT_R16G16B16A16_SSCALED,
-        VK_FORMAT_R16G16B16A16_UINT,
-        VK_FORMAT_R16G16B16A16_UNORM,
-        VK_FORMAT_R16G16B16A16_USCALED,
-        VK_FORMAT_R16G16B16_SFLOAT,
-        VK_FORMAT_R16G16B16_SINT,
-        VK_FORMAT_R16G16B16_SNORM,
-        VK_FORMAT_R16G16B16_SSCALED,
-        VK_FORMAT_R16G16B16_UINT,
-        VK_FORMAT_R16G16B16_UNORM,
-        VK_FORMAT_R16G16B16_USCALED,
-        VK_FORMAT_R16G16_SFLOAT,
-        VK_FORMAT_R16G16_SINT,
-        VK_FORMAT_R16G16_SNORM,
-        VK_FORMAT_R16G16_SSCALED,
-        VK_FORMAT_R16G16_UINT,
-        VK_FORMAT_R16G16_UNORM,
-        VK_FORMAT_R16G16_USCALED,
-        VK_FORMAT_R16_SFLOAT,
-        VK_FORMAT_R16_SINT,
-        VK_FORMAT_R16_SNORM,
-        VK_FORMAT_R16_SSCALED,
-        VK_FORMAT_R16_UINT,
-        VK_FORMAT_R16_UNORM,
-        VK_FORMAT_R16_USCALED,
-        VK_FORMAT_R32G32B32A32_SFLOAT,
-        VK_FORMAT_R32G32B32A32_SINT,
-        VK_FORMAT_R32G32B32A32_UINT,
-        VK_FORMAT_R32G32B32_SFLOAT,
-        VK_FORMAT_R32G32B32_SINT,
-        VK_FORMAT_R32G32B32_UINT,
-        VK_FORMAT_R32G32_SFLOAT,
-        VK_FORMAT_R32G32_SINT,
-        VK_FORMAT_R32G32_UINT,
-        VK_FORMAT_R32_SFLOAT,
-        VK_FORMAT_R32_SINT,
-        VK_FORMAT_R32_UINT,
-        VK_FORMAT_R4G4B4A4_UNORM_PACK16,
-        VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT,
-        VK_FORMAT_R4G4_UNORM_PACK8,
-        VK_FORMAT_R5G5B5A1_UNORM_PACK16,
-        VK_FORMAT_R5G6B5_UNORM_PACK16,
-        VK_FORMAT_R8G8B8A8_SINT,
-        VK_FORMAT_R8G8B8A8_SNORM,
-        VK_FORMAT_R8G8B8A8_SRGB,
-        VK_FORMAT_R8G8B8A8_SSCALED,
-        VK_FORMAT_R8G8B8A8_UINT,
-        VK_FORMAT_R8G8B8A8_UNORM,
-        VK_FORMAT_R8G8B8A8_USCALED,
-        VK_FORMAT_R8G8B8_SINT,
-        VK_FORMAT_R8G8B8_SNORM,
-        VK_FORMAT_R8G8B8_SSCALED,
-        VK_FORMAT_R8G8B8_UINT,
-        VK_FORMAT_R8G8B8_UNORM,
-        VK_FORMAT_R8G8B8_USCALED,
-        VK_FORMAT_R8G8_SINT,
-        VK_FORMAT_R8G8_SNORM,
-        VK_FORMAT_R8G8_SSCALED,
-        VK_FORMAT_R8G8_UINT,
-        VK_FORMAT_R8G8_UNORM,
-        VK_FORMAT_R8G8_USCALED,
-        VK_FORMAT_R8_SINT,
-        VK_FORMAT_R8_SNORM,
-        VK_FORMAT_R8_SSCALED,
-        VK_FORMAT_R8_UINT,
-        VK_FORMAT_R8_UNORM,
-        VK_FORMAT_R8_USCALED,
-        VK_FORMAT_S8_UINT,
+            VK_FORMAT_A1R5G5B5_UNORM_PACK16,
+            VK_FORMAT_A2B10G10R10_SINT_PACK32,
+            VK_FORMAT_A2B10G10R10_SNORM_PACK32,
+            VK_FORMAT_A2B10G10R10_SSCALED_PACK32,
+            VK_FORMAT_A2B10G10R10_UINT_PACK32,
+            VK_FORMAT_A2B10G10R10_UNORM_PACK32,
+            VK_FORMAT_A2B10G10R10_USCALED_PACK32,
+            VK_FORMAT_A2R10G10B10_UNORM_PACK32,
+            VK_FORMAT_A8B8G8R8_SINT_PACK32,
+            VK_FORMAT_A8B8G8R8_SNORM_PACK32,
+            VK_FORMAT_A8B8G8R8_SRGB_PACK32,
+            VK_FORMAT_A8B8G8R8_UINT_PACK32,
+            VK_FORMAT_A8B8G8R8_UNORM_PACK32,
+            VK_FORMAT_ASTC_10x10_SRGB_BLOCK,
+            VK_FORMAT_ASTC_10x10_UNORM_BLOCK,
+            VK_FORMAT_ASTC_10x5_SRGB_BLOCK,
+            VK_FORMAT_ASTC_10x5_UNORM_BLOCK,
+            VK_FORMAT_ASTC_10x6_SRGB_BLOCK,
+            VK_FORMAT_ASTC_10x6_UNORM_BLOCK,
+            VK_FORMAT_ASTC_10x8_SRGB_BLOCK,
+            VK_FORMAT_ASTC_10x8_UNORM_BLOCK,
+            VK_FORMAT_ASTC_12x10_SRGB_BLOCK,
+            VK_FORMAT_ASTC_12x10_UNORM_BLOCK,
+            VK_FORMAT_ASTC_12x12_SRGB_BLOCK,
+            VK_FORMAT_ASTC_12x12_UNORM_BLOCK,
+            VK_FORMAT_ASTC_4x4_SRGB_BLOCK,
+            VK_FORMAT_ASTC_4x4_UNORM_BLOCK,
+            VK_FORMAT_ASTC_5x4_SRGB_BLOCK,
+            VK_FORMAT_ASTC_5x4_UNORM_BLOCK,
+            VK_FORMAT_ASTC_5x5_SRGB_BLOCK,
+            VK_FORMAT_ASTC_5x5_UNORM_BLOCK,
+            VK_FORMAT_ASTC_6x5_SRGB_BLOCK,
+            VK_FORMAT_ASTC_6x5_UNORM_BLOCK,
+            VK_FORMAT_ASTC_6x6_SRGB_BLOCK,
+            VK_FORMAT_ASTC_6x6_UNORM_BLOCK,
+            VK_FORMAT_ASTC_8x5_SRGB_BLOCK,
+            VK_FORMAT_ASTC_8x5_UNORM_BLOCK,
+            VK_FORMAT_ASTC_8x6_SRGB_BLOCK,
+            VK_FORMAT_ASTC_8x6_UNORM_BLOCK,
+            VK_FORMAT_ASTC_8x8_SRGB_BLOCK,
+            VK_FORMAT_ASTC_8x8_UNORM_BLOCK,
+            VK_FORMAT_B10G11R11_UFLOAT_PACK32,
+            VK_FORMAT_B4G4R4A4_UNORM_PACK16,
+            VK_FORMAT_B5G5R5A1_UNORM_PACK16,
+            VK_FORMAT_B5G6R5_UNORM_PACK16,
+            VK_FORMAT_B8G8R8A8_SRGB,
+            VK_FORMAT_B8G8R8A8_UNORM,
+            VK_FORMAT_BC1_RGBA_SRGB_BLOCK,
+            VK_FORMAT_BC1_RGBA_UNORM_BLOCK,
+            VK_FORMAT_BC2_SRGB_BLOCK,
+            VK_FORMAT_BC2_UNORM_BLOCK,
+            VK_FORMAT_BC3_SRGB_BLOCK,
+            VK_FORMAT_BC3_UNORM_BLOCK,
+            VK_FORMAT_BC4_SNORM_BLOCK,
+            VK_FORMAT_BC4_UNORM_BLOCK,
+            VK_FORMAT_BC5_SNORM_BLOCK,
+            VK_FORMAT_BC5_UNORM_BLOCK,
+            VK_FORMAT_BC6H_SFLOAT_BLOCK,
+            VK_FORMAT_BC6H_UFLOAT_BLOCK,
+            VK_FORMAT_BC7_SRGB_BLOCK,
+            VK_FORMAT_BC7_UNORM_BLOCK,
+            VK_FORMAT_D16_UNORM,
+            VK_FORMAT_D16_UNORM_S8_UINT,
+            VK_FORMAT_X8_D24_UNORM_PACK32,
+            VK_FORMAT_D24_UNORM_S8_UINT,
+            VK_FORMAT_D32_SFLOAT,
+            VK_FORMAT_D32_SFLOAT_S8_UINT,
+            VK_FORMAT_E5B9G9R9_UFLOAT_PACK32,
+            VK_FORMAT_R16G16B16A16_SFLOAT,
+            VK_FORMAT_R16G16B16A16_SINT,
+            VK_FORMAT_R16G16B16A16_SNORM,
+            VK_FORMAT_R16G16B16A16_SSCALED,
+            VK_FORMAT_R16G16B16A16_UINT,
+            VK_FORMAT_R16G16B16A16_UNORM,
+            VK_FORMAT_R16G16B16A16_USCALED,
+            VK_FORMAT_R16G16B16_SFLOAT,
+            VK_FORMAT_R16G16B16_SINT,
+            VK_FORMAT_R16G16B16_SNORM,
+            VK_FORMAT_R16G16B16_SSCALED,
+            VK_FORMAT_R16G16B16_UINT,
+            VK_FORMAT_R16G16B16_UNORM,
+            VK_FORMAT_R16G16B16_USCALED,
+            VK_FORMAT_R16G16_SFLOAT,
+            VK_FORMAT_R16G16_SINT,
+            VK_FORMAT_R16G16_SNORM,
+            VK_FORMAT_R16G16_SSCALED,
+            VK_FORMAT_R16G16_UINT,
+            VK_FORMAT_R16G16_UNORM,
+            VK_FORMAT_R16G16_USCALED,
+            VK_FORMAT_R16_SFLOAT,
+            VK_FORMAT_R16_SINT,
+            VK_FORMAT_R16_SNORM,
+            VK_FORMAT_R16_SSCALED,
+            VK_FORMAT_R16_UINT,
+            VK_FORMAT_R16_UNORM,
+            VK_FORMAT_R16_USCALED,
+            VK_FORMAT_R32G32B32A32_SFLOAT,
+            VK_FORMAT_R32G32B32A32_SINT,
+            VK_FORMAT_R32G32B32A32_UINT,
+            VK_FORMAT_R32G32B32_SFLOAT,
+            VK_FORMAT_R32G32B32_SINT,
+            VK_FORMAT_R32G32B32_UINT,
+            VK_FORMAT_R32G32_SFLOAT,
+            VK_FORMAT_R32G32_SINT,
+            VK_FORMAT_R32G32_UINT,
+            VK_FORMAT_R32_SFLOAT,
+            VK_FORMAT_R32_SINT,
+            VK_FORMAT_R32_UINT,
+            VK_FORMAT_R4G4B4A4_UNORM_PACK16,
+            VK_FORMAT_A4B4G4R4_UNORM_PACK16_EXT,
+            VK_FORMAT_R4G4_UNORM_PACK8,
+            VK_FORMAT_R5G5B5A1_UNORM_PACK16,
+            VK_FORMAT_R5G6B5_UNORM_PACK16,
+            VK_FORMAT_R8G8B8A8_SINT,
+            VK_FORMAT_R8G8B8A8_SNORM,
+            VK_FORMAT_R8G8B8A8_SRGB,
+            VK_FORMAT_R8G8B8A8_SSCALED,
+            VK_FORMAT_R8G8B8A8_UINT,
+            VK_FORMAT_R8G8B8A8_UNORM,
+            VK_FORMAT_R8G8B8A8_USCALED,
+            VK_FORMAT_R8G8B8_SINT,
+            VK_FORMAT_R8G8B8_SNORM,
+            VK_FORMAT_R8G8B8_SSCALED,
+            VK_FORMAT_R8G8B8_UINT,
+            VK_FORMAT_R8G8B8_UNORM,
+            VK_FORMAT_R8G8B8_USCALED,
+            VK_FORMAT_R8G8_SINT,
+            VK_FORMAT_R8G8_SNORM,
+            VK_FORMAT_R8G8_SSCALED,
+            VK_FORMAT_R8G8_UINT,
+            VK_FORMAT_R8G8_UNORM,
+            VK_FORMAT_R8G8_USCALED,
+            VK_FORMAT_R8_SINT,
+            VK_FORMAT_R8_SNORM,
+            VK_FORMAT_R8_SSCALED,
+            VK_FORMAT_R8_UINT,
+            VK_FORMAT_R8_UNORM,
+            VK_FORMAT_R8_USCALED,
+            VK_FORMAT_S8_UINT,
     };
     std::unordered_map<VkFormat, VkFormatProperties> format_properties;
     for (const auto format : formats) {
@@ -309,7 +309,7 @@ NvidiaArchitecture GetNvidiaArchitecture(vk::PhysicalDevice physical,
     if (exts.contains(VK_KHR_FRAGMENT_SHADING_RATE_EXTENSION_NAME)) {
         VkPhysicalDeviceFragmentShadingRatePropertiesKHR shading_rate_props{};
         shading_rate_props.sType =
-            VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR;
+                VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FRAGMENT_SHADING_RATE_PROPERTIES_KHR;
         VkPhysicalDeviceProperties2 physical_properties{};
         physical_properties.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2;
         physical_properties.pNext = &shading_rate_props;
@@ -325,7 +325,7 @@ NvidiaArchitecture GetNvidiaArchitecture(vk::PhysicalDevice physical,
     if (exts.contains(VK_EXT_BLEND_OPERATION_ADVANCED_EXTENSION_NAME)) {
         VkPhysicalDeviceBlendOperationAdvancedPropertiesEXT advanced_blending_props{};
         advanced_blending_props.sType =
-            VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT;
+                VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_BLEND_OPERATION_ADVANCED_PROPERTIES_EXT;
         VkPhysicalDeviceProperties2 physical_properties{};
         physical_properties.sType = VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PROPERTIES_2;
         physical_properties.pNext = &advanced_blending_props;
@@ -337,7 +337,7 @@ NvidiaArchitecture GetNvidiaArchitecture(vk::PhysicalDevice physical,
         if (exts.contains(VK_EXT_CONSERVATIVE_RASTERIZATION_EXTENSION_NAME)) {
             VkPhysicalDeviceConservativeRasterizationPropertiesEXT conservative_raster_props{};
             conservative_raster_props.sType =
-                VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT;
+                    VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_CONSERVATIVE_RASTERIZATION_PROPERTIES_EXT;
             physical_properties.pNext = &conservative_raster_props;
             physical.GetProperties2(physical_properties);
             if (conservative_raster_props.degenerateLinesRasterized) {
@@ -351,7 +351,7 @@ NvidiaArchitecture GetNvidiaArchitecture(vk::PhysicalDevice physical,
 }
 
 std::vector<const char*> ExtensionListForVulkan(
-    const std::set<std::string, std::less<>>& extensions) {
+        const std::set<std::string, std::less<>>& extensions) {
     std::vector<const char*> output;
     output.reserve(extensions.size());
     for (const auto& extension : extensions) {
@@ -401,8 +401,8 @@ void Device::RemoveExtensionFeatureIfUnsuitable(bool is_suitable, Feature& featu
 
 Device::Device(VkInstance instance_, vk::PhysicalDevice physical_, VkSurfaceKHR surface,
                const vk::InstanceDispatch& dld_)
-    : instance{instance_}, dld{dld_}, physical{physical_},
-      format_properties(GetFormatProperties(physical)) {
+        : instance{instance_}, dld{dld_}, physical{physical_},
+          format_properties(GetFormatProperties(physical)) {
     // Get suitability and device properties.
     const bool is_suitable = GetSuitability(surface != nullptr);
 
@@ -410,7 +410,7 @@ Device::Device(VkInstance instance_, vk::PhysicalDevice physical_, VkSurfaceKHR 
     const auto device_id = properties.properties.deviceID;
     const bool is_radv = driver_id == VK_DRIVER_ID_MESA_RADV;
     const bool is_amd_driver =
-        driver_id == VK_DRIVER_ID_AMD_PROPRIETARY || driver_id == VK_DRIVER_ID_AMD_OPEN_SOURCE;
+            driver_id == VK_DRIVER_ID_AMD_PROPRIETARY || driver_id == VK_DRIVER_ID_AMD_OPEN_SOURCE;
     const bool is_amd = is_amd_driver || is_radv;
     const bool is_intel_windows = driver_id == VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS;
     const bool is_intel_anv = driver_id == VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA;
@@ -443,11 +443,11 @@ Device::Device(VkInstance instance_, vk::PhysicalDevice physical_, VkSurfaceKHR 
         nsight_aftermath_tracker = std::make_unique<NsightAftermathTracker>();
 
         diagnostics_nv = {
-            .sType = VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV,
-            .pNext = &features2,
-            .flags = VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_DEBUG_INFO_BIT_NV |
-                     VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_RESOURCE_TRACKING_BIT_NV |
-                     VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_AUTOMATIC_CHECKPOINTS_BIT_NV,
+                .sType = VK_STRUCTURE_TYPE_DEVICE_DIAGNOSTICS_CONFIG_CREATE_INFO_NV,
+                .pNext = &features2,
+                .flags = VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_SHADER_DEBUG_INFO_BIT_NV |
+                         VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_RESOURCE_TRACKING_BIT_NV |
+                         VK_DEVICE_DIAGNOSTICS_CONFIG_ENABLE_AUTOMATIC_CHECKPOINTS_BIT_NV,
         };
         first_next = &diagnostics_nv;
     }
@@ -464,8 +464,8 @@ Device::Device(VkInstance instance_, vk::PhysicalDevice physical_, VkSurfaceKHR 
                  properties.properties.deviceType == VK_PHYSICAL_DEVICE_TYPE_CPU;
 
     supports_d24_depth =
-        IsFormatSupported(VK_FORMAT_D24_UNORM_S8_UINT,
-                          VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT, FormatType::Optimal);
+            IsFormatSupported(VK_FORMAT_D24_UNORM_S8_UINT,
+                              VK_FORMAT_FEATURE_DEPTH_STENCIL_ATTACHMENT_BIT, FormatType::Optimal);
 
     supports_conditional_barriers = !(is_intel_anv || is_intel_windows);
 
@@ -553,8 +553,8 @@ Device::Device(VkInstance instance_, vk::PhysicalDevice physical_, VkSurfaceKHR 
         const u32 version = (properties.properties.driverVersion << 3) >> 3;
         if (version < VK_MAKE_API_VERSION(0, 22, 3, 1)) {
             LOG_WARNING(
-                Render_Vulkan,
-                "RADV versions older than 22.3.1 have broken VK_EXT_extended_dynamic_state2");
+                    Render_Vulkan,
+                    "RADV versions older than 22.3.1 have broken VK_EXT_extended_dynamic_state2");
             RemoveExtensionFeature(extensions.extended_dynamic_state2,
                                    features.extended_dynamic_state2,
                                    VK_EXT_EXTENDED_DYNAMIC_STATE_2_EXTENSION_NAME);
@@ -597,7 +597,7 @@ Device::Device(VkInstance instance_, vk::PhysicalDevice physical_, VkSurfaceKHR 
         // TODO(ameerj): Blacklist only offending driver versions
         // TODO(ameerj): Confirm if RDNA1 is affected
         const bool is_rdna2 =
-            supported_extensions.contains(VK_KHR_FRAGMENT_SHADING_RATE_EXTENSION_NAME);
+                supported_extensions.contains(VK_KHR_FRAGMENT_SHADING_RATE_EXTENSION_NAME);
         if (is_rdna2) {
             LOG_WARNING(Render_Vulkan,
                         "RADV has broken VK_EXT_vertex_input_dynamic_state on RDNA2 hardware");
@@ -661,8 +661,8 @@ Device::Device(VkInstance instance_, vk::PhysicalDevice physical_, VkSurfaceKHR 
         cant_blit_msaa = true;
     }
     has_broken_compute =
-        CheckBrokenCompute(properties.driver.driverID, properties.properties.driverVersion) &&
-        !Settings::values.enable_compute_pipelines.GetValue();
+            CheckBrokenCompute(properties.driver.driverID, properties.properties.driverVersion) &&
+            !Settings::values.enable_compute_pipelines.GetValue();
     if (is_intel_anv || (is_qualcomm && !is_s8gen2)) {
         LOG_WARNING(Render_Vulkan, "Driver does not support native BGR format");
         must_emulate_bgr565 = true;
@@ -690,9 +690,9 @@ Device::Device(VkInstance instance_, vk::PhysicalDevice physical_, VkSurfaceKHR 
         LOG_WARNING(Render_Vulkan,
                     "MVK driver breaks when using more than 16 vertex attributes/bindings");
         properties.properties.limits.maxVertexInputAttributes =
-            std::min(properties.properties.limits.maxVertexInputAttributes, 16U);
+                std::min(properties.properties.limits.maxVertexInputAttributes, 16U);
         properties.properties.limits.maxVertexInputBindings =
-            std::min(properties.properties.limits.maxVertexInputBindings, 16U);
+                std::min(properties.properties.limits.maxVertexInputBindings, 16U);
     }
 
     if (is_turnip) {
@@ -727,17 +727,17 @@ Device::Device(VkInstance instance_, vk::PhysicalDevice physical_, VkSurfaceKHR 
     functions.vkGetDeviceProcAddr = dld.vkGetDeviceProcAddr;
 
     const VmaAllocatorCreateInfo allocator_info = {
-        .flags = VMA_ALLOCATOR_CREATE_EXTERNALLY_SYNCHRONIZED_BIT,
-        .physicalDevice = physical,
-        .device = *logical,
-        .preferredLargeHeapBlockSize = 0,
-        .pAllocationCallbacks = nullptr,
-        .pDeviceMemoryCallbacks = nullptr,
-        .pHeapSizeLimit = nullptr,
-        .pVulkanFunctions = &functions,
-        .instance = instance,
-        .vulkanApiVersion = VK_API_VERSION_1_1,
-        .pTypeExternalMemoryHandleTypes = nullptr,
+            .flags = VMA_ALLOCATOR_CREATE_EXTERNALLY_SYNCHRONIZED_BIT,
+            .physicalDevice = physical,
+            .device = *logical,
+            .preferredLargeHeapBlockSize = 0,
+            .pAllocationCallbacks = nullptr,
+            .pDeviceMemoryCallbacks = nullptr,
+            .pHeapSizeLimit = nullptr,
+            .pVulkanFunctions = &functions,
+            .instance = instance,
+            .vulkanApiVersion = VK_API_VERSION_1_1,
+            .pTypeExternalMemoryHandleTypes = nullptr,
     };
 
     vk::Check(vmaCreateAllocator(&allocator_info, &allocator));
@@ -748,37 +748,37 @@ Device::~Device() {
 }
 
 VkFormat Device::GetSupportedFormat(VkFormat wanted_format, VkFormatFeatureFlags wanted_usage,
-                                    FormatType format_type) const {
-    if (IsFormatSupported(wanted_format, wanted_usage, format_type)) {
-        return wanted_format;
-    }
-    // The wanted format is not supported by hardware, search for alternatives
-    const VkFormat* alternatives = GetFormatAlternatives(wanted_format);
-    if (alternatives == nullptr) {
-        LOG_ERROR(Render_Vulkan,
-                  "Format={} with usage={} and type={} has no defined alternatives and host "
-                  "hardware does not support it",
-                  wanted_format, wanted_usage, format_type);
-        return wanted_format;
-    }
+        FormatType format_type) const {
+if (IsFormatSupported(wanted_format, wanted_usage, format_type)) {
+return wanted_format;
+}
+// The wanted format is not supported by hardware, search for alternatives
+const VkFormat* alternatives = GetFormatAlternatives(wanted_format);
+if (alternatives == nullptr) {
+LOG_ERROR(Render_Vulkan,
+"Format={} with usage={} and type={} has no defined alternatives and host "
+"hardware does not support it",
+wanted_format, wanted_usage, format_type);
+return wanted_format;
+}
 
-    std::size_t i = 0;
-    for (VkFormat alternative = *alternatives; alternative; alternative = alternatives[++i]) {
-        if (!IsFormatSupported(alternative, wanted_usage, format_type)) {
-            continue;
-        }
-        LOG_DEBUG(Render_Vulkan,
-                  "Emulating format={} with alternative format={} with usage={} and type={}",
-                  wanted_format, alternative, wanted_usage, format_type);
-        return alternative;
-    }
+std::size_t i = 0;
+for (VkFormat alternative = *alternatives; alternative; alternative = alternatives[++i]) {
+if (!IsFormatSupported(alternative, wanted_usage, format_type)) {
+continue;
+}
+LOG_DEBUG(Render_Vulkan,
+"Emulating format={} with alternative format={} with usage={} and type={}",
+wanted_format, alternative, wanted_usage, format_type);
+return alternative;
+}
 
-    // No alternatives found, panic
-    LOG_ERROR(Render_Vulkan,
-              "Format={} with usage={} and type={} is not supported by the host hardware and "
-              "doesn't support any of the alternatives",
-              wanted_format, wanted_usage, format_type);
-    return wanted_format;
+// No alternatives found, panic
+LOG_ERROR(Render_Vulkan,
+"Format={} with usage={} and type={} is not supported by the host hardware and "
+"doesn't support any of the alternatives",
+wanted_format, wanted_usage, format_type);
+return wanted_format;
 }
 
 void Device::ReportLoss() const {
@@ -797,28 +797,28 @@ void Device::SaveShader(std::span<const u32> spirv) const {
 bool Device::ComputeIsOptimalAstcSupported() const {
     // Disable for now to avoid converting ASTC twice.
     static constexpr std::array astc_formats = {
-        VK_FORMAT_ASTC_4x4_UNORM_BLOCK,   VK_FORMAT_ASTC_4x4_SRGB_BLOCK,
-        VK_FORMAT_ASTC_5x4_UNORM_BLOCK,   VK_FORMAT_ASTC_5x4_SRGB_BLOCK,
-        VK_FORMAT_ASTC_5x5_UNORM_BLOCK,   VK_FORMAT_ASTC_5x5_SRGB_BLOCK,
-        VK_FORMAT_ASTC_6x5_UNORM_BLOCK,   VK_FORMAT_ASTC_6x5_SRGB_BLOCK,
-        VK_FORMAT_ASTC_6x6_UNORM_BLOCK,   VK_FORMAT_ASTC_6x6_SRGB_BLOCK,
-        VK_FORMAT_ASTC_8x5_UNORM_BLOCK,   VK_FORMAT_ASTC_8x5_SRGB_BLOCK,
-        VK_FORMAT_ASTC_8x6_UNORM_BLOCK,   VK_FORMAT_ASTC_8x6_SRGB_BLOCK,
-        VK_FORMAT_ASTC_8x8_UNORM_BLOCK,   VK_FORMAT_ASTC_8x8_SRGB_BLOCK,
-        VK_FORMAT_ASTC_10x5_UNORM_BLOCK,  VK_FORMAT_ASTC_10x5_SRGB_BLOCK,
-        VK_FORMAT_ASTC_10x6_UNORM_BLOCK,  VK_FORMAT_ASTC_10x6_SRGB_BLOCK,
-        VK_FORMAT_ASTC_10x8_UNORM_BLOCK,  VK_FORMAT_ASTC_10x8_SRGB_BLOCK,
-        VK_FORMAT_ASTC_10x10_UNORM_BLOCK, VK_FORMAT_ASTC_10x10_SRGB_BLOCK,
-        VK_FORMAT_ASTC_12x10_UNORM_BLOCK, VK_FORMAT_ASTC_12x10_SRGB_BLOCK,
-        VK_FORMAT_ASTC_12x12_UNORM_BLOCK, VK_FORMAT_ASTC_12x12_SRGB_BLOCK,
+            VK_FORMAT_ASTC_4x4_UNORM_BLOCK,   VK_FORMAT_ASTC_4x4_SRGB_BLOCK,
+            VK_FORMAT_ASTC_5x4_UNORM_BLOCK,   VK_FORMAT_ASTC_5x4_SRGB_BLOCK,
+            VK_FORMAT_ASTC_5x5_UNORM_BLOCK,   VK_FORMAT_ASTC_5x5_SRGB_BLOCK,
+            VK_FORMAT_ASTC_6x5_UNORM_BLOCK,   VK_FORMAT_ASTC_6x5_SRGB_BLOCK,
+            VK_FORMAT_ASTC_6x6_UNORM_BLOCK,   VK_FORMAT_ASTC_6x6_SRGB_BLOCK,
+            VK_FORMAT_ASTC_8x5_UNORM_BLOCK,   VK_FORMAT_ASTC_8x5_SRGB_BLOCK,
+            VK_FORMAT_ASTC_8x6_UNORM_BLOCK,   VK_FORMAT_ASTC_8x6_SRGB_BLOCK,
+            VK_FORMAT_ASTC_8x8_UNORM_BLOCK,   VK_FORMAT_ASTC_8x8_SRGB_BLOCK,
+            VK_FORMAT_ASTC_10x5_UNORM_BLOCK,  VK_FORMAT_ASTC_10x5_SRGB_BLOCK,
+            VK_FORMAT_ASTC_10x6_UNORM_BLOCK,  VK_FORMAT_ASTC_10x6_SRGB_BLOCK,
+            VK_FORMAT_ASTC_10x8_UNORM_BLOCK,  VK_FORMAT_ASTC_10x8_SRGB_BLOCK,
+            VK_FORMAT_ASTC_10x10_UNORM_BLOCK, VK_FORMAT_ASTC_10x10_SRGB_BLOCK,
+            VK_FORMAT_ASTC_12x10_UNORM_BLOCK, VK_FORMAT_ASTC_12x10_SRGB_BLOCK,
+            VK_FORMAT_ASTC_12x12_UNORM_BLOCK, VK_FORMAT_ASTC_12x12_SRGB_BLOCK,
     };
     if (!features.features.textureCompressionASTC_LDR) {
         return false;
     }
     const auto format_feature_usage{
-        VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT | VK_FORMAT_FEATURE_BLIT_SRC_BIT |
-        VK_FORMAT_FEATURE_BLIT_DST_BIT | VK_FORMAT_FEATURE_TRANSFER_SRC_BIT |
-        VK_FORMAT_FEATURE_TRANSFER_DST_BIT};
+            VK_FORMAT_FEATURE_SAMPLED_IMAGE_BIT | VK_FORMAT_FEATURE_BLIT_SRC_BIT |
+            VK_FORMAT_FEATURE_BLIT_DST_BIT | VK_FORMAT_FEATURE_TRANSFER_SRC_BIT |
+            VK_FORMAT_FEATURE_TRANSFER_DST_BIT};
     for (const auto format : astc_formats) {
         const auto physical_format_properties{physical.GetFormatProperties(format)};
         if ((physical_format_properties.optimalTilingFeatures & format_feature_usage) == 0) {
@@ -829,75 +829,75 @@ bool Device::ComputeIsOptimalAstcSupported() const {
 }
 
 bool Device::TestDepthStencilBlits(VkFormat format) const {
-    static constexpr VkFormatFeatureFlags required_features =
-        VK_FORMAT_FEATURE_BLIT_SRC_BIT | VK_FORMAT_FEATURE_BLIT_DST_BIT;
-    const auto test_features = [](VkFormatProperties props) {
-        return (props.optimalTilingFeatures & required_features) == required_features;
-    };
-    return test_features(format_properties.at(format));
+static constexpr VkFormatFeatureFlags required_features =
+VK_FORMAT_FEATURE_BLIT_SRC_BIT | VK_FORMAT_FEATURE_BLIT_DST_BIT;
+const auto test_features = [](VkFormatProperties props) {
+    return (props.optimalTilingFeatures & required_features) == required_features;
+};
+return test_features(format_properties.at(format));
 }
 
 bool Device::IsFormatSupported(VkFormat wanted_format, VkFormatFeatureFlags wanted_usage,
-                               FormatType format_type) const {
-    const auto it = format_properties.find(wanted_format);
-    if (it == format_properties.end()) {
-        UNIMPLEMENTED_MSG("Unimplemented format query={}", wanted_format);
-        return true;
-    }
-    const auto supported_usage = GetFormatFeatures(it->second, format_type);
-    return (supported_usage & wanted_usage) == wanted_usage;
+        FormatType format_type) const {
+const auto it = format_properties.find(wanted_format);
+if (it == format_properties.end()) {
+UNIMPLEMENTED_MSG("Unimplemented format query={}", wanted_format);
+return true;
+}
+const auto supported_usage = GetFormatFeatures(it->second, format_type);
+return (supported_usage & wanted_usage) == wanted_usage;
 }
 
 std::string Device::GetDriverName() const {
     switch (properties.driver.driverID) {
-    case VK_DRIVER_ID_AMD_PROPRIETARY:
-        return "AMD";
-    case VK_DRIVER_ID_AMD_OPEN_SOURCE:
-        return "AMDVLK";
-    case VK_DRIVER_ID_MESA_RADV:
-        return "RADV";
-    case VK_DRIVER_ID_NVIDIA_PROPRIETARY:
-        return "NVIDIA";
-    case VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS:
-        return "Intel";
-    case VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA:
-        return "ANV";
-    case VK_DRIVER_ID_IMAGINATION_PROPRIETARY:
-        return "PowerVR";
-    case VK_DRIVER_ID_QUALCOMM_PROPRIETARY:
-        return "Qualcomm";
-    case VK_DRIVER_ID_ARM_PROPRIETARY:
-        return "Mali";
-    case VK_DRIVER_ID_SAMSUNG_PROPRIETARY:
-        return "Xclipse";
-    case VK_DRIVER_ID_GOOGLE_SWIFTSHADER:
-        return "SwiftShader";
-    case VK_DRIVER_ID_BROADCOM_PROPRIETARY:
-        return "Broadcom";
-    case VK_DRIVER_ID_MESA_LLVMPIPE:
-        return "Lavapipe";
-    case VK_DRIVER_ID_MOLTENVK:
-        return "MoltenVK";
-    case VK_DRIVER_ID_VERISILICON_PROPRIETARY:
-        return "Vivante";
-    case VK_DRIVER_ID_MESA_TURNIP:
-        return "Turnip";
-    case VK_DRIVER_ID_MESA_V3DV:
-        return "V3DV";
-    case VK_DRIVER_ID_MESA_PANVK:
-        return "PanVK";
-    case VK_DRIVER_ID_MESA_VENUS:
-        return "Venus";
-    case VK_DRIVER_ID_MESA_DOZEN:
-        return "Dozen";
-    case VK_DRIVER_ID_MESA_NVK:
-        return "NVK";
-    case VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA:
-        return "PVR";
-    // case VK_DRIVER_ID_MESA_AGXV:
-    //     return "Asahi";
-    default:
-        return properties.driver.driverName;
+        case VK_DRIVER_ID_AMD_PROPRIETARY:
+            return "AMD";
+        case VK_DRIVER_ID_AMD_OPEN_SOURCE:
+            return "AMDVLK";
+        case VK_DRIVER_ID_MESA_RADV:
+            return "RADV";
+        case VK_DRIVER_ID_NVIDIA_PROPRIETARY:
+            return "NVIDIA";
+        case VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS:
+            return "Intel";
+        case VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA:
+            return "ANV";
+        case VK_DRIVER_ID_IMAGINATION_PROPRIETARY:
+            return "PowerVR";
+        case VK_DRIVER_ID_QUALCOMM_PROPRIETARY:
+            return "Qualcomm";
+        case VK_DRIVER_ID_ARM_PROPRIETARY:
+            return "Mali";
+        case VK_DRIVER_ID_SAMSUNG_PROPRIETARY:
+            return "Xclipse";
+        case VK_DRIVER_ID_GOOGLE_SWIFTSHADER:
+            return "SwiftShader";
+        case VK_DRIVER_ID_BROADCOM_PROPRIETARY:
+            return "Broadcom";
+        case VK_DRIVER_ID_MESA_LLVMPIPE:
+            return "Lavapipe";
+        case VK_DRIVER_ID_MOLTENVK:
+            return "MoltenVK";
+        case VK_DRIVER_ID_VERISILICON_PROPRIETARY:
+            return "Vivante";
+        case VK_DRIVER_ID_MESA_TURNIP:
+            return "Turnip";
+        case VK_DRIVER_ID_MESA_V3DV:
+            return "V3DV";
+        case VK_DRIVER_ID_MESA_PANVK:
+            return "PanVK";
+        case VK_DRIVER_ID_MESA_VENUS:
+            return "Venus";
+        case VK_DRIVER_ID_MESA_DOZEN:
+            return "Dozen";
+        case VK_DRIVER_ID_MESA_NVK:
+            return "NVK";
+        case VK_DRIVER_ID_IMAGINATION_OPEN_SOURCE_MESA:
+            return "PVR";
+            // case VK_DRIVER_ID_MESA_AGXV:
+            //     return "Asahi";
+        default:
+            return properties.driver.driverName;
     }
 }
 
@@ -907,11 +907,11 @@ bool Device::ShouldBoostClocks() const {
     const auto device_id = properties.properties.deviceID;
 
     const bool validated_driver =
-        driver_id == VK_DRIVER_ID_AMD_PROPRIETARY || driver_id == VK_DRIVER_ID_AMD_OPEN_SOURCE ||
-        driver_id == VK_DRIVER_ID_MESA_RADV || driver_id == VK_DRIVER_ID_NVIDIA_PROPRIETARY ||
-        driver_id == VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS ||
-        driver_id == VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA ||
-        driver_id == VK_DRIVER_ID_QUALCOMM_PROPRIETARY || driver_id == VK_DRIVER_ID_MESA_TURNIP;
+            driver_id == VK_DRIVER_ID_AMD_PROPRIETARY || driver_id == VK_DRIVER_ID_AMD_OPEN_SOURCE ||
+            driver_id == VK_DRIVER_ID_MESA_RADV || driver_id == VK_DRIVER_ID_NVIDIA_PROPRIETARY ||
+            driver_id == VK_DRIVER_ID_INTEL_PROPRIETARY_WINDOWS ||
+            driver_id == VK_DRIVER_ID_INTEL_OPEN_SOURCE_MESA ||
+            driver_id == VK_DRIVER_ID_QUALCOMM_PROPRIETARY || driver_id == VK_DRIVER_ID_MESA_TURNIP;
 
     const bool is_steam_deck = (vendor_id == 0x1002 && device_id == 0x163F) ||
                                (vendor_id == 0x1002 && device_id == 0x1435);
@@ -1078,22 +1078,22 @@ bool Device::GetSuitability(bool requires_swapchain) {
     // Retrieve relevant extension properties.
     if (extensions.shader_float_controls) {
         properties.float_controls.sType =
-            VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES;
+                VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_FLOAT_CONTROLS_PROPERTIES;
         SetNext(next, properties.float_controls);
     }
     if (extensions.push_descriptor) {
         properties.push_descriptor.sType =
-            VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR;
+                VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_PUSH_DESCRIPTOR_PROPERTIES_KHR;
         SetNext(next, properties.push_descriptor);
     }
     if (extensions.subgroup_size_control || features.subgroup_size_control.subgroupSizeControl) {
         properties.subgroup_size_control.sType =
-            VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES;
+                VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_SUBGROUP_SIZE_CONTROL_PROPERTIES;
         SetNext(next, properties.subgroup_size_control);
     }
     if (extensions.transform_feedback) {
         properties.transform_feedback.sType =
-            VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT;
+                VK_STRUCTURE_TYPE_PHYSICAL_DEVICE_TRANSFORM_FEEDBACK_PROPERTIES_EXT;
         SetNext(next, properties.transform_feedback);
     }
 
@@ -1113,10 +1113,10 @@ bool Device::GetSuitability(bool requires_swapchain) {
 
     const VkPhysicalDeviceLimits& limits{properties.properties.limits};
     const std::array limits_report{
-        Limit{65536, limits.maxUniformBufferRange, "maxUniformBufferRange"},
-        Limit{16, limits.maxViewports, "maxViewports"},
-        Limit{8, limits.maxColorAttachments, "maxColorAttachments"},
-        Limit{8, limits.maxClipDistances, "maxClipDistances"},
+            Limit{65536, limits.maxUniformBufferRange, "maxUniformBufferRange"},
+            Limit{16, limits.maxViewports, "maxViewports"},
+            Limit{8, limits.maxColorAttachments, "maxColorAttachments"},
+            Limit{8, limits.maxClipDistances, "maxClipDistances"},
     };
 
     for (const auto& [min, value, name] : limits_report) {
@@ -1139,8 +1139,8 @@ void Device::RemoveUnsuitableExtensions() {
 
     // VK_EXT_depth_bias_control
     extensions.depth_bias_control =
-        features.depth_bias_control.depthBiasControl &&
-        features.depth_bias_control.leastRepresentableValueForceUnormRepresentation;
+            features.depth_bias_control.depthBiasControl &&
+            features.depth_bias_control.leastRepresentableValueForceUnormRepresentation;
     RemoveExtensionFeatureIfUnsuitable(extensions.depth_bias_control, features.depth_bias_control,
                                        VK_EXT_DEPTH_BIAS_CONTROL_EXTENSION_NAME);
 
@@ -1163,12 +1163,12 @@ void Device::RemoveUnsuitableExtensions() {
 
     // VK_EXT_extended_dynamic_state3
     dynamic_state3_blending =
-        features.extended_dynamic_state3.extendedDynamicState3ColorBlendEnable &&
-        features.extended_dynamic_state3.extendedDynamicState3ColorBlendEquation &&
-        features.extended_dynamic_state3.extendedDynamicState3ColorWriteMask;
+            features.extended_dynamic_state3.extendedDynamicState3ColorBlendEnable &&
+            features.extended_dynamic_state3.extendedDynamicState3ColorBlendEquation &&
+            features.extended_dynamic_state3.extendedDynamicState3ColorWriteMask;
     dynamic_state3_enables =
-        features.extended_dynamic_state3.extendedDynamicState3DepthClampEnable &&
-        features.extended_dynamic_state3.extendedDynamicState3LogicOpEnable;
+            features.extended_dynamic_state3.extendedDynamicState3DepthClampEnable &&
+            features.extended_dynamic_state3.extendedDynamicState3LogicOpEnable;
 
     extensions.extended_dynamic_state3 = dynamic_state3_blending || dynamic_state3_enables;
     dynamic_state3_blending = dynamic_state3_blending && extensions.extended_dynamic_state3;
@@ -1179,8 +1179,8 @@ void Device::RemoveUnsuitableExtensions() {
 
     // VK_EXT_provoking_vertex
     extensions.provoking_vertex =
-        features.provoking_vertex.provokingVertexLast &&
-        features.provoking_vertex.transformFeedbackPreservesProvokingVertex;
+            features.provoking_vertex.provokingVertexLast &&
+            features.provoking_vertex.transformFeedbackPreservesProvokingVertex;
     RemoveExtensionFeatureIfUnsuitable(extensions.provoking_vertex, features.provoking_vertex,
                                        VK_EXT_PROVOKING_VERTEX_EXTENSION_NAME);
 
@@ -1192,34 +1192,34 @@ void Device::RemoveUnsuitableExtensions() {
 
     // VK_EXT_shader_demote_to_helper_invocation
     extensions.shader_demote_to_helper_invocation =
-        features.shader_demote_to_helper_invocation.shaderDemoteToHelperInvocation;
+            features.shader_demote_to_helper_invocation.shaderDemoteToHelperInvocation;
     RemoveExtensionFeatureIfUnsuitable(extensions.shader_demote_to_helper_invocation,
                                        features.shader_demote_to_helper_invocation,
                                        VK_EXT_SHADER_DEMOTE_TO_HELPER_INVOCATION_EXTENSION_NAME);
 
     // VK_EXT_subgroup_size_control
     extensions.subgroup_size_control =
-        features.subgroup_size_control.subgroupSizeControl &&
-        properties.subgroup_size_control.minSubgroupSize <= GuestWarpSize &&
-        properties.subgroup_size_control.maxSubgroupSize >= GuestWarpSize;
+            features.subgroup_size_control.subgroupSizeControl &&
+            properties.subgroup_size_control.minSubgroupSize <= GuestWarpSize &&
+            properties.subgroup_size_control.maxSubgroupSize >= GuestWarpSize;
     RemoveExtensionFeatureIfUnsuitable(extensions.subgroup_size_control,
                                        features.subgroup_size_control,
                                        VK_EXT_SUBGROUP_SIZE_CONTROL_EXTENSION_NAME);
 
     // VK_EXT_transform_feedback
     extensions.transform_feedback =
-        features.transform_feedback.transformFeedback &&
-        features.transform_feedback.geometryStreams &&
-        properties.transform_feedback.maxTransformFeedbackStreams >= 4 &&
-        properties.transform_feedback.maxTransformFeedbackBuffers > 0 &&
-        properties.transform_feedback.transformFeedbackQueries &&
-        properties.transform_feedback.transformFeedbackDraw;
+            features.transform_feedback.transformFeedback &&
+            features.transform_feedback.geometryStreams &&
+            properties.transform_feedback.maxTransformFeedbackStreams >= 4 &&
+            properties.transform_feedback.maxTransformFeedbackBuffers > 0 &&
+            properties.transform_feedback.transformFeedbackQueries &&
+            properties.transform_feedback.transformFeedbackDraw;
     RemoveExtensionFeatureIfUnsuitable(extensions.transform_feedback, features.transform_feedback,
                                        VK_EXT_TRANSFORM_FEEDBACK_EXTENSION_NAME);
 
     // VK_EXT_vertex_input_dynamic_state
     extensions.vertex_input_dynamic_state =
-        features.vertex_input_dynamic_state.vertexInputDynamicState;
+            features.vertex_input_dynamic_state.vertexInputDynamicState;
     RemoveExtensionFeatureIfUnsuitable(extensions.vertex_input_dynamic_state,
                                        features.vertex_input_dynamic_state,
                                        VK_EXT_VERTEX_INPUT_DYNAMIC_STATE_EXTENSION_NAME);
@@ -1227,7 +1227,7 @@ void Device::RemoveUnsuitableExtensions() {
     // VK_KHR_pipeline_executable_properties
     if (Settings::values.renderer_shader_feedback.GetValue()) {
         extensions.pipeline_executable_properties =
-            features.pipeline_executable_properties.pipelineExecutableInfo;
+                features.pipeline_executable_properties.pipelineExecutableInfo;
         RemoveExtensionFeatureIfUnsuitable(extensions.pipeline_executable_properties,
                                            features.pipeline_executable_properties,
                                            VK_KHR_PIPELINE_EXECUTABLE_PROPERTIES_EXTENSION_NAME);
@@ -1239,11 +1239,11 @@ void Device::RemoveUnsuitableExtensions() {
 
     // VK_KHR_workgroup_memory_explicit_layout
     extensions.workgroup_memory_explicit_layout =
-        features.features.shaderInt16 &&
-        features.workgroup_memory_explicit_layout.workgroupMemoryExplicitLayout &&
-        features.workgroup_memory_explicit_layout.workgroupMemoryExplicitLayout8BitAccess &&
-        features.workgroup_memory_explicit_layout.workgroupMemoryExplicitLayout16BitAccess &&
-        features.workgroup_memory_explicit_layout.workgroupMemoryExplicitLayoutScalarBlockLayout;
+            features.features.shaderInt16 &&
+            features.workgroup_memory_explicit_layout.workgroupMemoryExplicitLayout &&
+            features.workgroup_memory_explicit_layout.workgroupMemoryExplicitLayout8BitAccess &&
+            features.workgroup_memory_explicit_layout.workgroupMemoryExplicitLayout16BitAccess &&
+            features.workgroup_memory_explicit_layout.workgroupMemoryExplicitLayoutScalarBlockLayout;
     RemoveExtensionFeatureIfUnsuitable(extensions.workgroup_memory_explicit_layout,
                                        features.workgroup_memory_explicit_layout,
                                        VK_KHR_WORKGROUP_MEMORY_EXPLICIT_LAYOUT_EXTENSION_NAME);
@@ -1324,32 +1324,20 @@ void Device::CollectPhysicalMemoryInfo() {
         }
         device_access_memory += mem_properties.memoryHeaps[element].size;
     }
-
-    // Determine memory limit based on available memory
-    u64 total_available_memory = device_access_memory;
-    u64 memory_limit;
-
-    if (total_available_memory >= 8_GiB) {
-        memory_limit = 8_GiB;
-    } else if (total_available_memory >= 6_GiB) {
-        memory_limit = 6_GiB;
-    } else if (total_available_memory >= 4_GiB) {
-        memory_limit = 4_GiB;
-    } else {
-        memory_limit = total_available_memory; // Use available memory if less than 4 GiB
-    }
-
     if (!is_integrated) {
-        // Reserve a portion of memory
         const u64 reserve_memory = std::min<u64>(device_access_memory / 8, 1_GiB);
         device_access_memory -= reserve_memory;
 
-        // Adjust memory limit based on available memory
-        device_access_memory = std::min<u64>(device_access_memory, memory_limit);
+        if (Settings::values.vram_usage_mode.GetValue() != Settings::VramUsageMode::Aggressive) {
+            // Account for resolution scaling in memory limits
+            const size_t normal_memory = 6_GiB;
+            const size_t scaler_memory = 1_GiB * Settings::values.resolution_info.ScaleUp(1);
+            device_access_memory =
+                    std::min<u64>(device_access_memory, normal_memory + scaler_memory);
+        }
 
         return;
     }
-
     const s64 available_memory = static_cast<s64>(device_access_memory - device_initial_usage);
     device_access_memory = static_cast<u64>(std::max<s64>(
             std::min<s64>(available_memory - 8_GiB, 4_GiB), std::min<s64>(local_memory, 4_GiB)));
@@ -1377,12 +1365,12 @@ std::vector<VkDeviceQueueCreateInfo> Device::GetDeviceQueueCreateInfos() const {
 
     for (const u32 queue_family : unique_queue_families) {
         auto& ci = queue_cis.emplace_back(VkDeviceQueueCreateInfo{
-            .sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO,
-            .pNext = nullptr,
-            .flags = 0,
-            .queueFamilyIndex = queue_family,
-            .queueCount = 1,
-            .pQueuePriorities = nullptr,
+                .sType = VK_STRUCTURE_TYPE_DEVICE_QUEUE_CREATE_INFO,
+                .pNext = nullptr,
+                .flags = 0,
+                .queueFamilyIndex = queue_family,
+                .queueCount = 1,
+                .pQueuePriorities = nullptr,
         });
         ci.pQueuePriorities = &QUEUE_PRIORITY;
     }
