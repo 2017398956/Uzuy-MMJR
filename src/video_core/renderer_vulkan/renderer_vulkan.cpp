@@ -145,9 +145,9 @@ public:
     static BooleanSetting ENABLE_FRAME_SKIPPING;
     static BooleanSetting ENABLE_FRAME_INTERPOLATION;
 
-    BooleanSetting(bool initial_value = false) : value(initial_value) {}
+    explicit BooleanSetting(bool initial_value = false) : value(initial_value) {}
 
-    bool getBoolean() const {
+    [[nodiscard]] bool getBoolean() const {
         return value;
     }
 
@@ -164,13 +164,21 @@ BooleanSetting BooleanSetting::ENABLE_FRAME_SKIPPING(true);
 BooleanSetting BooleanSetting::ENABLE_FRAME_INTERPOLATION(true);
 
 extern "C" JNIEXPORT jboolean JNICALL
-Java_org_uzuy_uzuy_emu_features_settings_model_BooleanSetting_isFrameSkippingEnabled(JNIEnv* env, jobject /* this */) {
+Java_org_uzuy_uzuy_1emu_features_settings_model_BooleanSetting_isFrameSkippingEnabled(JNIEnv* env, jobject /* this */) {
     return static_cast<jboolean>(BooleanSetting::ENABLE_FRAME_SKIPPING.getBoolean());
 }
 
 extern "C" JNIEXPORT jboolean JNICALL
-Java_org_uzuy_uzuy_emu_features_settings_model_BooleanSetting_isFrameInterpolationEnabled(JNIEnv* env, jobject /* this */) {
+Java_org_uzuy_uzuy_1emu_features_settings_model_BooleanSetting_isFrameInterpolationEnabled(JNIEnv* env, jobject /* this */) {
     return static_cast<jboolean>(BooleanSetting::ENABLE_FRAME_INTERPOLATION.getBoolean());
+}
+
+void RendererVulkan::InterpolateFrames(Frame* prev_frame, Frame* interpolated_frame) {
+    if (prev_frame && interpolated_frame) {
+        *interpolated_frame = std::move(*prev_frame);  // Use move assignment to avoid copy issues
+
+        // TODO: Implement actual interpolation logic here
+    }
 }
 
 void RendererVulkan::Composite(std::span<const Tegra::FramebufferConfig> framebuffers) {
