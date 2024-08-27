@@ -519,11 +519,9 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback {
         binding.showFpsText.setVisible(showOverlay)
         if (showOverlay) {
             val FPS = 1
-            val FRAMETIME = 2
-            val SPEED = 3
             perfStatsUpdater = {
-                if (emulationViewModel.emulationStarted.value &&
-                    !emulationViewModel.isEmulationStopping.value
+                if (emulationViewModel.emulationStarted.value == true &&
+                    emulationViewModel.isEmulationStopping.value == false
                 ) {
                     val perfStats = NativeLibrary.getPerfStats()
                     val cpuBackend = NativeLibrary.getCpuBackend()
@@ -538,13 +536,22 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback {
                     // Calculate used memory
                     val usedMegs = (mi.totalMem - mi.availMem) / 1048576L // Convert bytes to megabytes
 
+                    val actualFps = perfStats[FPS]
+                    val enableFrameInterpolation = BooleanSetting.ENABLE_FRAME_INTERPOLATION.getBoolean()
+                    val generatedFpsText = if (enableFrameInterpolation) {
+                        val generatedFps = actualFps * 2
+                        String.format("Generated: %.1f", generatedFps)
+                    } else {
+                        ""
+                    }
+
                     if (_binding != null) {
                         binding.showFpsText.text = String.format(
-                            "FPS: %.1f%d Speed: %d%%\nMEM: %d MB\n%s/%s",
-                            (perfStats[FPS] + 0.5).toInt(), (perfStats[SPEED] * 100.0 + 0.5).toInt(), usedMegs, cpuBackend, gpuDriver
-                        )
+                            "FPS: %.1f %s\nMEM: %d MB\n%s/%s",
+                            actualFps, generatedFpsText, usedMegs, cpuBackend, gpuDriver
+                        ).trim() // Trim to remove extra spaces if generatedFpsText is empty
                     }
-                    perfStatsUpdateHandler.postDelayed(perfStatsUpdater!!, 2000)
+                    perfStatsUpdateHandler.postDelayed(perfStatsUpdater!!, 1000)
                 }
             }
             perfStatsUpdateHandler.post(perfStatsUpdater!!)
@@ -554,7 +561,6 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback {
             }
         }
     }
-
 
 private val batteryReceiver = object : BroadcastReceiver() {
     override fun onReceive(context: Context?, intent: Intent?) {
