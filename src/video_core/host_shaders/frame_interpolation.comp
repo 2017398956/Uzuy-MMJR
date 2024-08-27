@@ -1,0 +1,18 @@
+#version 450
+
+layout(local_size_x = 16, local_size_y = 16) in;
+
+layout(binding = 0) readonly uniform sampler2D prev_image;
+layout(binding = 1) readonly uniform sampler2D next_image;
+layout(binding = 2, rgba8) writeonly uniform image2D out_image;
+
+void main() {
+    ivec2 coord = ivec2(gl_GlobalInvocationID.xy);
+    vec4 color_prev = texelFetch(prev_image, coord, 0);
+    vec4 color_next = texelFetch(next_image, coord, 0);
+
+    // Simple linear interpolation (alpha = 0.5 for midpoint interpolation)
+    vec4 blended_color = mix(color_prev, color_next, 0.5);
+
+    imageStore(out_image, coord, blended_color);
+}
