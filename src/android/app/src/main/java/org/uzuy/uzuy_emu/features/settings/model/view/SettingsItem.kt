@@ -192,26 +192,6 @@ abstract class SettingsItem(
                 override fun reset() = BooleanSetting.CORE_USE_MULTI_CORE.reset()
             }
 
-            // STUBBED syncCoreSpeedSetting
-            val syncCoreSpeedSetting = object : AbstractBooleanSetting {
-                override val key = BooleanSetting.CORE_SYNC_CORE_SPEED.key
-
-                override fun getBoolean(needsGlobal: Boolean): Boolean {
-                    return BooleanSetting.CORE_SYNC_CORE_SPEED.getBoolean(needsGlobal)
-                }
-
-                override fun setBoolean(value: Boolean) {
-                    BooleanSetting.CORE_SYNC_CORE_SPEED.setBoolean(value)
-                }
-
-                override val defaultValue = BooleanSetting.CORE_SYNC_CORE_SPEED.defaultValue
-
-                override fun getValueAsString(needsGlobal: Boolean): String =
-                    BooleanSetting.CORE_SYNC_CORE_SPEED.getValueAsString(needsGlobal)
-
-                override fun reset() = BooleanSetting.CORE_SYNC_CORE_SPEED.reset()
-            }
-
             val enableInterpolationSetting = object : AbstractBooleanSetting {
                 override val key = BooleanSetting.ENABLE_FRAME_INTERPOLATION.key
 
@@ -317,7 +297,7 @@ abstract class SettingsItem(
             )
             put(
                 SingleChoiceSetting(
-                IntSetting.ASTC_DECODING_METHOD,
+                IntSetting.RENDERER_ASTC_DECODE_METHOD,
                 titleId = R.string.accelerate_astc,
                 choicesId = R.array.astcDecodingMethodNames,
                 valuesId = R.array.astcDecodingMethodValues
@@ -325,7 +305,7 @@ abstract class SettingsItem(
             )
             put(
                 SingleChoiceSetting(
-                IntSetting.ASTC_RECOMPRESSION_METHOD,
+                IntSetting.RENDERER_ASTC_RECOMPRESSION,
                 titleId = R.string.astc_recompression,
                 choicesId = R.array.astcRecompressionMethodNames,
                 valuesId = R.array.astcRecompressionMethodValues

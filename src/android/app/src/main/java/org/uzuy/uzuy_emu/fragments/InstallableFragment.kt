@@ -137,7 +137,7 @@ class InstallableFragment : Fragment() {
             Installable(
                 R.string.uninstall_firmware,
                 R.string.uninstall_firmware_description,
-                install = { mainActivity.uninstall_firmware() }
+                install = { mainActivity.uninstallFirmware() }
             ),
             Installable(
                 R.string.install_prod_keys,

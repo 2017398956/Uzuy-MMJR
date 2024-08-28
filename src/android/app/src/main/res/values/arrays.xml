@@ -97,6 +97,34 @@
         <item>2</item>
     </integer-array>
 
+    <!-- ASTC Decoding Method Choices -->
+    <string-array name="astcDecodingMethodNames">
+        <item>@string/CPU</item>
+        <item>@string/GPU</item>
+        <item>@string/CPU Asynchronously</item>
+    </string-array>
+
+    <!-- ASTC Decoding Method Values -->
+    <integer-array name="astcDecodingMethodValues">
+        <item>0</item> <!-- CPU -->
+        <item>1</item> <!-- GPU -->
+        <item>2</item> <!-- CPU Asynchronously -->
+    </integer-array>
+
+    <!-- ASTC Recompression Method Choices -->
+    <string-array name="astcRecompressionMethodNames">
+        <item>@string/Uncompressed</item>
+        <item>@string/BC1</item>
+        <item>@string/BC3</item>
+    </string-array>
+
+    <!-- ASTC Recompression Method Values -->
+    <integer-array name="astcRecompressionMethodValues">
+        <item>0</item> <!-- Uncompressed -->
+        <item>1</item> <!-- BC1 -->
+        <item>2</item> <!-- BC3 -->
+    </integer-array>
+
     <!-- NVDEC Emulation Choices -->
     <string-array name="rendererNvdecNames">
         <item>@string/nvdec_emulation_cpu</item>

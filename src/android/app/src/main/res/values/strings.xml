@@ -271,7 +271,7 @@
 
       <!-- ASTC Decoding Method -->
     <string name="accelerate_astc">🐦‍🔥 ASTC Decoding Method</string>
-    <string name="accelerate_astc_description">This option controls how ASTC textures should be decoded.CPU: Use the CPU for decoding, slowest but safest method. GPU: Use the GPU's compute shaders to decode ASTC textures, recommended for most games and users. CPU Asynchronously: Use the CPU to decode ASTC textures as they arrive. Completely eliminates ASTC decoding stuttering at the cost of rendering issues while the texture is being decoded.</string>
+    <string name="accelerate_astc_description">This option controls how ASTC textures should be decoded.CPU: Use the CPU for decoding, slowest but safest method. GPU: Use the GPU\'s compute shaders to decode ASTC textures, recommended for most games and users. CPU Asynchronously: Use the CPU to decode ASTC textures as they arrive. Completely eliminates ASTC decoding stuttering at the cost of rendering issues while the texture is being decoded.</string>
 
     <!-- ASTC Decoding Method Choices -->
     <string name="accelerate_astc_cpu">CPU</string>
@@ -280,7 +280,7 @@
 
     <!-- ASTC Recompression Method -->
     <string name="astc_recompression">🐦‍🔥 ASTC Recompression Method</string>
-    <string name="astc_recompression_description">Many low-end android GPU's lack support for ASTC textures, forcing the emulator to decompress to an intermediate format any SOC supports, RGBA8. This option recompresses RGBA8 to either the BC1 or BC3 format, saving VRAM but negatively affecting image quality.</string>
+    <string name="astc_recompression_description">Many low-end android GPU\'s lack support for ASTC textures, forcing the emulator to decompress to an intermediate format any SOC supports, RGBA8. This option recompresses RGBA8 to either the BC1 or BC3 format, saving VRAM but negatively affecting image quality.</string>
 
     <!-- ASTC Recompression Method Choices -->
     <string name="astc_recompression_uncompressed">Uncompressed</string>
