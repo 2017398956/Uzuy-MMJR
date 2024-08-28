@@ -315,7 +315,8 @@ abstract class SettingsItem(
                 SingleChoiceSetting(
                     IntSetting.RENDERER_VRAM_USAGE_MODE,
                     titleId = R.string.vram_usage_mode,
-                    choicesId = R.array.vramUsageMethodValues,
+                    choicesId = R.array.vramUsageMethodNames,
+                    valuesId = R.array.vramUsageMethodValues,
                 )
             )
             put(
