@@ -203,7 +203,7 @@ struct Values {
     SwitchableSetting<u16, true> speed_limit{linkage,
                                              100,
                                              0,
-                                             9999,
+                                             999,
                                              "speed_limit",
                                              Category::Core,
                                              Specialization::Countable | Specialization::Percentage,
