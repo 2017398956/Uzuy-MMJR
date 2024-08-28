@@ -301,6 +301,38 @@ abstract class SettingsItem(
             )
             put(
                 SingleChoiceSetting(
+                    IntSetting.RENDERER_SHADER_BACKEND,
+                    titleId = R.string.shader_backend,
+                    choicesId = R.array.rendererShaderNames,
+                    valuesId = R.array.rendererShaderValues
+                )
+            )
+            put(
+                SingleChoiceSetting(
+                    IntSetting.RENDERER_NVDEC_EMULATION,
+                    titleId = R.string.nvdec_emulation,
+                    choicesId = R.array.rendererNvdecNames,
+                    valuesId = R.array.rendererNvdecValues
+                )
+            )
+            put(
+                SingleChoiceSetting(
+                IntSetting.ASTC_DECODING_METHOD,
+                titleId = R.string.accelerate_astc,
+                choicesId = R.array.astcDecodingMethodNames,
+                valuesId = R.array.astcDecodingMethodValues
+                )
+            )
+            put(
+                SingleChoiceSetting(
+                IntSetting.ASTC_RECOMPRESSION_METHOD,
+                titleId = R.string.astc_recompression,
+                choicesId = R.array.astcRecompressionMethodNames,
+                valuesId = R.array.astcRecompressionMethodValues
+                )
+            )
+            put(
+                SingleChoiceSetting(
                     IntSetting.RENDERER_RESOLUTION,
                     titleId = R.string.renderer_resolution,
                     choicesId = R.array.rendererResolutionNames,

@@ -236,7 +236,10 @@
     <string name="enable_frame_skipping_description">Toggle frame skipping to improve performance by reducing the number of rendered frames.</string>
     <string name="enable_frame_interpolation">🐦‍🔥 Enable Frame Interpolation</string>
     <string name="enable_frame_interpolation_description">Toggle frame interpolation to improve visual smoothness by generating intermediate frames.</string>
+    <string name="nvdec_emulation">🐦‍🔥 NVDEC Emulation</string>
+    <string name="nvdec_emulation_description">Specifies how videos should be decoded. It can either use the CPU or the GPU for decoding, or perform no decoding at all (black screen on videos). In most cases, GPU decoding provides the best performance.</string>
     <string name="renderer_accuracy">Accuracy level</string>
+    <string name="shader_backend">🐦‍🔥 Shader Backend</string>
     <string name="renderer_resolution">Resolution (Handheld/Docked)</string>
     <string name="renderer_vsync">VSync mode</string>
     <string name="renderer_screen_layout">Orientation</string>
@@ -255,6 +258,34 @@
     <string name="use_disk_shader_cache_description">Reduces stuttering by locally storing and loading generated shaders.</string>
     <string name="anisotropic_filtering">Anisotropic filtering</string>
     <string name="anisotropic_filtering_description">Improves the quality of textures when viewed at oblique angles</string>
+
+    <!-- Shader Backend -->
+    <string name="shader_backend_glsl">GLSL</string>
+    <string name="shader_backend_glasm">GLASM</string>
+    <string name="shader_backend_spirv">SPIR-V</string>
+
+    <!-- NVDEC Emulation -->
+    <string name="nvdec_emulation_cpu">CPU</string>
+    <string name="nvdec_emulation_gpu">GPU</string>
+    <string name="nvdec_emulation_none">None</string>
+
+      <!-- ASTC Decoding Method -->
+    <string name="accelerate_astc">🐦‍🔥 ASTC Decoding Method</string>
+    <string name="accelerate_astc_description">This option controls how ASTC textures should be decoded.CPU: Use the CPU for decoding, slowest but safest method. GPU: Use the GPU's compute shaders to decode ASTC textures, recommended for most games and users. CPU Asynchronously: Use the CPU to decode ASTC textures as they arrive. Completely eliminates ASTC decoding stuttering at the cost of rendering issues while the texture is being decoded.</string>
+
+    <!-- ASTC Decoding Method Choices -->
+    <string name="accelerate_astc_cpu">CPU</string>
+    <string name="accelerate_astc_gpu">GPU</string>
+    <string name="accelerate_astc_async">CPU Asynchronously</string>
+
+    <!-- ASTC Recompression Method -->
+    <string name="astc_recompression">🐦‍🔥 ASTC Recompression Method</string>
+    <string name="astc_recompression_description">Many low-end android GPU's lack support for ASTC textures, forcing the emulator to decompress to an intermediate format any SOC supports, RGBA8. This option recompresses RGBA8 to either the BC1 or BC3 format, saving VRAM but negatively affecting image quality.</string>
+
+    <!-- ASTC Recompression Method Choices -->
+    <string name="astc_recompression_uncompressed">Uncompressed</string>
+    <string name="astc_recompression_bc1">BC1 (Low Quality)</string>
+    <string name="astc_recompression_bc3">BC3 (Medium Quality)</string>
 
     <!-- Debug settings strings -->
     <string name="cpu">CPU</string>
