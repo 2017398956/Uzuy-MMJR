@@ -305,17 +305,17 @@ abstract class SettingsItem(
             )
             put(
                 SingleChoiceSetting(
-                    IntSetting.RENDERER_VRAM_USAGE_MODE,
-                    titleId = R.string.vram_usage_mode,
-                    choicesId = R.array.vramUsageMethodValues,
+                    IntSetting.RENDERER_ASTC_RECOMPRESSION,
+                    titleId = R.string.astc_recompression,
+                    choicesId = R.array.astcRecompressionMethodNames,
+                    valuesId = R.array.astcRecompressionMethodValues
                 )
             )
             put(
                 SingleChoiceSetting(
-                IntSetting.RENDERER_ASTC_RECOMPRESSION,
-                titleId = R.string.astc_recompression,
-                choicesId = R.array.astcRecompressionMethodNames,
-                valuesId = R.array.astcRecompressionMethodValues
+                    IntSetting.RENDERER_VRAM_USAGE_MODE,
+                    titleId = R.string.vram_usage_mode,
+                    choicesId = R.array.vramUsageMethodValues,
                 )
             )
             put(

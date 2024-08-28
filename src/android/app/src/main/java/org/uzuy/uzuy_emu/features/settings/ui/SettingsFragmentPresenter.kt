@@ -175,6 +175,7 @@ class SettingsFragmentPresenter(
             add(IntSetting.RENDERER_NVDEC_EMULATION.key)
             add(IntSetting.RENDERER_ASTC_DECODE_METHOD.key)
             add(IntSetting.RENDERER_ASTC_RECOMPRESSION.key)
+            add(IntSetting.RENDERER_VRAM_USAGE_MODE.key)
             add(IntSetting.RENDERER_RESOLUTION.key)
             add(IntSetting.RENDERER_VSYNC.key)
             add(IntSetting.RENDERER_SCALING_FILTER.key)
