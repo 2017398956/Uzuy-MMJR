@@ -28,7 +28,8 @@ enum class BooleanSetting(override val key: String) : AbstractBooleanSetting {
     TOUCHSCREEN("touchscreen"),
     SHOW_THERMAL_OVERLAY("show_thermal_overlay"),
     ENABLE_FRAME_INTERPOLATION("enable_frame_interpolation"),
-    ENABLE_FRAME_SKIPPING("enable_frame_skipping");
+    ENABLE_FRAME_SKIPPING("enable_frame_skipping"),
+    CORE_USE_MULTI_CORE("use_multi_core");
 
     external fun isFrameSkippingEnabled(): Boolean
     external fun isFrameInterpolationEnabled(): Boolean

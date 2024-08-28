@@ -173,6 +173,45 @@ abstract class SettingsItem(
                 override fun reset() = BooleanSetting.USE_DOCKED_MODE.reset()
             }
 
+            val useMultiCoreSetting = object : AbstractBooleanSetting {
+                override val key = BooleanSetting.CORE_USE_MULTI_CORE.key
+
+                override fun getBoolean(needsGlobal: Boolean): Boolean {
+                    return BooleanSetting.CORE_USE_MULTI_CORE.getBoolean(needsGlobal)
+                }
+
+                override fun setBoolean(value: Boolean) {
+                    BooleanSetting.CORE_USE_MULTI_CORE.setBoolean(value)
+                }
+
+                override val defaultValue = BooleanSetting.CORE_USE_MULTI_CORE.defaultValue
+
+                override fun getValueAsString(needsGlobal: Boolean): String =
+                    BooleanSetting.CORE_USE_MULTI_CORE.getValueAsString(needsGlobal)
+
+                override fun reset() = BooleanSetting.CORE_USE_MULTI_CORE.reset()
+            }
+
+            // STUBBED syncCoreSpeedSetting
+            val syncCoreSpeedSetting = object : AbstractBooleanSetting {
+                override val key = BooleanSetting.CORE_SYNC_CORE_SPEED.key
+
+                override fun getBoolean(needsGlobal: Boolean): Boolean {
+                    return BooleanSetting.CORE_SYNC_CORE_SPEED.getBoolean(needsGlobal)
+                }
+
+                override fun setBoolean(value: Boolean) {
+                    BooleanSetting.CORE_SYNC_CORE_SPEED.setBoolean(value)
+                }
+
+                override val defaultValue = BooleanSetting.CORE_SYNC_CORE_SPEED.defaultValue
+
+                override fun getValueAsString(needsGlobal: Boolean): String =
+                    BooleanSetting.CORE_SYNC_CORE_SPEED.getValueAsString(needsGlobal)
+
+                override fun reset() = BooleanSetting.CORE_SYNC_CORE_SPEED.reset()
+            }
+
             val enableInterpolationSetting = object : AbstractBooleanSetting {
                 override val key = BooleanSetting.ENABLE_FRAME_INTERPOLATION.key
 

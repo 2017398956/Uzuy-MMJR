@@ -215,6 +215,10 @@
     <string name="cpu_accuracy">CPU accuracy</string>
     <string name="value_with_units">%1$s%2$s</string>
 
+      <!-- Use Multi Core -->
+    <string name="use_multi_core">🐦‍🔥 Use Multi-Core</string>
+    <string name="use_multi_core_description">Synchronize core usage to utilize multiple cores, which can improve performance in some scenarios.</string>
+
     <!-- System settings strings -->
     <string name="device_name">Device name</string>
     <string name="use_docked_mode">Docked Mode</string>

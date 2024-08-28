@@ -169,6 +169,7 @@ class SettingsFragmentPresenter(
         sl.apply {
             add(BooleanSetting.ENABLE_FRAME_INTERPOLATION.key)
             add(BooleanSetting.ENABLE_FRAME_SKIPPING.key)
+            add(BooleanSetting.CORE_USE_MULTI_CORE.key)
             add(IntSetting.RENDERER_ACCURACY.key)
             add(IntSetting.RENDERER_RESOLUTION.key)
             add(IntSetting.RENDERER_VSYNC.key)
