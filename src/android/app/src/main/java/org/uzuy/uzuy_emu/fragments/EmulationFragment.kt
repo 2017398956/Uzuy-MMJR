@@ -520,34 +520,31 @@ class EmulationFragment : Fragment(), SurfaceHolder.Callback {
         if (showOverlay) {
             val FPS = 1
             perfStatsUpdater = {
-                if (emulationViewModel.emulationStarted.value == true &&
-                    emulationViewModel.isEmulationStopping.value == false
+                if (emulationViewModel.emulationStarted.value && !emulationViewModel.isEmulationStopping.value
                 ) {
                     val perfStats = NativeLibrary.getPerfStats()
                     val cpuBackend = NativeLibrary.getCpuBackend()
                     val gpuDriver = NativeLibrary.getGpuDriver()
 
-                    // Get memory info
-                    val mi = ActivityManager.MemoryInfo()
-                    val activityManager =
-                        requireContext().getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager
-                    activityManager.getMemoryInfo(mi)
+                    // Get application-specific memory info
+                    val memoryInfo = Debug.MemoryInfo()
+                    Debug.getMemoryInfo(memoryInfo)
 
-                    // Calculate used memory
-                    val usedMegs = (mi.totalMem - mi.availMem) / 1048576L // Convert bytes to megabytes
+                    // Calculate used memory by the app
+                    val usedMegs = memoryInfo.totalPss / 1024 // Convert kilobytes to megabytes
 
                     val actualFps = perfStats[FPS]
                     val enableFrameInterpolation = BooleanSetting.ENABLE_FRAME_INTERPOLATION.getBoolean()
                     val generatedFpsText = if (enableFrameInterpolation) {
                         val generatedFps = actualFps * 2
-                        String.format("Generated: %.1f", generatedFps)
+                        String.format("(Generated: %.1f)", generatedFps)
                     } else {
                         ""
                     }
 
                     if (_binding != null) {
                         binding.showFpsText.text = String.format(
-                            "FPS: %.1f %s\nMEM: %d MB\n%s/%s",
+                            "FPS: %.1f %s\nAPP MEM: %d MB\n%s/%s",
                             actualFps, generatedFpsText, usedMegs, cpuBackend, gpuDriver
                         ).trim() // Trim to remove extra spaces if generatedFpsText is empty
                     }
