@@ -99,9 +99,9 @@
 
     <!-- ASTC Decoding Method Choices -->
     <string-array name="astcDecodingMethodNames">
-        <item>@string/CPU</item>
-        <item>@string/GPU</item>
-        <item>@string/CPU Asynchronously</item>
+        <item>@string/accelerate_astc_cpu</item>
+        <item>@string/accelerate_astc_gpu</item>
+        <item>@string/accelerate_astc_async</item>
     </string-array>
 
     <!-- ASTC Decoding Method Values -->
@@ -113,9 +113,9 @@
 
     <!-- ASTC Recompression Method Choices -->
     <string-array name="astcRecompressionMethodNames">
-        <item>@string/Uncompressed</item>
-        <item>@string/BC1</item>
-        <item>@string/BC3</item>
+        <item>@string/astc_recompression_uncompressed</item>
+        <item>@string/astc_recompression_bc1</item>
+        <item>@string/astc_recompression_bc3</item>
     </string-array>
 
     <!-- ASTC Recompression Method Values -->
