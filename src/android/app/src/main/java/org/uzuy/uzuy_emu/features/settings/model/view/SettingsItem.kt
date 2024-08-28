@@ -297,10 +297,17 @@ abstract class SettingsItem(
             )
             put(
                 SingleChoiceSetting(
-                IntSetting.RENDERER_ASTC_DECODE_METHOD,
-                titleId = R.string.accelerate_astc,
-                choicesId = R.array.astcDecodingMethodNames,
-                valuesId = R.array.astcDecodingMethodValues
+                    IntSetting.RENDERER_ASTC_DECODE_METHOD,
+                    titleId = R.string.accelerate_astc,
+                    choicesId = R.array.astcDecodingMethodNames,
+                    valuesId = R.array.astcDecodingMethodValues
+                )
+            )
+            put(
+                SingleChoiceSetting(
+                    IntSetting.RENDERER_VRAM_USAGE_MODE,
+                    titleId = R.string.vram_usage_mode,
+                    choicesId = R.array.vramUsageMethodValues,
                 )
             )
             put(

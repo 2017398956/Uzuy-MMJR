@@ -287,6 +287,11 @@
     <string name="astc_recompression_bc1">BC1 (Low Quality)</string>
     <string name="astc_recompression_bc3">BC3 (Medium Quality)</string>
 
+      <!-- ASTC Recompression Method Choices -->
+    <string name="vram_usage_mode">🐦‍🔥 VRAM Usage Mode</string>
+    <string name="vram_usage_conservative">Conservative</string>
+    <string name="vram_usage_aggressive">Agressive</string>
+
     <!-- Debug settings strings -->
     <string name="cpu">CPU</string>
     <string name="cpu_debug_mode">CPU Debugging</string>

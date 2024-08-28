@@ -97,6 +97,18 @@
         <item>2</item>
     </integer-array>
 
+    <!-- VRAM USAGE MODE CHOICES -->
+    <string-array name="vramUsageMethodNames">
+        <item>@string/vram_usage_conservative</item>
+        <item>@string/vram_usage_aggressive</item>
+    </string-array>
+
+    <!-- VRAM USAGE MODE VALUES -->
+    <integer-array name="vramUsageMethodValues">
+        <item>0</item> <!-- Conservative -->
+        <item>1</item> <!-- Agressive -->
+    </integer-array>
+
     <!-- ASTC Decoding Method Choices -->
     <string-array name="astcDecodingMethodNames">
         <item>@string/accelerate_astc_cpu</item>
