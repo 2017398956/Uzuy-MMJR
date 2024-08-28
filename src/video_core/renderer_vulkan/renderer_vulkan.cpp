@@ -160,8 +160,8 @@ private:
 };
 
 // Initialize static members
-BooleanSetting BooleanSetting::ENABLE_FRAME_SKIPPING(true);
-BooleanSetting BooleanSetting::ENABLE_FRAME_INTERPOLATION(true);
+BooleanSetting BooleanSetting::ENABLE_FRAME_SKIPPING(false);
+BooleanSetting BooleanSetting::ENABLE_FRAME_INTERPOLATION(false);
 
 extern "C" JNIEXPORT jboolean JNICALL
 Java_org_uzuy_uzuy_1emu_features_settings_model_BooleanSetting_isFrameSkippingEnabled(JNIEnv* env, jobject /* this */) {
