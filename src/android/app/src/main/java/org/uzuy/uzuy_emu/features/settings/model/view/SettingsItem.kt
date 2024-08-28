@@ -225,19 +225,25 @@ abstract class SettingsItem(
 
                 override fun reset() = BooleanSetting.ENABLE_FRAME_SKIPPING.reset()
             }
-
             put(
                 SwitchSetting(
-                BooleanSetting.ENABLE_FRAME_INTERPOLATION,
-                titleId = R.string.enable_frame_interpolation,
-                descriptionId = R.string.enable_frame_interpolation_description
+                    BooleanSetting.CORE_USE_MULTI_CORE,
+                    titleId = R.string.use_multi_core,
+                    descriptionId = R.string.use_multi_core_description
                 )
             )
             put(
                 SwitchSetting(
-                BooleanSetting.ENABLE_FRAME_SKIPPING,
-                titleId = R.string.enable_frame_skipping,
-                descriptionId = R.string.enable_frame_skipping_description
+                    BooleanSetting.ENABLE_FRAME_INTERPOLATION,
+                    titleId = R.string.enable_frame_interpolation,
+                    descriptionId = R.string.enable_frame_interpolation_description
+                )
+            )
+            put(
+                SwitchSetting(
+                    BooleanSetting.ENABLE_FRAME_SKIPPING,
+                    titleId = R.string.enable_frame_skipping,
+                    descriptionId = R.string.enable_frame_skipping_description
                 )
             )
             put(
