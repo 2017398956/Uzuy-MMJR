@@ -139,16 +139,16 @@
 
     <!-- NVDEC Emulation Choices -->
     <string-array name="rendererNvdecNames">
-        <item>@string/nvdec_emulation_cpu</item>
-        <item>@string/nvdec_emulation_gpu</item>
-        <item>@string/nvdec_emulation_none</item>
+        <item>@string/nvdec_emulation_none</item> <!-- Off -->
+        <item>@string/nvdec_emulation_cpu</item>  <!-- Cpu -->
+        <item>@string/nvdec_emulation_gpu</item>  <!-- Gpu -->
     </string-array>
 
     <!-- NVDEC Emulation Values -->
     <integer-array name="rendererNvdecValues">
+        <item>3</item> <!-- Off value -->
         <item>1</item> <!-- CPU value -->
         <item>2</item> <!-- GPU value -->
-        <item>3</item> <!-- None value -->
     </integer-array>
 
     <string-array name="rendererResolutionNames">
