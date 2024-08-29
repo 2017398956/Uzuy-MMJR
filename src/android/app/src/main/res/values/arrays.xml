@@ -106,7 +106,7 @@
     <!-- VRAM USAGE MODE VALUES -->
     <integer-array name="vramUsageMethodValues">
         <item>0</item> <!-- Conservative -->
-        <item>1</item> <!-- Agressive -->
+        <item>1</item> <!-- Aggressive -->
     </integer-array>
 
     <!-- ASTC Decoding Method Choices -->
