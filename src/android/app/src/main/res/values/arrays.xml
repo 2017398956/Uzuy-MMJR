@@ -132,9 +132,9 @@
 
     <!-- ASTC Recompression Method Values -->
     <integer-array name="astcRecompressionMethodValues">
-        <item>1</item> <!-- Uncompressed -->
-        <item>2</item> <!-- BC1 -->
-        <item>3</item> <!-- BC3 -->
+        <item>0</item> <!-- Uncompressed -->
+        <item>1</item> <!-- BC1 -->
+        <item>2</item> <!-- BC3 -->
     </integer-array>
 
     <!-- NVDEC Emulation Choices -->
