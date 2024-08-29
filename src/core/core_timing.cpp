@@ -184,10 +184,19 @@ void CoreTiming::ResetTicks() {
 }
 
 u64 CoreTiming::GetClockTicks() const {
+    u64 fres;
     if (is_multicore) [[likely]] {
-        return clock->GetCNTPCT();
+        fres = clock->GetCNTPCT();
+    } else {
+        fres = Common::WallClock::CPUTickToCNTPCT(cpu_ticks);
     }
-    return Common::WallClock::CPUTickToCNTPCT(cpu_ticks);
+
+    if (Settings::values.sync_core_speed.GetValue()) {
+        const double ticks = static_cast<double>(fres);
+        const double speed_limit = static_cast<double>(Settings::values.speed_limit.GetValue())*0.01;
+        fres = static_cast<u64>(ticks / speed_limit);
+    }
+    return fres;
 }
 
 u64 CoreTiming::GetGPUTicks() const {

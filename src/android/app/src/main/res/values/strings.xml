@@ -290,7 +290,7 @@
       <!-- ASTC Recompression Method Choices -->
     <string name="vram_usage_mode">🐦‍🔥 VRAM Usage Mode</string>
     <string name="vram_usage_conservative">Conservative</string>
-    <string name="vram_usage_aggressive">Agressive</string>
+    <string name="vram_usage_aggressive">Aggressive</string>
 
     <!-- Debug settings strings -->
     <string name="cpu">CPU</string>

@@ -132,9 +132,9 @@
 
     <!-- ASTC Recompression Method Values -->
     <integer-array name="astcRecompressionMethodValues">
-        <item>0</item> <!-- Uncompressed -->
-        <item>1</item> <!-- BC1 -->
-        <item>2</item> <!-- BC3 -->
+        <item>1</item> <!-- Uncompressed -->
+        <item>2</item> <!-- BC1 -->
+        <item>3</item> <!-- BC3 -->
     </integer-array>
 
     <!-- NVDEC Emulation Choices -->
@@ -146,9 +146,9 @@
 
     <!-- NVDEC Emulation Values -->
     <integer-array name="rendererNvdecValues">
-        <item>0</item> <!-- CPU value -->
-        <item>1</item> <!-- GPU value -->
-        <item>2</item> <!-- None value -->
+        <item>1</item> <!-- CPU value -->
+        <item>2</item> <!-- GPU value -->
+        <item>3</item> <!-- None value -->
     </integer-array>
 
     <string-array name="rendererResolutionNames">
@@ -161,13 +161,6 @@
         <item>@string/resolution_four</item>
     </string-array>
 
-    <string-array name="rendererVSyncNames">
-        <item>@string/renderer_vsync_immediate</item>
-        <item>@string/renderer_vsync_mailbox</item>
-        <item>@string/renderer_vsync_fifo</item>
-        <item>@string/renderer_vsync_fifo_relaxed</item>
-    </string-array>
-
     <integer-array name="rendererResolutionValues">
         <item>0</item>
         <item>1</item>
@@ -177,6 +170,13 @@
         <item>5</item>
         <item>6</item>
     </integer-array>
+
+    <string-array name="rendererVSyncNames">
+        <item>@string/renderer_vsync_immediate</item>
+        <item>@string/renderer_vsync_mailbox</item>
+        <item>@string/renderer_vsync_fifo</item>
+        <item>@string/renderer_vsync_fifo_relaxed</item>
+    </string-array>
 
     <integer-array name="rendererVSyncValues">
         <item>0</item>

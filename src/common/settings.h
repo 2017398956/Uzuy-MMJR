@@ -203,13 +203,14 @@ struct Values {
     SwitchableSetting<u16, true> speed_limit{linkage,
                                              100,
                                              0,
-                                             999,
+                                             9999,
                                              "speed_limit",
                                              Category::Core,
                                              Specialization::Countable | Specialization::Percentage,
                                              true,
                                              true,
                                              &use_speed_limit};
+    SwitchableSetting<bool> sync_core_speed{linkage, false, "sync_core_speed", Category::Core, Specialization::Default};
 
     // Cpu
     SwitchableSetting<CpuBackend, true> cpu_backend{linkage,
@@ -274,10 +275,10 @@ struct Values {
     SwitchableSetting<int> vulkan_device{linkage, 0, "vulkan_device", Category::Renderer,
                                          Specialization::RuntimeList};
 
-    SwitchableSetting<bool> enable_frame_interpolation{linkage, false, "enable_frame_interpolation", Category::Renderer,
+    SwitchableSetting<bool> enable_frame_interpolation{linkage, true, "enable_frame_interpolation", Category::Renderer,
                                                    Specialization::RuntimeList};
 
-    SwitchableSetting<bool> enable_frame_skipping{linkage, false, "enable_frame_skipping", Category::Renderer,
+    SwitchableSetting<bool> enable_frame_skipping{linkage, true, "enable_frame_skipping", Category::Renderer,
                                                    Specialization::RuntimeList};
 
     SwitchableSetting<bool> use_disk_shader_cache{linkage, true, "use_disk_shader_cache",
