@@ -446,12 +446,12 @@ void EmitIsHelperInvocation(EmitContext& ctx, IR::Inst& inst) {
 
 void EmitSR_WScaleFactorXY(EmitContext& ctx, IR::Inst& inst) {
     // TODO: Implement the logic to handle WScaleFactorXY
-    ctx.AddF32("{} = 1.0;", inst); // Placeholder stub logic
+    LOG_WARNING(Shader, "(STUBBED) called");
 }
 
 void EmitSR_WScaleFactorZ(EmitContext& ctx, IR::Inst& inst) {
     // TODO: Implement the logic to handle WScaleFactorZ
-    ctx.AddF32("{} = 1.0;", inst); // Placeholder stub logic
+    LOG_WARNING(Shader, "(STUBBED) called");
 }
 
 void EmitYDirection(EmitContext& ctx, IR::Inst& inst) {
