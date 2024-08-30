@@ -54,7 +54,7 @@ android {
 
     defaultConfig {
         // TODO If this is ever modified, change application_id in strings.xml
-        applicationId = "com.antutu.ABenchMark"
+        applicationId = "org.uzuy.uzuy_emu"
         minSdk = 30
         targetSdk = 34
         versionName = getGitVersion()
@@ -103,14 +103,14 @@ android {
                 signingConfigs.getByName("default")
             }
 
-            resValue("string", "app_name_suffixed", "Uzuy AnTuTu")
+            resValue("string", "app_name_suffixed", "Uzuy MMJR")
             isDefault = true
             isShrinkResources = true
             isMinifyEnabled = true
             isDebuggable = false
             isJniDebuggable = false
             proguardFiles(
-                getDefaultProguardFile("proguard-android.txt"),
+                getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
         }
@@ -118,12 +118,12 @@ android {
         // builds a release build that doesn't need signing
         // Attaches 'debug' suffix to version and package name, allowing installation alongside the release build.
         register("relWithDebInfo") {
-            resValue("string", "app_name_suffixed", "Uzuy AnTuTu")
+            resValue("string", "app_name_suffixed", "Uzuy MMJR")
             signingConfig = signingConfigs.getByName("default")
             isMinifyEnabled = true
             isDebuggable = true
             proguardFiles(
-                getDefaultProguardFile("proguard-android.txt"),
+                getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
             versionNameSuffix = "-relWithDebInfo"
@@ -135,7 +135,7 @@ android {
         // Attaches 'debug' suffix to version and package name, allowing installation alongside the release build.
         debug {
             signingConfig = signingConfigs.getByName("default")
-            resValue("string", "app_name_suffixed", "Uzuy AnTuTu")
+            resValue("string", "app_name_suffixed", "Uzuy MMJR")
             isDebuggable = true
             isJniDebuggable = true
             versionNameSuffix = "-debug"
