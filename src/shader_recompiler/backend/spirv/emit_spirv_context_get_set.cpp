@@ -567,12 +567,14 @@ Id EmitIsHelperInvocation(EmitContext& ctx) {
 
 Id EmitSR_WScaleFactorXY(EmitContext& ctx) {
     // TODO: Implement the logic to handle WScaleFactorXY
-    return ctx.Const(1.0f); // Placeholder stub logic
+    LOG_WARNING(Shader, "(STUBBED) called");
+    return ctx.Const(0x00ff0000u);
 }
 
 Id EmitSR_WScaleFactorZ(EmitContext& ctx) {
     // TODO: Implement the logic to handle WScaleFactorZ
-    return ctx.Const(1.0f); // Placeholder stub logic
+    LOG_WARNING(Shader, "(STUBBED) called");
+    return ctx.Const(0x00ff0000u);
 }
 
 Id EmitYDirection(EmitContext& ctx) {
